@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 
 namespace GameOff2023.Scripts.GameStateManagement.GameStates;
 

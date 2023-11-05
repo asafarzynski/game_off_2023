@@ -4,50 +4,50 @@ namespace GameOff2023.Scripts.GameStateManagement;
 
 public partial class GameStateManager : Node
 {
-	public static GameStateManager Instance { get; private set; }
+  public static GameStateManager Instance { get; private set; }
 
-	private GameState currentState;
-	
-	public GameStateManager()
-	{
-		if (Instance == null)
-		{
-			Instance = this;
-		}
-		else
-		{
-			Free();
-		}
-	}
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		// TODO: check current scene and set proper state
-		GD.Print("GameStateManager ready");
-	}
+  private GameState currentState;
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		GD.Print("GameStateManager processing");
-	}
+  public GameStateManager()
+  {
+    if (Instance == null)
+    {
+      Instance = this;
+    }
+    else
+    {
+      Free();
+    }
+  }
 
-	public void ChangeState<T>() where T : GameState, new()
-	{
-		currentState?.OnExit();
+  // Called when the node enters the scene tree for the first time.
+  public override void _Ready()
+  {
+    // TODO: check current scene and set proper state
+    GD.Print("GameStateManager ready");
+  }
 
-		var newScene = new T();
-		var error = GetTree().ChangeSceneToFile($"res://Scenes/States/{newScene.SceneName}.tscn");
+  // Called every frame. 'delta' is the elapsed time since the previous frame.
+  public override void _Process(double delta)
+  {
+    GD.Print("GameStateManager processing");
+  }
 
-		if (error == Error.Ok)
-		{
-			currentState = newScene;
-			currentState.OnEnter();
-		}
-		else
-		{
-			// TODO: handle errors
-		}
-	}
+  public void ChangeState<T>() where T : GameState, new()
+  {
+    currentState?.OnExit();
+
+    var newScene = new T();
+    var error = GetTree().ChangeSceneToFile($"res://Scenes/States/{newScene.SceneName}.tscn");
+
+    if (error == Error.Ok)
+    {
+      currentState = newScene;
+      currentState.OnEnter();
+    }
+    else
+    {
+      // TODO: handle errors
+    }
+  }
 }

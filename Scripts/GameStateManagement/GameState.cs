@@ -1,4 +1,4 @@
-﻿namespace GameOff2023.Scripts.GameStateManagement;
+namespace GameOff2023.Scripts.GameStateManagement;
 
 public abstract class GameState
 {

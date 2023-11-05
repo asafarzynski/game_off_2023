@@ -4,7 +4,7 @@ using GameOff2023.Scripts.GameStateManagement.GameStates;
 
 namespace GameOff2023.Scripts;
 
-public partial class UIMainMenu : Control
+public partial class UICharacterSelect : Control
 {
   // Called when the node enters the scene tree for the first time.
   public override void _Ready()
@@ -15,14 +15,18 @@ public partial class UIMainMenu : Control
   public override void _Process(double delta)
   {
   }
-
-  public void _on_start_button_pressed()
-  {
-    GameStateManager.Instance.ChangeState<CharacterSelectState>();
-  }
-
-  public void _on_exit_button_pressed()
-  {
-    GetTree().Quit();
-  }
+  
+  private void _on_exit_button_pressed()
+{
+    GameStateManager.Instance.ChangeState<MainMenuState>();
 }
+
+
+private void _on_start_button_pressed()
+{
+    GameStateManager.Instance.ChangeState<GameplayState>();
+}
+}
+
+
+
