@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://db34qmygxgkbm"]
+
+[ext_resource type="Script" path="res://Scripts/UIGameplay.cs" id="1_p2ijy"]
+[ext_resource type="Texture2D" uid="uid://q75e8nexi4um" path="res://Visuals/ramka.png" id="1_v6ck3"]
+
+[node name="GameplayUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p2ijy")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_v6ck3")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -63.0
+offset_right = -41.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
