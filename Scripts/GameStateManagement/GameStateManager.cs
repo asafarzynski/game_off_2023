@@ -6,32 +6,30 @@ public partial class GameStateManager : Node
 {
   public static GameStateManager Instance { get; private set; }
 
-  private GameState currentState;
+	private GameState currentState;
+	
+	public GameStateManager()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+		}
+		else
+		{
+			Free();
+		}
+	}
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		// TODO: check current scene and set proper state
+	}
 
-  public GameStateManager()
-  {
-    if (Instance == null)
-    {
-      Instance = this;
-    }
-    else
-    {
-      Free();
-    }
-  }
-
-  // Called when the node enters the scene tree for the first time.
-  public override void _Ready()
-  {
-    // TODO: check current scene and set proper state
-    GD.Print("GameStateManager ready");
-  }
-
-  // Called every frame. 'delta' is the elapsed time since the previous frame.
-  public override void _Process(double delta)
-  {
-    GD.Print("GameStateManager processing");
-  }
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
 
   public void ChangeState<T>() where T : GameState, new()
   {
