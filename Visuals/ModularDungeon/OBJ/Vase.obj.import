@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://0e4hu2envgdp"
+path="res://.godot/imported/Vase.obj-4429b0c9623deaa12640ef02160fbc49.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Vase.obj-4429b0c9623deaa12640ef02160fbc49.mesh"]
+
+source_file="res://Visuals/ModularDungeon/OBJ/Vase.obj"
+dest_files=["res://.godot/imported/Vase.obj-4429b0c9623deaa12640ef02160fbc49.mesh", "res://.godot/imported/Vase.obj-4429b0c9623deaa12640ef02160fbc49.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

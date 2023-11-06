@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dbyex6gjf5ik7"
+path="res://.godot/imported/Arch.obj-00020d2068bba0c499bfb7ca9d69141e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Arch.obj-00020d2068bba0c499bfb7ca9d69141e.mesh"]
+
+source_file="res://Visuals/ModularDungeon/OBJ/Arch.obj"
+dest_files=["res://.godot/imported/Arch.obj-00020d2068bba0c499bfb7ca9d69141e.mesh", "res://.godot/imported/Arch.obj-00020d2068bba0c499bfb7ca9d69141e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

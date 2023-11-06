@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dtut5mqeysjik"
+path="res://.godot/imported/Stairs_SideCover.obj-b6606af039a021031b3e07336d1faf5e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Stairs_SideCover.obj-b6606af039a021031b3e07336d1faf5e.mesh"]
+
+source_file="res://Visuals/ModularDungeon/OBJ/Stairs_SideCover.obj"
+dest_files=["res://.godot/imported/Stairs_SideCover.obj-b6606af039a021031b3e07336d1faf5e.mesh", "res://.godot/imported/Stairs_SideCover.obj-b6606af039a021031b3e07336d1faf5e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

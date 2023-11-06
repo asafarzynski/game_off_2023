@@ -1,0 +1,255 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgi8iulofv3ug"]
+
+[ext_resource type="ArrayMesh" uid="uid://bguqmgp5hi30p" path="res://Visuals/ModularDungeon/OBJ/Floor_Modular.obj" id="1_mayb5"]
+[ext_resource type="ArrayMesh" uid="uid://n3uw4vm6ggmc" path="res://Visuals/ModularDungeon/OBJ/Wall_Modular.obj" id="2_0rbqf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ya2d6"]
+sky_top_color = Color(0.341176, 0.619608, 0.945098, 1)
+sky_horizon_color = Color(0.631373, 0.676471, 0.743137, 1)
+sky_energy_multiplier = 1.75
+ground_bottom_color = Color(0.184314, 0.0862745, 0.027451, 1)
+ground_horizon_color = Color(0.631373, 0.676471, 0.743137, 1)
+
+[sub_resource type="Sky" id="Sky_ksx7a"]
+sky_material = SubResource("ProceduralSkyMaterial_ya2d6")
+
+[sub_resource type="Environment" id="Environment_l654h"]
+background_mode = 2
+sky = SubResource("Sky_ksx7a")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l654h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99493, -0.0431381, 0.0908485, 7.21326e-09, 0.903335, 0.428935, -0.10057, -0.42676, 0.898755, 0, 1.86999, -5.23322)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999998, -0.00111057, 0.00142919, 0.00110663, 0.999996, 0.00275856, -0.00143225, -0.00275697, 0.999995, -3.78178, 1, 3)
+
+[node name="Podłoga" type="Node" parent="."]
+
+[node name="FloorModular2" type="MeshInstance3D" parent="Podłoga"]
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../..")
+
+[node name="FloorModular3" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular")
+
+[node name="FloorModular4" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular5" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular6" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular7" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath(".")
+
+[node name="FloorModular8" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular9" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular10" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular11" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath(".")
+
+[node name="FloorModular12" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular13" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular14" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular15" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular16" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular17" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular18" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular19" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular20" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular21" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular22" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+mesh = ExtResource("1_mayb5")
+
+[node name="FloorModular23" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="FloorModular24" type="MeshInstance3D" parent="Podłoga"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+mesh = ExtResource("1_mayb5")
+skeleton = NodePath("../FloorModular3")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="WallModular" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular2" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular3" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular4" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular5" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular6" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 3, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular7" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular8" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular9" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular10" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 5, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular11" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular12" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 5, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular13" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular14" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular15" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular16" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular17" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular18" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular19" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular20" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular21" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 5, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular22" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5, -3)
+mesh = ExtResource("2_0rbqf")
+
+[node name="WallModular23" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, -3)
+mesh = ExtResource("2_0rbqf")
+skeleton = NodePath("../..")
+
+[node name="WallModular24" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5, -3)
+mesh = ExtResource("2_0rbqf")

@@ -18,11 +18,11 @@ public partial class UIMainMenu : Control
 
   public void _on_start_button_pressed()
   {
-    GameStateManager.Instance.ChangeState<CharacterSelectState>();
+	GameStateManager.Instance.ChangeState<CharacterSelectState>();
   }
 
   public void _on_exit_button_pressed()
   {
-    GetTree().Quit();
+	GetTree().Quit();
   }
 }

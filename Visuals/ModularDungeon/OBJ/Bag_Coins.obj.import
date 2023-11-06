@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://2oxm24rfbc0f"
+path="res://.godot/imported/Bag_Coins.obj-0e0cef6e0be90d7a00d093a03a6098c2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Bag_Coins.obj-0e0cef6e0be90d7a00d093a03a6098c2.mesh"]
+
+source_file="res://Visuals/ModularDungeon/OBJ/Bag_Coins.obj"
+dest_files=["res://.godot/imported/Bag_Coins.obj-0e0cef6e0be90d7a00d093a03a6098c2.mesh", "res://.godot/imported/Bag_Coins.obj-0e0cef6e0be90d7a00d093a03a6098c2.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

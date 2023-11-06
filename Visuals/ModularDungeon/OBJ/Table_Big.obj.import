@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://y7qq125br1lg"
+path="res://.godot/imported/Table_Big.obj-bfa10bfe678fe9b0e7fa407fe5729d08.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Table_Big.obj-bfa10bfe678fe9b0e7fa407fe5729d08.mesh"]
+
+source_file="res://Visuals/ModularDungeon/OBJ/Table_Big.obj"
+dest_files=["res://.godot/imported/Table_Big.obj-bfa10bfe678fe9b0e7fa407fe5729d08.mesh", "res://.godot/imported/Table_Big.obj-bfa10bfe678fe9b0e7fa407fe5729d08.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
