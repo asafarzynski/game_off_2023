@@ -46,6 +46,10 @@ metadata/_edit_group_ = true
 layout_mode = 2
 text = "Mulitply score by 2"
 
+[node name="Next fight" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Next fight"
+
 [node name="Undo" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Undo"
@@ -125,6 +129,7 @@ XXX
 YYY"
 
 [connection signal="pressed" from="VBoxContainer/Multiply" to="." method="_on_multiply_pressed"]
+[connection signal="pressed" from="VBoxContainer/Next fight" to="." method="_on_multiply_pressed"]
 [connection signal="pressed" from="VBoxContainer/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Redo" to="." method="_on_redo_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_exit_button_pressed"]

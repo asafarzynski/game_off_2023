@@ -31,7 +31,7 @@ public partial class UIGameplay : Control
 		_spellsLabel.Text = $"Available spells:\n{string.Join("\n", _gameplayCore.AvailableSpells)}";
 	}
 
-	public void _on_button_pressed()
+	public void _on_exit_button_pressed()
 	{
 		GameStateManager.Instance.ChangeState<MainMenuState>();
 	}
