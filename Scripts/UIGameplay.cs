@@ -7,18 +7,20 @@ namespace GameOff2023.Scripts.UI;
 
 public partial class UIGameplay : Control
 {
-	private GameplayCore.GameplayCore _gameplayCore; // THE CORE SHOULD NOT BE HERE AS THIS CLASS SHOULD ONLY MANAGE UI STUFF (JUST TESTING NOW)
+	private GameplayCore.GameplayCore _gameplayCore;
 
 	private Label _scoreLabel;
 	private Label _historyLabel;
+	private Label _spellsLabel;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_scoreLabel = GetNode<Label>("%Score");
 		_historyLabel = GetNode<Label>("%History");
-		
-		_gameplayCore = new GameplayCore.GameplayCore();
+		_spellsLabel = GetNode<Label>("%Spells");
+
+		_gameplayCore = GlobalGameData.Instance.Core;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,6 +28,7 @@ public partial class UIGameplay : Control
 	{
 		_scoreLabel.Text = $"Score: {_gameplayCore.Score}";
 		_historyLabel.Text = $"Done stack size: {_gameplayCore.CommandsExecutioner.DoneStack.Count}; Undone stack: {_gameplayCore.CommandsExecutioner.UndoneStack.Count}";
+		_spellsLabel.Text = $"Available spells:\n{string.Join("\n", _gameplayCore.AvailableSpells)}";
 	}
 
 	public void _on_button_pressed()

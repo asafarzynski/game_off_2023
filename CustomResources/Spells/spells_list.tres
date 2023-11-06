@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ckhf6b1llb8sf"]
+
+[ext_resource type="Script" path="res://Scripts/GameplayCore/Spells/SpellsList.cs" id="1_0g1i8"]
+[ext_resource type="Resource" uid="uid://dfpqsud3cebry" path="res://CustomResources/Spells/basic_spell.tres" id="1_tbxdj"]
+
+[resource]
+script = ExtResource("1_0g1i8")
+Spells = Array[Resource]([ExtResource("1_tbxdj")])

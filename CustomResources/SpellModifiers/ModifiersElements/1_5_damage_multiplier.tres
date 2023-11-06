@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cciblxbukg6co"]
+
+[ext_resource type="Script" path="res://Scripts/GameplayCore/Spells/Modifiers/SpellModifierElement.cs" id="1_yt3f6"]
+
+[resource]
+script = ExtResource("1_yt3f6")
+FloatValue = 1.5
+IntValue = 0
+BoolValue = false

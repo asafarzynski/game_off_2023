@@ -108,6 +108,22 @@ text = "history"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Spells" type="Label" parent="PanelContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Available spells:
+XXX
+YYY"
+
 [connection signal="pressed" from="VBoxContainer/Multiply" to="." method="_on_multiply_pressed"]
 [connection signal="pressed" from="VBoxContainer/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Redo" to="." method="_on_redo_pressed"]

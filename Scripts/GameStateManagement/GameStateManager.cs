@@ -6,7 +6,7 @@ public partial class GameStateManager : Node
 {
   public static GameStateManager Instance { get; private set; }
 
-	private GameState currentState;
+	public GameState CurrentState { get; private set; }
 	
 	public GameStateManager()
 	{
@@ -33,15 +33,15 @@ public partial class GameStateManager : Node
 
   public void ChangeState<T>() where T : GameState, new()
   {
-    currentState?.OnExit();
+    CurrentState?.OnExit();
 
-    var newScene = new T();
-    var error = GetTree().ChangeSceneToFile($"res://Scenes/States/{newScene.SceneName}.tscn");
+    var newState = new T();
+    var error = GetTree().ChangeSceneToFile($"res://Scenes/States/{newState.SceneName}.tscn");
 
     if (error == Error.Ok)
     {
-      currentState = newScene;
-      currentState.OnEnter();
+      CurrentState = newState;
+      CurrentState.OnEnter();
     }
     else
     {
