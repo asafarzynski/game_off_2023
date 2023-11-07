@@ -46,9 +46,13 @@ metadata/_edit_group_ = true
 layout_mode = 2
 text = "Mulitply score by 2"
 
-[node name="Next fight" type="Button" parent="VBoxContainer"]
+[node name="AddPlayerSpells" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Next fight"
+text = "Add Player Spells"
+
+[node name="AddEnemySpells" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Add Enemy Spells"
 
 [node name="Undo" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -69,10 +73,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -35.5
+offset_top = -538.0
+offset_right = 35.5
+offset_bottom = -498.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -112,7 +116,7 @@ text = "history"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="."]
+[node name="SpellsContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -121,15 +125,29 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="Spells" type="Label" parent="PanelContainer3"]
+[node name="Spells" type="Label" parent="SpellsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Available spells:
-XXX
-YYY"
+text = "Spells Stack:"
+
+[node name="SpellsStackContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -286.0
+offset_top = 2.0
+offset_right = -191.0
+offset_bottom = 42.0
+grow_horizontal = 0
+
+[node name="SpellsStack" type="Label" parent="SpellsStackContainer"]
+layout_mode = 2
+text = "Spells Stack:"
 
 [connection signal="pressed" from="VBoxContainer/Multiply" to="." method="_on_multiply_pressed"]
-[connection signal="pressed" from="VBoxContainer/Next fight" to="." method="_on_multiply_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddPlayerSpells" to="." method="_on_add_player_spells"]
+[connection signal="pressed" from="VBoxContainer/AddEnemySpells" to="." method="_on_add_enemy_spells"]
 [connection signal="pressed" from="VBoxContainer/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Redo" to="." method="_on_redo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_exit_button_pressed"]
