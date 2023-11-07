@@ -46,13 +46,13 @@ metadata/_edit_group_ = true
 layout_mode = 2
 text = "Mulitply score by 2"
 
-[node name="AddPlayerSpells" type="Button" parent="VBoxContainer"]
+[node name="AddPlayerSpell" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Add Player Spells"
+text = "Add Player Spell"
 
-[node name="AddEnemySpells" type="Button" parent="VBoxContainer"]
+[node name="AddEnemySpell" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Add Enemy Spells"
+text = "Add Enemy Spell"
 
 [node name="Undo" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -148,8 +148,8 @@ layout_mode = 2
 text = "Spells Stack:"
 
 [connection signal="pressed" from="VBoxContainer/Multiply" to="." method="_on_multiply_pressed"]
-[connection signal="pressed" from="VBoxContainer/AddPlayerSpells" to="." method="_on_add_player_spells"]
-[connection signal="pressed" from="VBoxContainer/AddEnemySpells" to="." method="_on_add_enemy_spells"]
+[connection signal="pressed" from="VBoxContainer/AddPlayerSpell" to="." method="_on_add_player_spell"]
+[connection signal="pressed" from="VBoxContainer/AddEnemySpell" to="." method="_on_add_enemy_spell"]
 [connection signal="pressed" from="VBoxContainer/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Redo" to="." method="_on_redo_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_exit_button_pressed"]

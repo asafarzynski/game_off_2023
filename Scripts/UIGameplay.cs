@@ -54,12 +54,12 @@ public partial class UIGameplay : Control
 		_gameplayCore.CommandsExecutioner.Redo();
 	}
 
-	public void _on_add_player_spells()
+	public void _on_add_player_spell()
 	{
-		_gameplayCore.CommandsExecutioner.Do(new AddPlayerSpellsCommand(_gameplayCore));
+		_gameplayCore.CommandsExecutioner.Do(new AddPlayerSpellCommand(_gameplayCore));
 	}
 
-	public void _on_add_enemy_spells()
+	public void _on_add_enemy_spell()
 	{
 		// _gameplayCore.CommandsExecutioner.Do(new AddEnemySpellsCommand(_gameplayCore));
 	}
