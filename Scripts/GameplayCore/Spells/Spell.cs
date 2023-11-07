@@ -20,6 +20,6 @@ public struct Spell
 
     public override string ToString()
     {
-        return $"-----\nCooldown: {Cooldown}\nCount: {Count}\nDamage: {Damage}\nCritical chance: {CriticalChance}\n-----";
+        return $"[Cooldown: {Cooldown} | Count: {Count} | Damage: {Damage} | Critical chance: {CriticalChance}]";
     }
 }

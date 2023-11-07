@@ -1,6 +1,7 @@
 ﻿using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.GameplayCore.Spells;
 using Godot;
+using System.Collections.Generic;
 
 namespace GameOff2023.Scripts.GameplayCore.Commands;
 
@@ -23,8 +24,22 @@ public class AddPlayerSpellsCommand : ICommand
     public void Execute()
     {
         GD.Print("Add two spells");
-        _gameplayCore.SpellsStack.Add(new Spell());
-        _gameplayCore.SpellsStack.Add(new Spell());
+        var spellToAdd = new Spell();
+        var spellToAddDifferentCooldown = new Spell(2, 1, 69, 0);
+        AddSpell(spellToAdd);
+        AddSpell(spellToAddDifferentCooldown);
+    }
+
+    private void AddSpell(Spell spell) {
+        var spellCooldown = spell.Cooldown;
+        if (_gameplayCore.SpellsStack.ContainsKey(spellCooldown))
+        {
+            _gameplayCore.SpellsStack[spellCooldown].Add(spell);
+        }
+        else
+        {
+            _gameplayCore.SpellsStack[spellCooldown] = new List<Spell> { spell };
+        }
     }
 
     public void UnExecute()

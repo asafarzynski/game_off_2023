@@ -73,9 +73,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.5
+offset_left = -955.0
 offset_top = -538.0
-offset_right = 35.5
+offset_right = -884.0
 offset_bottom = -498.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -121,7 +121,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
+offset_left = -231.0
+offset_right = -136.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
@@ -135,13 +136,14 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -286.0
+offset_left = -1070.0
 offset_top = 2.0
-offset_right = -191.0
+offset_right = -975.0
 offset_bottom = 42.0
 grow_horizontal = 0
 
 [node name="SpellsStack" type="Label" parent="SpellsStackContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Spells Stack:"
 
