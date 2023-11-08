@@ -33,19 +33,19 @@ public partial class GameStateManager : Node
 
   public void ChangeState<T>() where T : GameState, new()
   {
-    CurrentState?.OnExit();
+	CurrentState?.OnExit();
 
-    var newState = new T();
-    var error = GetTree().ChangeSceneToFile($"res://Scenes/States/{newState.SceneName}.tscn");
+	var newState = new T();
+	var error = GetTree().ChangeSceneToFile($"res://Scenes/States/{newState.SceneName}.tscn");
 
-    if (error == Error.Ok)
-    {
-      CurrentState = newState;
-      CurrentState.OnEnter();
-    }
-    else
-    {
-      // TODO: handle errors
-    }
+	if (error == Error.Ok)
+	{
+	  CurrentState = newState;
+	  CurrentState.OnEnter();
+	}
+	else
+	{
+	  // TODO: handle errors
+	}
   }
 }
