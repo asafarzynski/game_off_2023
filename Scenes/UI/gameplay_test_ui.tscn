@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://db34qmygxgkbm"]
 
-[ext_resource type="Script" path="res://Scripts/UIGameplay.cs" id="1_p2ijy"]
-[ext_resource type="Texture2D" uid="uid://q75e8nexi4um" path="res://Visuals/ramka.png" id="1_v6ck3"]
+[ext_resource type="Script" path="res://Scripts/UI/UIGameplay.cs" id="1_wgm2u"]
+[ext_resource type="Texture2D" uid="uid://q75e8nexi4um" path="res://Visuals/ramka.png" id="2_civvx"]
 
 [node name="GameplayUI" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_p2ijy")
+script = ExtResource("1_wgm2u")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_v6ck3")
+texture = ExtResource("2_civvx")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 16
 patch_margin_top = 16

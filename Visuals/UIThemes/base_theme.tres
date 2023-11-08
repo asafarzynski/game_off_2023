@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://44m400ybdb4x"]
+
+[ext_resource type="FontFile" uid="uid://dmjc4y3e4nx08" path="res://Visuals/UIThemes/Ronysiswadi15-51Dv8.ttf" id="1_gjk8f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcmfm"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.0980392, 0.223529, 0.239216, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+default_font = ExtResource("1_gjk8f")
+default_font_size = 14
+Panel/styles/panel = SubResource("StyleBoxFlat_tcmfm")
