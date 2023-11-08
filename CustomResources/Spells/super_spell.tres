@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://brqooqe66tiun"]
+
+[ext_resource type="Script" path="res://Scripts/GameplayCore/Spells/SpellResource.cs" id="1_lix8l"]
+
+[resource]
+script = ExtResource("1_lix8l")
+Cooldown = 0.5
+Count = 3
+Damage = 2.0
+CriticalChance = 0.2

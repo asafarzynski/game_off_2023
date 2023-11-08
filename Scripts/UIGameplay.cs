@@ -31,7 +31,7 @@ public partial class UIGameplay : Control
 		_scoreLabel.Text = $"Score: {_gameplayCore.Score}";
 		_historyLabel.Text = $"Done stack size: {_gameplayCore.CommandsExecutioner.DoneStack.Count}; Undone stack: {_gameplayCore.CommandsExecutioner.UndoneStack.Count}";
 		_spellsLabel.Text = $"Available spells:\n{string.Join("\n", _gameplayCore.AvailableSpells)}";
-		_spellsStackLabel.Text = $"Spells stack:\n{_gameplayCore.SpellStackString()}";
+		_spellsStackLabel.Text = $"Spells stack:\n{_gameplayCore.SpellStack}";
 	}
 
 	public void _on_exit_button_pressed()
@@ -56,11 +56,11 @@ public partial class UIGameplay : Control
 
 	public void _on_add_player_spell()
 	{
-		_gameplayCore.CommandsExecutioner.Do(new AddPlayerSpellCommand(_gameplayCore));
+		// _gameplayCore.CommandsExecutioner.Do(new AddPlayerSpellCommand());
 	}
 
 	public void _on_add_enemy_spell()
 	{
-		// _gameplayCore.CommandsExecutioner.Do(new AddEnemySpellsCommand(_gameplayCore));
+		// _gameplayCore.CommandsExecutioner.Do(new AddEnemySpellCommand());
 	}
 }
