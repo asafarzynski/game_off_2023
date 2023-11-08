@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ctbxhcqqdm5hc"
+path="res://.godot/imported/Column2.obj-e8f17bd1e1527e8f4613de084f1a0813.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Column2.obj-e8f17bd1e1527e8f4613de084f1a0813.mesh"]
+
+source_file="res://Visuals/Placeholder-ModularDungeon/OBJ/Column2.obj"
+dest_files=["res://.godot/imported/Column2.obj-e8f17bd1e1527e8f4613de084f1a0813.mesh", "res://.godot/imported/Column2.obj-e8f17bd1e1527e8f4613de084f1a0813.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

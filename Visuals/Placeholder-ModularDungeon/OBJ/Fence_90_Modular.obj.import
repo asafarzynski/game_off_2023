@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhwy8g6jwe5bl"
+path="res://.godot/imported/Fence_90_Modular.obj-1aea9dddc353eaa5f50a6fbc93eb9a21.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Fence_90_Modular.obj-1aea9dddc353eaa5f50a6fbc93eb9a21.mesh"]
+
+source_file="res://Visuals/Placeholder-ModularDungeon/OBJ/Fence_90_Modular.obj"
+dest_files=["res://.godot/imported/Fence_90_Modular.obj-1aea9dddc353eaa5f50a6fbc93eb9a21.mesh", "res://.godot/imported/Fence_90_Modular.obj-1aea9dddc353eaa5f50a6fbc93eb9a21.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

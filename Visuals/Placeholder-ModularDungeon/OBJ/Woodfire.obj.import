@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bgr06m803p3jf"
+path="res://.godot/imported/Woodfire.obj-484f484d1fd65280e72888950a5946ac.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Woodfire.obj-484f484d1fd65280e72888950a5946ac.mesh"]
+
+source_file="res://Visuals/Placeholder-ModularDungeon/OBJ/Woodfire.obj"
+dest_files=["res://.godot/imported/Woodfire.obj-484f484d1fd65280e72888950a5946ac.mesh", "res://.godot/imported/Woodfire.obj-484f484d1fd65280e72888950a5946ac.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://da75j23bccaik"
+path="res://.godot/imported/Pedestal2.obj-7bb3a6a0a1ac59ee3cf15271cf4d27ae.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pedestal2.obj-7bb3a6a0a1ac59ee3cf15271cf4d27ae.mesh"]
+
+source_file="res://Visuals/Placeholder-ModularDungeon/OBJ/Pedestal2.obj"
+dest_files=["res://.godot/imported/Pedestal2.obj-7bb3a6a0a1ac59ee3cf15271cf4d27ae.mesh", "res://.godot/imported/Pedestal2.obj-7bb3a6a0a1ac59ee3cf15271cf4d27ae.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

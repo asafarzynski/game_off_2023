@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b0c38k77nt2g3"
+path="res://.godot/imported/Trapdoor_open.obj-ec0503f0713d088f7f9e5a945b29ce0c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Trapdoor_open.obj-ec0503f0713d088f7f9e5a945b29ce0c.mesh"]
+
+source_file="res://Visuals/Placeholder-ModularDungeon/OBJ/Trapdoor_open.obj"
+dest_files=["res://.godot/imported/Trapdoor_open.obj-ec0503f0713d088f7f9e5a945b29ce0c.mesh", "res://.godot/imported/Trapdoor_open.obj-ec0503f0713d088f7f9e5a945b29ce0c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

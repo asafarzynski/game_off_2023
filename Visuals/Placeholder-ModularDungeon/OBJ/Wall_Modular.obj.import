@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://n3uw4vm6ggmc"
+path="res://.godot/imported/Wall_Modular.obj-a162e274db830c2c5f20c15e57b1c793.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Wall_Modular.obj-a162e274db830c2c5f20c15e57b1c793.mesh"]
+
+source_file="res://Visuals/Placeholder-ModularDungeon/OBJ/Wall_Modular.obj"
+dest_files=["res://.godot/imported/Wall_Modular.obj-a162e274db830c2c5f20c15e57b1c793.mesh", "res://.godot/imported/Wall_Modular.obj-a162e274db830c2c5f20c15e57b1c793.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

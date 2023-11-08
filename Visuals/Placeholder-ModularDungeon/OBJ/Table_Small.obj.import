@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bdp8swp70mlt7"
+path="res://.godot/imported/Table_Small.obj-a257da57b01a4d66c663bb8710862372.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Table_Small.obj-a257da57b01a4d66c663bb8710862372.mesh"]
+
+source_file="res://Visuals/Placeholder-ModularDungeon/OBJ/Table_Small.obj"
+dest_files=["res://.godot/imported/Table_Small.obj-a257da57b01a4d66c663bb8710862372.mesh", "res://.godot/imported/Table_Small.obj-a257da57b01a4d66c663bb8710862372.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
