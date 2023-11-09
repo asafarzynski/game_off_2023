@@ -456,7 +456,6 @@ height = 78.0
 sprite_frames = SubResource("SpriteFrames_ujf81")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.102335
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 29)

@@ -36,7 +36,7 @@ public partial class UIGameplay : Control
 
 	public void _on_exit_button_pressed()
 	{
-		GameStateManager.Instance.ChangeState<MainMenuState>();
+		GameStateManager.Instance.StateMachine.Trigger(Triggers.GameEnded);
 	}
 
 	public void _on_multiply_pressed()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb1mjlce0ru22"]
+[gd_scene load_steps=4 format=3 uid="uid://bb1mjlce0ru22"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIMainMenu.cs" id="1_uqmuk"]
 [ext_resource type="Texture2D" uid="uid://cv04n7yf27wtu" path="res://Visuals/icon.svg" id="1_wnai3"]
+[ext_resource type="Script" path="res://Scripts/GameStateManagement/Initializers/GameStateInitializer.cs" id="2_w6ty0"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,6 +12,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uqmuk")
+
+[node name="Initializer" type="Node" parent="."]
+script = ExtResource("2_w6ty0")
+GameState = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,6 +1,4 @@
 using Godot;
-using GameOff2023.Scripts.GameStateManagement;
-using GameOff2023.Scripts.GameStateManagement.GameStates;
 
 namespace GameOff2023.Scripts.UI;
 
@@ -18,13 +16,13 @@ public partial class UICharacterSelect : Control
   
   private void _on_exit_button_pressed()
 {
-	GameStateManager.Instance.ChangeState<MainMenuState>();
+	// GameStateManager.Instance.ChangeState<MainMenuState>();
 }
 
 
 private void _on_start_button_pressed()
 {
-	GameStateManager.Instance.ChangeState<GameplayState>();
+	// GameStateManager.Instance.ChangeState<GameplayState>();
 }
 }
 
