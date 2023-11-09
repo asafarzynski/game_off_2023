@@ -15,7 +15,7 @@ public class FSM<TStateId, TTrigger, TState>
 
 	protected readonly Dictionary<TStateId, TState> States;
 	protected readonly Dictionary<TTrigger, Dictionary<TStateId, FSMTransition<TStateId, TTrigger>>> Transitions;
-	protected TState CurrentState;
+	public TState CurrentState { get; protected set; }
 
 	public FSM()
 	{
@@ -97,7 +97,7 @@ public class FSM<TStateId, TTrigger, TState>
 		CurrentState?.Enter();
 		OnEnter?.Invoke(CurrentState);
 	}
-
+	
 	protected TState GetState(TStateId key)
 	{
 		return States[key];
