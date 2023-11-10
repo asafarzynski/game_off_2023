@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://e3jkjl25dhcf"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/AudioManager.cs" id="1_uxrh0"]
+[ext_resource type="AudioStream" uid="uid://03iwaa61ksuu" path="res://Sounds/Music/pan-flute-greensleeves-144616.mp3" id="2_sb2vh"]
+
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("musicPlayer")]
+script = ExtResource("1_uxrh0")
+musicPlayer = NodePath("MusicPlayer")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sb2vh")
+bus = &"Music"

@@ -17,6 +17,7 @@ config/icon="res://Visuals/icon.svg"
 
 [autoload]
 
+AudioManager="*res://Scenes/AudioManager.tscn"
 GlobalGameData="*res://Scenes/States/global_game_data.tscn"
 GameStateManager="*res://Scenes/States/game_state_manager.tscn"
 UiManager="*res://Scripts/UI/UIManager.cs"

@@ -41,6 +41,8 @@ public class GameplayState : GameStateManagement.GameState
 		{
 			throw new Exception("Why the initial state cannot be set up?");
 		}
+		
+		AudioManager.Instance.PlayMusic();
 	}
 
 	internal override void Update(double deltaTime)
@@ -53,5 +55,7 @@ public class GameplayState : GameStateManagement.GameState
 	{
 		base.Exit();
 		InnerStateMachine.ExitAllStates();
+		
+		AudioManager.Instance.StopMusic();
 	}
 }

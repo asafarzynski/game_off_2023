@@ -70,6 +70,12 @@ text = "Developer X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label7" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Music: Pan Flute - Greensleeves by NourishedByMusic"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Back" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
