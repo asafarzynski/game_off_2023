@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfiu2bb4yrg2l"]
+[gd_scene load_steps=3 format=3 uid="uid://cb0pb72ht32vq"]
 
 [ext_resource type="Script" path="res://Scripts/GameStateManagement/Initializers/GameplayStateInitializer.cs" id="1_lrjwg"]
 [ext_resource type="PackedScene" uid="uid://buiwmcsyjrptw" path="res://Scenes/Levels/test_3d_level_mockup.tscn" id="2_72wys"]
