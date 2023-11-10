@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://bntsdpnkk3hu3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UICredits.cs" id="1_j3fui"]
+
+[node name="ui_credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j3fui")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -586.0
+offset_top = -403.0
+offset_right = 586.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Developer X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Developer X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Developer X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Developer X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Developer X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Developer X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.5
+offset_top = -260.0
+offset_right = 136.5
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

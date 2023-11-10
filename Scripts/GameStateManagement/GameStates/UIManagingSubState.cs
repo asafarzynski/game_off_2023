@@ -1,9 +1,9 @@
 using GameOff2023.Scripts.Utils.FSM;
 using Godot;
 
-namespace GameOff2023.Scripts.GameStateManagement.GameStates.MainMenu;
+namespace GameOff2023.Scripts.GameStateManagement.GameStates;
 
-public abstract class MainMenuSubState : FSMState<MenuState>
+public abstract class UIManagingSubState<T> : FSMState<T>
 {
     protected abstract string UIFilePath { get; }
     
@@ -11,7 +11,7 @@ public abstract class MainMenuSubState : FSMState<MenuState>
     
     private Node _loadedUI;
 
-    public MainMenuSubState(Node uiParent, MenuState id) : base(id)
+    public UIManagingSubState(Node uiParent, T id) : base(id)
     {
         _uiParent = uiParent;
     }
@@ -19,8 +19,8 @@ public abstract class MainMenuSubState : FSMState<MenuState>
     internal override void Enter()
     {
         base.Enter();
-        _loadedUI = GD.Load<Node>(UIFilePath);
-        _uiParent?.AddChild(_loadedUI);
+        _loadedUI = ResourceLoader.Load<PackedScene>(UIFilePath).Instantiate(); // TODO: move loading UI resources to UIManager ?
+        _uiParent.AddChild(_loadedUI);
     }
 
     internal override void Exit()

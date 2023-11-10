@@ -36,6 +36,7 @@ public partial class UIGameplay : Control
 
 	public void _on_exit_button_pressed()
 	{
+		GlobalGameData.Instance.ClearCore();
 		GameStateManager.Instance.StateMachine.Trigger(Triggers.GameEnded);
 	}
 

@@ -1,17 +1,12 @@
-using GameOff2023.Scripts.GameStateManagement;
 using GameOff2023.Scripts.GameStateManagement.GameStates;
 using GameOff2023.Scripts.GameStateManagement.GameStates.MainMenu;
-using Godot;
 
 namespace GameOff2023.Scripts.UI;
 
-public partial class UISettings : Control
+public partial class UISettings : UIGameStateSpecific<MainMenuState>
 {
     public void _on_back_pressed()
     {
-        if (GameStateManager.Instance.StateMachine.CurrentState is MainMenuState mainMenuState) // oof, this is ugly
-        {
-            mainMenuState.InnerStateMachine.Trigger(MenuTrigger.SettingsClosed);
-        }
+        State.InnerStateMachine.Trigger(MenuTrigger.SettingsClosed);
     }
 }

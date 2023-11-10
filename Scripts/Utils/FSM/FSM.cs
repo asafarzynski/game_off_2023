@@ -87,6 +87,11 @@ public class FSM<TStateId, TTrigger, TState>
 		return true;
 	}
 
+	public void ExitAllStates()
+	{
+		SetCurrentState(null);
+	}
+
 	protected void SetCurrentState(TState state)
 	{
 		OnExit?.Invoke(CurrentState);

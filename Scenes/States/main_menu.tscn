@@ -1,59 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb1mjlce0ru22"]
+[gd_scene load_steps=2 format=3 uid="uid://drix35olx6fa3"]
 
-[ext_resource type="Script" path="res://Scripts/UI/UIMainMenu.cs" id="1_uqmuk"]
-[ext_resource type="Texture2D" uid="uid://cv04n7yf27wtu" path="res://Visuals/icon.svg" id="1_wnai3"]
 [ext_resource type="Script" path="res://Scripts/GameStateManagement/Initializers/GameStateInitializer.cs" id="2_w6ty0"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_uqmuk")
+[node name="main_menu" type="Node"]
 
 [node name="Initializer" type="Node" parent="."]
 script = ExtResource("2_w6ty0")
 GameState = 1
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_wnai3")
-stretch_mode = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -298.0
-offset_top = -539.0
-offset_right = -48.0
-offset_bottom = -39.0
-grow_horizontal = 0
-grow_vertical = 0
-pivot_offset = Vector2(250, 500)
-alignment = 2
-
-[node name="StartButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Start"
-
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Options"
-
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Exit"
-
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,31 +1,60 @@
+using System;
 using GameOff2023.Scripts.GameStateManagement.GameStates.MainMenu;
+using GameOff2023.Scripts.UI;
 using GameOff2023.Scripts.Utils.FSM;
+using Godot;
 
 namespace GameOff2023.Scripts.GameStateManagement.GameStates;
 
 public class MainMenuState : GameStateManagement.GameState
 {
-	internal override string SceneName { get; } = "main_menu";
+    internal override string SceneName { get; } = "main_menu";
 
-	public FSM<MenuState, MenuTrigger, MainMenuSubState> InnerStateMachine { get; private set; }
+    public FSM<MenuState, MenuTrigger, UIManagingSubState<MenuState>> InnerStateMachine { get; private set; }
 
-	public MainMenuState(GameState id) : base(id)
-	{
-		InnerStateMachine = new();
+    private FSMLogger<MenuState, MenuTrigger, UIManagingSubState<MenuState>> _fsmLogger;
 
-		var mainState = new MainSubState(null, MenuState.MainMenu); // fill parent (how?)
-		InnerStateMachine.AddState(mainState);
-		var creditsState = new CreditsSubState(null, MenuState.Credits); // fill parent (how?)
-		InnerStateMachine.AddState(creditsState);
-		var settingsState = new SettingsSubState(null, MenuState.Settings); // fill parent (how?)
-		InnerStateMachine.AddState(settingsState);
-		
-		InnerStateMachine.AddTransition(mainState.Id, creditsState.Id, MenuTrigger.CreditsOpened);
-		InnerStateMachine.AddTransition(creditsState.Id, mainState.Id, MenuTrigger.CreditsClosed);
-		
-		InnerStateMachine.AddTransition(mainState.Id, settingsState.Id, MenuTrigger.SettingsOpened);
-		InnerStateMachine.AddTransition(settingsState.Id, mainState.Id, MenuTrigger.SettingsClosed);
+    public MainMenuState(Node parentNode, GameState id) : base(parentNode, id)
+    {
+        InnerStateMachine = new();
 
-		InnerStateMachine.TrySetInitialState(MenuState.MainMenu);
-	}
+        InnerStateMachine.AddState(MenuState.Empty, null);
+        var mainState = new MainSubState(UIManager.Instance, MenuState.Menu);
+        InnerStateMachine.AddState(mainState);
+        var creditsState = new CreditsSubState(UIManager.Instance, MenuState.Credits);
+        InnerStateMachine.AddState(creditsState);
+        var settingsState = new SettingsSubState(UIManager.Instance, MenuState.Settings);
+        InnerStateMachine.AddState(settingsState);
+
+        InnerStateMachine.AddTransition(mainState.Id, creditsState.Id, MenuTrigger.CreditsOpened);
+        InnerStateMachine.AddTransition(creditsState.Id, mainState.Id, MenuTrigger.CreditsClosed);
+
+        InnerStateMachine.AddTransition(mainState.Id, settingsState.Id, MenuTrigger.SettingsOpened);
+        InnerStateMachine.AddTransition(settingsState.Id, mainState.Id, MenuTrigger.SettingsClosed);
+
+        _fsmLogger = new(InnerStateMachine, "Main Menu Sub-State Machine");
+    }
+
+    internal override void Enter()
+    {
+        base.Enter();
+
+        if (!InnerStateMachine.TrySetInitialState(MenuState.Menu))
+        {
+            throw new Exception("Why the initial state cannot be set up?");
+        }
+
+    }
+
+    internal override void Update(double deltaTime)
+    {
+        base.Update(deltaTime);
+        InnerStateMachine.Update(deltaTime);
+    }
+
+    internal override void Exit()
+    {
+        base.Exit();
+        InnerStateMachine.ExitAllStates();
+    }
 }

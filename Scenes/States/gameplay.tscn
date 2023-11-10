@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfiu2bb4yrg2l"]
+[gd_scene load_steps=2 format=3 uid="uid://bfiu2bb4yrg2l"]
 
 [ext_resource type="Script" path="res://Scripts/GameStateManagement/Initializers/GameplayStateInitializer.cs" id="1_lrjwg"]
-[ext_resource type="PackedScene" uid="uid://db34qmygxgkbm" path="res://Scenes/UI/gameplay_test_ui.tscn" id="1_p2d6r"]
 
 [node name="Gameplay" type="Node"]
 
 [node name="Initializer" type="Node" parent="."]
 script = ExtResource("1_lrjwg")
 GameState = 2
-
-[node name="GameplayUI" parent="." instance=ExtResource("1_p2d6r")]
