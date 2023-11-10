@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://buiwmcsyjrptw"]
+
+[ext_resource type="PackedScene" uid="uid://ckgqcdetejrjd" path="res://Visuals/TowerLevel.glb" id="1_knusp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2q6"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_e6dta"]
+sky_material = SubResource("ProceduralSkyMaterial_mi2q6")
+
+[sub_resource type="Environment" id="Environment_6xde0"]
+background_mode = 2
+sky = SubResource("Sky_e6dta")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="test_3d_level_mockup" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6xde0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.859852, -0.347537, 0.373995, 0, 0.732543, 0.680721, -0.510543, -0.585319, 0.629879, 0, 0, 0)
+shadow_enabled = true
+
+[node name="TowerLevel" parent="." instance=ExtResource("1_knusp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.564112, 0, 0.617001)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.700909, -0.123855, 0.702415, 0, 0.984808, 0.173648, -0.71325, -0.121712, 0.690261, 0.892052, 4.06297, -0.291265)
+fov = 50.0
+size = 10.0
+far = 100.0
