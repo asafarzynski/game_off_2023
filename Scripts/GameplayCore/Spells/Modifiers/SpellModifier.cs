@@ -4,7 +4,8 @@ namespace GameOff2023.Scripts.GameplayCore.Spells;
 
 public partial class SpellModifier : Resource
 {
-    [Export] public SpellModifierElement[] ModifierElements;
+    [Export]
+    public SpellModifierElement[] ModifierElements;
 
     public Spell ApplyModifier(Spell spellBase)
     {
@@ -14,7 +15,7 @@ public partial class SpellModifier : Resource
         {
             result = spellModifierElement.Modify(result);
         }
-        
+
         return result;
     }
 }

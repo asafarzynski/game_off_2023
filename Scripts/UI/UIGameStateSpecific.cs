@@ -5,7 +5,7 @@ using Godot;
 namespace GameOff2023.Scripts.UI;
 
 public abstract partial class UIGameStateSpecific<T> : Control
-where T : GameState
+    where T : GameState
 {
     protected T State { get; private set; }
 

@@ -6,20 +6,21 @@ namespace GameOff2023.Scripts.GameStateManagement;
 
 public partial class GlobalGameData : NodeSingleton<GlobalGameData>
 {
-	[Export] public SpellsList SpellsList;
+    [Export]
+    public SpellsList SpellsList;
 
-	public GameplayCore.GameplayCore Core { get; private set; }
+    public GameplayCore.GameplayCore Core { get; private set; }
 
-	/// <summary>
-	/// Add some params, like selected character, etc. in the next step
-	/// </summary>
-	public void SetUpNewCore()
-	{
-		Core = new GameplayCore.GameplayCore(SpellsList.GetList());
-	}
+    /// <summary>
+    /// Add some params, like selected character, etc. in the next step
+    /// </summary>
+    public void SetUpNewCore()
+    {
+        Core = new GameplayCore.GameplayCore(SpellsList.GetList());
+    }
 
-	public void ClearCore()
-	{
-		Core = null;
-	}
+    public void ClearCore()
+    {
+        Core = null;
+    }
 }

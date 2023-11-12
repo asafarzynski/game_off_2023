@@ -6,12 +6,13 @@ namespace GameOff2023.Scripts.GameStateManagement.GameStates;
 public abstract class UIManagingSubState<T> : FSMState<T>
 {
     protected abstract string UIFilePath { get; }
-    
+
     private readonly Node _uiParent;
-    
+
     private Node _loadedUI;
 
-    public UIManagingSubState(Node uiParent, T id) : base(id)
+    public UIManagingSubState(Node uiParent, T id)
+        : base(id)
     {
         _uiParent = uiParent;
     }
