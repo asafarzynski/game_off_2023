@@ -7,16 +7,16 @@ namespace GameOff2023.Scripts.GameStateManagement.Initializers;
 /// </summary>
 public partial class GameStateInitializer : Node
 {
-    [Export] public GameStates.GameState GameState;
+	[Export] public GameStates.GameState GameState;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        if (GameStateManager.Instance.StateMachine.TrySetInitialState(GameState, OnBeforeInitialSet))
-        {
-            GD.Print($"Started state machine from {GameState}");
-        }
-    }
-    
-    protected virtual void OnBeforeInitialSet() {}
+	public override void _Ready()
+	{
+		base._Ready();
+		if (GameStateManager.Instance.StateMachine.TrySetInitialState(GameState, OnBeforeInitialSet))
+		{
+			GD.Print($"Started state machine from {GameState}");
+		}
+	}
+	
+	protected virtual void OnBeforeInitialSet() {}
 }
