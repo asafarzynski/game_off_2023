@@ -30,7 +30,7 @@ public partial class UIGameplay : Control
 	{
 		_scoreLabel.Text = $"Score: {_gameplayCore.Score}";
 		_historyLabel.Text = $"Done stack size: {_gameplayCore.CommandsExecutioner.DoneStack.Count}; Undone stack: {_gameplayCore.CommandsExecutioner.UndoneStack.Count}";
-		_spellsLabel.Text = $"Available spells:\n{string.Join("\n", _gameplayCore.AvailableSpells)}";
+		_spellsLabel.Text = $"Available spells:\n{string.Join("\n", _gameplayCore.AllSpellsInGame)}";
 		_spellsStackLabel.Text = $"Spells stack:\n{_gameplayCore.SpellStack}";
 	}
 

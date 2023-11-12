@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.GameplayCore.Spells;
 using GameOff2023.Scripts.GameplayCore.Enemies;
+using GameOff2023.Scripts.GameplayCore.Player;
 
 namespace GameOff2023.Scripts.GameplayCore;
 
@@ -11,15 +12,26 @@ public class GameplayCore
 	
 	public float Score { get; internal set; } = 1f;
 	
-	public List<Spell> AvailableSpells { get; private set; }
+	/// <summary>
+	/// A list of all spells in game.
+	/// We will draw random spells from this list as rewards.
+	/// </summary>
+	public List<Spell> AllSpellsInGame { get; private set; }
 
-	public List<Enemy> Enemies { get; private set; }
+	/// <summary>
+	/// A list of all enemies in game.
+	/// We will draw random enemies from this list for battles.
+	/// </summary>
+	public List<Enemy> Enemies { get; private set; } // TODO: We should divide them between levels or something to make the game progressively harder (?) / levels more distinctive
 
+	public readonly PlayerInventory Inventory;
+	
 	public readonly SpellStack SpellStack;
 
-	public GameplayCore(List<Spell> spells)
+	public GameplayCore(List<Spell> spellsInGame)
 	{
-		AvailableSpells = spells;
+		AllSpellsInGame = spellsInGame;
 		SpellStack = new SpellStack();
+		Inventory = new PlayerInventory();
 	}
 }
