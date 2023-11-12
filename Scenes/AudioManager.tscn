@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://e3jkjl25dhcf"]
+[gd_scene load_steps=6 format=3 uid="uid://e3jkjl25dhcf"]
 
 [ext_resource type="Script" path="res://Scripts/Audio/AudioManager.cs" id="1_uxrh0"]
 [ext_resource type="AudioStream" uid="uid://03iwaa61ksuu" path="res://Sounds/Music/pan-flute-greensleeves-144616.mp3" id="2_sb2vh"]
+[ext_resource type="AudioStream" uid="uid://bwl14jwhn2y3v" path="res://Sounds/UI/unhover.wav" id="3_e2nuo"]
+[ext_resource type="AudioStream" uid="uid://cwgri5ml8ednq" path="res://Sounds/UI/hover.wav" id="3_mo5xu"]
+[ext_resource type="AudioStream" uid="uid://cm3iy725yg4cd" path="res://Sounds/UI/click.wav" id="4_r05eq"]
 
 [node name="AudioManager" type="Node" node_paths=PackedStringArray("musicPlayer")]
 script = ExtResource("1_uxrh0")
 musicPlayer = NodePath("MusicPlayer")
+uiSounds = Array[Resource]([null, ExtResource("3_mo5xu"), ExtResource("3_e2nuo"), ExtResource("4_r05eq")])
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_sb2vh")

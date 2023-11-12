@@ -1,6 +1,48 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://44m400ybdb4x"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://44m400ybdb4x"]
 
 [ext_resource type="FontFile" uid="uid://dmjc4y3e4nx08" path="res://Visuals/UIThemes/Ronysiswadi15-51Dv8.ttf" id="1_gjk8f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fytj4"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 0.0
+bg_color = Color(0.203922, 0.219608, 0.188235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.2046, 0.22, 0.1892, 1)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpdcd"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 0.0
+bg_color = Color(0.160784, 0.168627, 0.152941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvnts"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 0.0
+bg_color = Color(0.643137, 0.662745, 0.627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.160784, 0.168627, 0.152941, 1)
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcmfm"]
 content_margin_left = 15.0
@@ -19,4 +61,8 @@ corner_radius_bottom_left = 5
 [resource]
 default_font = ExtResource("1_gjk8f")
 default_font_size = 14
+Button/colors/font_pressed_color = Color(0.160784, 0.168627, 0.152941, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_fytj4")
+Button/styles/normal = SubResource("StyleBoxFlat_mpdcd")
+Button/styles/pressed = SubResource("StyleBoxFlat_qvnts")
 Panel/styles/panel = SubResource("StyleBoxFlat_tcmfm")

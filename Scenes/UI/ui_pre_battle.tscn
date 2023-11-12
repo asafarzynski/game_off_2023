@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhpcak47pmhua"]
+[gd_scene load_steps=4 format=3 uid="uid://bhpcak47pmhua"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIPreBattle.cs" id="1_gtig7"]
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_td1tm"]
 [ext_resource type="Texture2D" uid="uid://cv04n7yf27wtu" path="res://Visuals/icon.svg" id="2_fbrql"]
 
 [node name="ui_pre_battle" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_td1tm")
 script = ExtResource("1_gtig7")
 
 [node name="Exit" type="Button" parent="."]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcbl1bpi8x54u"]
+
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_c3jxb"]
+[ext_resource type="Script" path="res://Scripts/UI/Common/UIBasicButton.cs" id="2_4q6nb"]
+
+[node name="BasicButton" type="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -13.5
+offset_right = 28.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c3jxb")
+text = "Button"
+script = ExtResource("2_4q6nb")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://q5ou3yyv5x8u"]
+[gd_scene load_steps=3 format=3 uid="uid://q5ou3yyv5x8u"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UISettings.cs" id="1_bkl1m"]
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_uhyws"]
 
 [node name="ui_settings" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_uhyws")
 script = ExtResource("1_bkl1m")
 
 [node name="Back" type="Button" parent="."]

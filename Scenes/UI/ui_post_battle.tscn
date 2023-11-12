@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnxnbiob4t4ey"]
+[gd_scene load_steps=3 format=3 uid="uid://cnxnbiob4t4ey"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIPostBattle.cs" id="1_fo0gy"]
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_ndu6k"]
 
 [node name="ui_post_battle" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ndu6k")
 script = ExtResource("1_fo0gy")
 
 [node name="Next" type="Button" parent="."]

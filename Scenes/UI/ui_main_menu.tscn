@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb1mjlce0ru22"]
+[gd_scene load_steps=5 format=3 uid="uid://bb1mjlce0ru22"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIMainMenu.cs" id="1_jbs8c"]
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_upgjt"]
 [ext_resource type="Texture2D" uid="uid://cv04n7yf27wtu" path="res://Visuals/icon.svg" id="2_phc7j"]
+[ext_resource type="PackedScene" uid="uid://b18o3514apumq" path="res://Scenes/UI/Common/BasicButton.tscn" id="4_egsme"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_upgjt")
 script = ExtResource("1_jbs8c")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -38,19 +41,19 @@ grow_vertical = 0
 pivot_offset = Vector2(250, 500)
 alignment = 2
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton" parent="VBoxContainer" instance=ExtResource("4_egsme")]
 layout_mode = 2
 text = "Start"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" parent="VBoxContainer" instance=ExtResource("4_egsme")]
 layout_mode = 2
 text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" parent="VBoxContainer" instance=ExtResource("4_egsme")]
 layout_mode = 2
 text = "Credits"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" parent="VBoxContainer" instance=ExtResource("4_egsme")]
 layout_mode = 2
 text = "Exit"
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddgd7n0bm2pp7"]
+[gd_scene load_steps=3 format=3 uid="uid://ddgd7n0bm2pp7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIBattle.cs" id="1_eo03y"]
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_hhyy5"]
 
 [node name="ui_battle" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_hhyy5")
 script = ExtResource("1_eo03y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
