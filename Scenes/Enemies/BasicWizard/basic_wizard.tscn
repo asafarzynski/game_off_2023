@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpgdvv68klkrf"]
+
+[ext_resource type="SpriteFrames" uid="uid://chambxvujteb2" path="res://Scenes/Enemies/BasicWizard/basic_wizard.tres" id="1_4f71j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l50wq"]
+radius = 0.25
+
+[node name="Node3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0691392, 0.206756, -0.0826283)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.373321, 0)
+modulate = Color(0.72549, 0, 0, 1)
+sprite_frames = ExtResource("1_4f71j")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_l50wq")
