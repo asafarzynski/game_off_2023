@@ -27,7 +27,7 @@ public class LevelManager
 				
 				fight.EnemyList[y] = Enemies[random_value];
 			}
-			level.FightList[y] = fight;
+			level.FightList[x] = fight;
 		}
 		return level;
 	}

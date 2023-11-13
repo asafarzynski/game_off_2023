@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ci7np5qbc34nw"]
+
+[ext_resource type="Resource" uid="uid://ccwk6yvii5snq" path="res://CustomResources/Enemies/toad.tres" id="1_11yxe"]
+[ext_resource type="Script" path="res://Scripts/Resources/EnemiesList.cs" id="1_r6apy"]
+
+[resource]
+script = ExtResource("1_r6apy")
+Enemies = Array[Resource]([ExtResource("1_11yxe")])
