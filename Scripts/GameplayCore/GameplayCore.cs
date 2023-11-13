@@ -3,6 +3,7 @@ using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.GameplayCore.Spells;
 using GameOff2023.Scripts.GameplayCore.Enemies;
 using GameOff2023.Scripts.GameplayCore.Player;
+using GameOff2023.Scripts.GameplayCore.Levels;
 
 namespace GameOff2023.Scripts.GameplayCore;
 
@@ -28,8 +29,9 @@ public class GameplayCore
 	
 	public readonly SpellStack SpellStack;
 
-	public GameplayCore(List<Spell> spellsInGame)
+	public GameplayCore(List<Spell> spellsInGame, List<Enemy> enemiesInGame)
 	{
+		Enemies = enemiesInGame;
 		AllSpellsInGame = spellsInGame;
 		SpellStack = new SpellStack();
 		Inventory = new PlayerInventory();

@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpmicuj3pm6ql"]
+[gd_scene load_steps=4 format=3 uid="uid://dpmicuj3pm6ql"]
 
 [ext_resource type="Script" path="res://Scripts/GameStateManagement/GlobalGameData.cs" id="1_sltgh"]
 [ext_resource type="Resource" uid="uid://ckhf6b1llb8sf" path="res://CustomResources/Spells/spells_list.tres" id="2_eo5ig"]
+[ext_resource type="Resource" uid="uid://ci7np5qbc34nw" path="res://CustomResources/Enemies/enemy_list.tres" id="3_15bia"]
 
 [node name="GlobalGameData" type="Node"]
 script = ExtResource("1_sltgh")
 SpellsList = ExtResource("2_eo5ig")
+EnemiesList = ExtResource("3_15bia")

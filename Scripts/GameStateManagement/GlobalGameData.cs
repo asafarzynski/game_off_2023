@@ -1,4 +1,5 @@
 using GameOff2023.Scripts.GameplayCore.Spells;
+using GameOff2023.Scripts.Resources;
 using GameOff2023.Scripts.Utils;
 using Godot;
 
@@ -7,6 +8,7 @@ namespace GameOff2023.Scripts.GameStateManagement;
 public partial class GlobalGameData : NodeSingleton<GlobalGameData>
 {
 	[Export] public SpellsList SpellsList;
+	[Export] public EnemiesList EnemiesList;
 
 	public GameplayCore.GameplayCore Core { get; private set; }
 
@@ -15,7 +17,7 @@ public partial class GlobalGameData : NodeSingleton<GlobalGameData>
 	/// </summary>
 	public void SetUpNewCore()
 	{
-		Core = new GameplayCore.GameplayCore(SpellsList.GetList());
+		Core = new GameplayCore.GameplayCore(SpellsList.GetList(), EnemiesList.GetList());
 	}
 
 	public void ClearCore()
