@@ -7,12 +7,13 @@ namespace GameOff2023.Scripts.GameplayCore.Levels;
 public class LevelManager
 {
 	public List<Enemy> Enemies { get; private set; }
+	public List<Level> levels = new List<Level>();
 	
 	public LevelManager(List<Enemy> enemies){
 		Enemies = enemies;
 	}
 	
-	public Level GenerateLevel()
+	public void GenerateLevel()
 	{
 		Level level = new Level();
 		
@@ -29,6 +30,6 @@ public class LevelManager
 			}
 			level.FightList[x] = fight;
 		}
-		return level;
+		levels.Add(level);
 	}
 }

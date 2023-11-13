@@ -28,6 +28,7 @@ public class GameplayCore
 	public readonly PlayerInventory Inventory;
 	
 	public readonly SpellStack SpellStack;
+	public LevelManager levels;
 
 	public GameplayCore(List<Spell> spellsInGame, List<Enemy> enemiesInGame)
 	{
@@ -35,5 +36,10 @@ public class GameplayCore
 		AllSpellsInGame = spellsInGame;
 		SpellStack = new SpellStack();
 		Inventory = new PlayerInventory();
+	}
+	
+	public void CreateNewLevel()
+	{
+		levels.GenerateLevel();
 	}
 }
