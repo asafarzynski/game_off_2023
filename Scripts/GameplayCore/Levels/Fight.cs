@@ -1,7 +1,7 @@
 using Godot;
-using System;
 
-using GameOff2023.Scripts.GameplayCore.Enemy;
+using GameOff2023.Scripts.GameplayCore.Enemies;
+namespace GameOff2023.Scripts.GameplayCore.Levels;
 
 public class Fight
 {
