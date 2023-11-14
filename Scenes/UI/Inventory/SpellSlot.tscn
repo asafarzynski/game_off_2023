@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://degiv0qpnkp6a"]
+
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_1tpsa"]
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/UISpellSlot.cs" id="2_immbg"]
+[ext_resource type="PackedScene" uid="uid://biapdqjpdxwkn" path="res://Scenes/UI/Inventory/InventorySlot.tscn" id="2_wvt7v"]
+
+[node name="SpellSlot" type="Panel" node_paths=PackedStringArray("mainSlot", "modifierSlots")]
+custom_minimum_size = Vector2(95, 75)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 95.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1tpsa")
+script = ExtResource("2_immbg")
+mainSlot = NodePath("SpellSlot")
+modifierSlots = [NodePath("VBoxContainer/InventorySlot"), NodePath("VBoxContainer/InventorySlot2"), NodePath("VBoxContainer/InventorySlot3")]
+
+[node name="SpellSlot" parent="." instance=ExtResource("2_wvt7v")]
+layout_mode = 1
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 5.0
+offset_top = -30.0
+offset_right = 65.0
+offset_bottom = 30.0
+grow_horizontal = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -34.0
+offset_right = -5.0
+offset_bottom = 34.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="InventorySlot" parent="VBoxContainer" instance=ExtResource("2_wvt7v")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InventorySlot2" parent="VBoxContainer" instance=ExtResource("2_wvt7v")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InventorySlot3" parent="VBoxContainer" instance=ExtResource("2_wvt7v")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
