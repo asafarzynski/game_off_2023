@@ -16,6 +16,7 @@ public partial class GlobalGameData : NodeSingleton<GlobalGameData>
     {
         base._Ready();
         SpellsList.PrepareDictionary();
+        EnemiesList.PrepareDictionary();
     }
 
     /// <summary>
@@ -25,7 +26,7 @@ public partial class GlobalGameData : NodeSingleton<GlobalGameData>
     {
         Core = new GameplayCore.GameplayCore(
             SpellsList.ResourcesDictionary.Select((resource, _) => resource.Value.ToSpell(resource.Key)).ToArray(),
-            EnemiesList.GetList().ToArray()); // make it work with resourceid (like spells above)
+            EnemiesList.ResourcesDictionary.Select((resource, _) => resource.Value.ToEnemy(resource.Key)).ToArray());
     }
 
     public void ClearCore()

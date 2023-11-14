@@ -6,4 +6,5 @@
 
 [resource]
 script = ExtResource("1_0g1i8")
-Spells = Array[Resource]([ExtResource("1_tbxdj"), ExtResource("2_txfo4")])
+baseName = "Spell"
+resources = Array[Resource]([ExtResource("1_tbxdj"), ExtResource("2_txfo4")])

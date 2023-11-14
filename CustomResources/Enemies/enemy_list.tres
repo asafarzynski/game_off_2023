@@ -6,4 +6,5 @@
 
 [resource]
 script = ExtResource("1_r6apy")
-Enemies = Array[Resource]([ExtResource("1_11yxe"), ExtResource("2_psb8i")])
+baseName = "Enemy"
+resources = Array[Resource]([ExtResource("2_psb8i"), ExtResource("1_11yxe")])
