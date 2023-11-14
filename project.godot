@@ -13,6 +13,7 @@ config_version=5
 config/name="Game Off 2023"
 run/main_scene="res://Scenes/States/main_menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://Visuals/icon.svg"
 
 [autoload]
@@ -26,11 +27,17 @@ UiManager="*res://Scripts/UI/UIManager.cs"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="Game Off 2023"
+
+[physics]
+
+common/physics_ticks_per_second=20
+common/max_physics_steps_per_frame=4
 
 [rendering]
 

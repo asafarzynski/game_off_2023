@@ -14,7 +14,7 @@ public partial class EnemiesList : Resource
 		{
 			if (resource is EnemyResource enemyResource)
 			{
-				list.Add(enemyResource.ToEnemy());
+				list.Add(enemyResource.ToEnemy(ResourcesManager.GetId("Enemy")));
 			}
 		}
 		return list;

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://ckhf6b1llb8sf"]
 
-[ext_resource type="Script" path="res://Scripts/GameplayCore/Spells/SpellsList.cs" id="1_0g1i8"]
+[ext_resource type="Script" path="res://Scripts/Resources/SpellsList.cs" id="1_0g1i8"]
 [ext_resource type="Resource" uid="uid://dfpqsud3cebry" path="res://CustomResources/Spells/basic_spell.tres" id="1_tbxdj"]
 [ext_resource type="Resource" uid="uid://brqooqe66tiun" path="res://CustomResources/Spells/super_spell.tres" id="2_txfo4"]
 

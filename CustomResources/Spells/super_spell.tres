@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://brqooqe66tiun"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://brqooqe66tiun"]
 
-[ext_resource type="Script" path="res://Scripts/GameplayCore/Spells/SpellResource.cs" id="1_lix8l"]
+[ext_resource type="Texture2D" uid="uid://c2insbbbkirbh" path="res://Visuals/UI/SPELL_FIREBALL_128px.png" id="1_axv0v"]
+[ext_resource type="Script" path="res://Scripts/Resources/SpellResource.cs" id="1_lix8l"]
 
 [resource]
 script = ExtResource("1_lix8l")
@@ -8,3 +9,4 @@ Cooldown = 0.5
 Count = 3
 Damage = 2.0
 CriticalChance = 0.2
+Icon = ExtResource("1_axv0v")

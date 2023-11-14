@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ckgqcdetejrjd"
-path="res://.godot/imported/TowerLevel.glb-1d7dda9d03fed23799c46076bad41c92.scn"
+path="res://.godot/imported/TowerLevel.glb-f8f8a7e7858a7551fe1e70737437a421.scn"
 
 [deps]
 
-source_file="res://Visuals/TowerLevel.glb"
-dest_files=["res://.godot/imported/TowerLevel.glb-1d7dda9d03fed23799c46076bad41c92.scn"]
+source_file="res://Visuals/Models/TowerLevel.glb"
+dest_files=["res://.godot/imported/TowerLevel.glb-f8f8a7e7858a7551fe1e70737437a421.scn"]
 
 [params]
 

@@ -1,4 +1,6 @@
-namespace GameOff2023.Scripts.GameplayCore.Spells;
+using GameOff2023.Scripts.GameplayCore.Spells;
+
+namespace GameOff2023.Scripts.GameplayCore.Inventory;
 
 public class SpellSlot
 {
@@ -12,4 +14,6 @@ public class SpellSlot
         Spell = spell;
         Modifiers = new SpellModifier[MAX_NUMBER_OF_MODIFIERS];
     }
+
+    public Spell GetModifiedSpell() => Spell.ApplyModifiers(Modifiers);
 }

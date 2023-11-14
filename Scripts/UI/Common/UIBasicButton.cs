@@ -3,7 +3,7 @@ using Godot;
 
 namespace GameOff2023.Scripts.UI.Common;
 
-public partial class UIBasicButton : Node
+public partial class UIBasicButton : Button
 {
     public virtual void _on_pressed()
     {

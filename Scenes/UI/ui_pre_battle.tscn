@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/UIPreBattle.cs" id="1_gtig7"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_td1tm"]
-[ext_resource type="Texture2D" uid="uid://cv04n7yf27wtu" path="res://Visuals/icon.svg" id="2_fbrql"]
+[ext_resource type="PackedScene" uid="uid://biapdqjpdxwkn" path="res://Scenes/UI/Inventory/InventorySlot.tscn" id="3_o20h4"]
 
-[node name="ui_pre_battle" type="Control"]
+[node name="ui_pre_battle" type="Control" node_paths=PackedStringArray("gridContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_td1tm")
 script = ExtResource("1_gtig7")
+slotScene = ExtResource("3_o20h4")
+gridContainer = NodePath("Panel/GridContainer")
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
@@ -23,11 +25,18 @@ offset_bottom = 76.0
 text = "exit gameplay"
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 186.0
-offset_top = 704.0
-offset_right = 466.0
-offset_bottom = 921.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -445.0
+offset_right = 140.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Confirm" type="Button" parent="Panel"]
 layout_mode = 1
@@ -37,156 +46,38 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -93.5
-offset_top = -31.0
+offset_top = -44.0
 offset_right = 93.5
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Confirm selected spells"
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -115.0
-offset_top = -55.0
+offset_top = 124.0
 offset_right = 115.0
-offset_bottom = 55.0
+offset_bottom = 278.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 4
 
-[node name="Panel" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel"]
+[node name="GridContainer2" type="GridContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = 23.0
+offset_right = 115.0
+offset_bottom = 98.0
 grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
-
-[node name="Panel2" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
-
-[node name="Panel3" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
-
-[node name="Panel4" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
-
-[node name="Panel5" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
-
-[node name="Panel6" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
-
-[node name="Panel7" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel7"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
-
-[node name="Panel8" type="Panel" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Panel8"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fbrql")
-expand_mode = 1
+columns = 4
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Panel/Confirm" to="." method="_on_confirm_pressed"]
