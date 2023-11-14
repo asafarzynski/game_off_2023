@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgfa6a7tatpxv"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/UILooseInventory.cs" id="1_e2r2l"]
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_gw08m"]
+[ext_resource type="PackedScene" uid="uid://biapdqjpdxwkn" path="res://Scenes/UI/Inventory/InventorySlot.tscn" id="2_esovo"]
+
+[node name="Panel" type="Panel" node_paths=PackedStringArray("gridContainer")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.5
+offset_top = -94.5
+offset_right = 167.5
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gw08m")
+script = ExtResource("1_e2r2l")
+slotScene = ExtResource("2_esovo")
+gridContainer = NodePath("GridContainer")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -77.0
+offset_right = 115.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 4

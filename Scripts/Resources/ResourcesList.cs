@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using GameOff2023.Scripts.GameplayCore;
 using Godot;
 

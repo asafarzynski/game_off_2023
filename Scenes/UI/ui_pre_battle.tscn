@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/UIPreBattle.cs" id="1_gtig7"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_td1tm"]
-[ext_resource type="PackedScene" uid="uid://biapdqjpdxwkn" path="res://Scenes/UI/Inventory/InventorySlot.tscn" id="3_o20h4"]
+[ext_resource type="PackedScene" uid="uid://dgfa6a7tatpxv" path="res://Scenes/UI/Inventory/LooseInventory.tscn" id="3_5m3d6"]
 
-[node name="ui_pre_battle" type="Control" node_paths=PackedStringArray("gridContainer")]
+[node name="ui_pre_battle" type="Control" node_paths=PackedStringArray("looseInventory")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,8 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_td1tm")
 script = ExtResource("1_gtig7")
-slotScene = ExtResource("3_o20h4")
-gridContainer = NodePath("Panel/GridContainer")
+looseInventory = NodePath("Panel/Panel")
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
@@ -53,20 +52,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Confirm selected spells"
 
-[node name="GridContainer" type="GridContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -115.0
-offset_top = 124.0
-offset_right = 115.0
-offset_bottom = 278.0
-grow_horizontal = 2
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
-columns = 4
-
 [node name="GridContainer2" type="GridContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 5
@@ -78,6 +63,16 @@ offset_right = 115.0
 offset_bottom = 98.0
 grow_horizontal = 2
 columns = 4
+
+[node name="Panel" parent="Panel" instance=ExtResource("3_5m3d6")]
+layout_mode = 1
+anchors_preset = 14
+anchor_left = 0.0
+anchor_right = 1.0
+offset_left = 0.0
+offset_top = -60.0
+offset_right = 0.0
+offset_bottom = 115.0
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Panel/Confirm" to="." method="_on_confirm_pressed"]
