@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Godot;
 using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.GameplayCore.Spells;
 using GameOff2023.Scripts.GameplayCore.Enemies;
@@ -27,7 +28,7 @@ public class GameplayCore
 	public readonly Inventory.Inventory Inventory;
 	
 	public readonly SpellStack SpellStack;
-	public LevelManager levels;
+	public LevelManager levelManager;
 
 	public readonly GameplayCoreEvents Events;
 
@@ -38,10 +39,12 @@ public class GameplayCore
 		SpellStack = new SpellStack();
 		Inventory = new Inventory.Inventory();
 		Events = new GameplayCoreEvents();
+		levelManager = new LevelManager(Enemies);
+		levelManager.GenerateLevel();
 	}
 	
 	public void CreateNewLevel()
 	{
-		levels.GenerateLevel();
+		levelManager.GenerateLevel();
 	}
 }

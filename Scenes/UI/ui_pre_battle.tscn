@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhpcak47pmhua"]
+[gd_scene load_steps=6 format=3 uid="uid://bhpcak47pmhua"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIPreBattle.cs" id="1_gtig7"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_td1tm"]
 [ext_resource type="PackedScene" uid="uid://dgfa6a7tatpxv" path="res://Scenes/UI/Inventory/LooseInventory.tscn" id="3_5m3d6"]
 [ext_resource type="PackedScene" uid="uid://degiv0qpnkp6a" path="res://Scenes/UI/Inventory/SpellSlot.tscn" id="3_vr7uu"]
+[ext_resource type="PackedScene" uid="uid://dcuwemau3wpvv" path="res://Scenes/UI/Enemies/enemylist.tscn" id="5_astdy"]
 
-[node name="ui_pre_battle" type="Control" node_paths=PackedStringArray("looseInventory")]
+[node name="ui_pre_battle" type="Control" node_paths=PackedStringArray("looseInventory", "showEnemies")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,7 @@ grow_vertical = 2
 theme = ExtResource("1_td1tm")
 script = ExtResource("1_gtig7")
 looseInventory = NodePath("Panel/Panel")
+showEnemies = NodePath("EnemyList")
 
 [node name="Exit" type="Button" parent="."]
 layout_mode = 0
@@ -74,19 +76,15 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="SpellSlot3" parent="Panel/GridContainer2" node_paths=PackedStringArray("mainSlot", "modifierSlots") instance=ExtResource("3_vr7uu")]
+[node name="SpellSlot3" parent="Panel/GridContainer2" instance=ExtResource("3_vr7uu")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-mainSlot = NodePath("../SpellSlot2/SpellSlot")
-modifierSlots = [NodePath("../SpellSlot2/VBoxContainer/InventorySlot"), NodePath("../SpellSlot2/VBoxContainer/InventorySlot2"), NodePath("../SpellSlot2/VBoxContainer/InventorySlot3")]
 
-[node name="SpellSlot4" parent="Panel/GridContainer2" node_paths=PackedStringArray("mainSlot", "modifierSlots") instance=ExtResource("3_vr7uu")]
+[node name="SpellSlot4" parent="Panel/GridContainer2" instance=ExtResource("3_vr7uu")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-mainSlot = NodePath("../SpellSlot2/SpellSlot")
-modifierSlots = [NodePath("../SpellSlot2/VBoxContainer/InventorySlot"), NodePath("../SpellSlot2/VBoxContainer/InventorySlot2"), NodePath("../SpellSlot2/VBoxContainer/InventorySlot3")]
 
 [node name="Panel" parent="Panel" instance=ExtResource("3_5m3d6")]
 layout_mode = 1
@@ -97,6 +95,9 @@ offset_left = 0.0
 offset_top = -60.0
 offset_right = 0.0
 offset_bottom = 115.0
+
+[node name="EnemyList" parent="." instance=ExtResource("5_astdy")]
+layout_mode = 0
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Panel/Confirm" to="." method="_on_confirm_pressed"]

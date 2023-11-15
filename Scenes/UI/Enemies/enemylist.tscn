@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcuwemau3wpvv"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Enemies/UIShowEnemies.cs" id="1_s8r74"]
+
+[node name="EnemyList" type="Panel" node_paths=PackedStringArray("_enemyLabel")]
+script = ExtResource("1_s8r74")
+_enemyLabel = [NodePath("Enemy-1"), NodePath("Enemy-2"), NodePath("Enemy-3"), NodePath("Enemy-4")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1376.86
+offset_top = 280.735
+offset_right = 1490.86
+offset_bottom = 320.735
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 1666.45
+offset_top = 401.961
+offset_right = 1780.45
+offset_bottom = 441.961
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 1401.55
+offset_top = 494.003
+offset_right = 1515.55
+offset_bottom = 534.003
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 1711.35
+offset_top = 554.616
+offset_right = 1825.35
+offset_bottom = 594.616
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="Enemy-1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1376.86
+offset_top = 280.735
+offset_right = 1459.86
+offset_bottom = 306.735
+text = "Enemy-1"
+
+[node name="Enemy-2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1666.45
+offset_top = 401.961
+offset_right = 1733.45
+offset_bottom = 427.961
+text = "Enemy-2
+"
+
+[node name="Enemy-3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1401.55
+offset_top = 494.003
+offset_right = 1486.55
+offset_bottom = 528.003
+text = "Enemy-3"
+
+[node name="Enemy-4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1711.35
+offset_top = 554.616
+offset_right = 1778.35
+offset_bottom = 580.616
+text = "Enemy-4"
