@@ -13,7 +13,7 @@ public class GivePlayerRandomSpellCommand : ICommand
     {
         _gameplayCore = gameplayCore;
     }
-    
+
     public bool Validate()
     {
         return true;

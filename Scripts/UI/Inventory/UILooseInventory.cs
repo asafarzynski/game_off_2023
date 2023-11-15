@@ -22,12 +22,12 @@ public partial class UILooseInventory : Control
     {
         _itemsArray = itemsArray;
         _iconsProviders = iconsProviders;
-        
+
         for (var i = 0; i < _itemsArray.Length; i++)
         {
             var newSlot = slotScene.Instantiate();
             gridContainer.AddChild(newSlot);
-			
+
             var uiSlot = newSlot.GetNode<UIInventorySlot>("./");
             uiSlot.Initialize(i);
             uiSlot.SetItemImage(null);

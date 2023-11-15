@@ -12,7 +12,7 @@ public partial class UIPostBattle : UIGameStateSpecific<GameplayState>
         GlobalGameData.Instance.Core.CommandsExecutioner.Do(
             new GivePlayerRandomSpellCommand(GlobalGameData.Instance.Core));
     }
-    
+
     public void _on_next_pressed()
     {
         State.InnerStateMachine.Trigger(GameplayTrigger.NextBattleRequested);

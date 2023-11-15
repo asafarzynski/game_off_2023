@@ -20,7 +20,7 @@ public class MoveElementToSpellSlot : ICommand
         _toSpellSlot = toSpellSlot;
         _toModifierSlot = toModifierSlot;
     }
-    
+
     public bool Validate()
     {
         if (_fromInventorySlot >= _gameplayCore.Inventory.LooseSlots.Length || _fromInventorySlot < 0)
@@ -28,14 +28,14 @@ public class MoveElementToSpellSlot : ICommand
 
         if (_toSpellSlot >= _gameplayCore.Inventory.SpellSlots.Length || _toSpellSlot < 0)
             return false;
-        
+
         return true;
     }
 
     public void Execute()
     {
         var movedElement = _gameplayCore.Inventory.LooseSlots[_fromInventorySlot];
-        
+
         var spellSlot = _gameplayCore.Inventory.SpellSlots[_toSpellSlot];
 
         switch (movedElement)

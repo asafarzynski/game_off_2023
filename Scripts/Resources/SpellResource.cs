@@ -7,16 +7,14 @@ namespace GameOff2023.Scripts.Resources;
 
 public partial class SpellResource : Resource, IIconContainer
 {
-	[ExportGroup("Core Data")]
-	[Export] public float Cooldown;
-	[Export] public int Count;
-	[Export] public float Damage;
-	[Export] public float CriticalChance;
-	
-	[ExportGroup("Visuals")]
-	[Export] public Texture2D Icon;
+    [ExportGroup("Core Data")] [Export] private float Cooldown;
+    [Export] private int Count;
+    [Export] private float Damage;
+    [Export] private float CriticalChance;
 
-	public Spell ToSpell(ResourceId resourceId) => new Spell(resourceId, Cooldown, Count, Damage, CriticalChance);
-	
-	public Texture2D GetIcon() => Icon;
+    [ExportGroup("Visuals")] [Export] public Texture2D Icon;
+
+    public Spell ToSpell(ResourceId resourceId) => new Spell(resourceId, Cooldown, Count, Damage, CriticalChance);
+
+    public Texture2D GetIcon() => Icon;
 }
