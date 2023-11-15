@@ -10,11 +10,12 @@ namespace GameOff2023.Scripts.UI;
 
 public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 {
-	// show spell selection UI here
-	[Export] private UILooseInventory looseInventory;
+    // show spell selection UI here
+    [Export] private UILooseInventory looseInventory;
+	[Export] private UISpellsSlots spellSlots;
 	[Export] private UIShowEnemies showEnemies;
-	
-	private GameplayCore.GameplayCore _core;
+
+    private GameplayCore.GameplayCore _core;
 
 
 	public override void _Ready()
@@ -22,9 +23,13 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 		base._Ready();
 		_core = GlobalGameData.Instance.Core;
 
-		looseInventory.Initialize(_core.Inventory.LooseSlots, GetIcon);
 		showEnemies.Initialize(_core.levelManager);
-		looseInventory.UpdateSlots();
+		looseInventory.Initialize(_core.Inventory.LooseSlots, GetIcon);
+        looseInventory.UpdateSlots();
+
+		spellSlots.Initialize(_core.Inventory.SpellSlots, GetIcon);
+        spellSlots.UpdateSlots();
+        spellSlots.OnSlotSelected += SpellSlotSelected;
 
 		_core.Events.InventoryChanged += looseInventory.UpdateSlots;
 	}
@@ -33,7 +38,10 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 	{
 		base._ExitTree();
 
-		_core.Events.InventoryChanged -= looseInventory.UpdateSlots;
+        _core.Events.InventoryChanged -= looseInventory.UpdateSlots;
+
+		spellSlots.OnSlotSelected -= SpellSlotSelected;
+        spellSlots.Deinitialize();
 
 		looseInventory.Deinitialize();
 	}
@@ -56,6 +64,11 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 			return container.GetIcon();
 		}
 
-		return null;
-	}
+        return null;
+    }
+
+	private void SpellSlotSelected(int mainSlotIndex, int modifierIndex)
+    {
+        GD.Print($"Spell slot selected {mainSlotIndex} - {modifierIndex}");
+    }
 }

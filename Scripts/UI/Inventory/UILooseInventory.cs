@@ -11,6 +11,8 @@ public partial class UILooseInventory : Control
     [Export] private PackedScene slotScene;
     [Export] private GridContainer gridContainer;
 
+    public event Action<int> OnSlotSelected;
+
     private int? _selectedSlot;
 
     private IInventoryItem[] _itemsArray;

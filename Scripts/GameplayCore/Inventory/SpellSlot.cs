@@ -4,7 +4,7 @@ namespace GameOff2023.Scripts.GameplayCore.Inventory;
 
 public class SpellSlot
 {
-    public Spell Spell;
+    public Spell? Spell;
     public SpellModifier[] Modifiers;
 
     public const int MAX_NUMBER_OF_MODIFIERS = 4;
@@ -15,5 +15,5 @@ public class SpellSlot
         Modifiers = new SpellModifier[MAX_NUMBER_OF_MODIFIERS];
     }
 
-    public Spell GetModifiedSpell() => Spell.ApplyModifiers(Modifiers);
+    public Spell GetModifiedSpell() => Spell?.ApplyModifiers(Modifiers) ?? default;
 }
