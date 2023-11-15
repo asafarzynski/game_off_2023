@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfriolxim3oas"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Inventory/UISpellSlots.cs" id="1_rtqy6"]
+[ext_resource type="PackedScene" uid="uid://degiv0qpnkp6a" path="res://Scenes/UI/Inventory/SpellSlot.tscn" id="2_0n47c"]
+
+[node name="SpellSlots" type="GridContainer" node_paths=PackedStringArray("container")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 25.0
+offset_right = -5.0
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 4
+script = ExtResource("1_rtqy6")
+spellSlotScene = ExtResource("2_0n47c")
+container = NodePath(".")

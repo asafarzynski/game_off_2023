@@ -11,6 +11,7 @@ namespace GameOff2023.Scripts.UI;
 public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 {
     // show spell selection UI here
+    [Export] private UISpellSlots spellSlots;
     [Export] private UILooseInventory looseInventory;
 
     private GameplayCore.GameplayCore _core;
@@ -23,6 +24,10 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 
         looseInventory.Initialize(_core.Inventory.LooseSlots, GetIcon);
         looseInventory.UpdateSlots();
+        
+        spellSlots.Initialize(_core.Inventory.SpellSlots, GetIcon);
+        spellSlots.UpdateSlots();
+        spellSlots.OnSlotSelected += SpellSlotSelected;
 
         _core.Events.InventoryChanged += looseInventory.UpdateSlots;
     }
@@ -32,6 +37,9 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
         base._ExitTree();
 
         _core.Events.InventoryChanged -= looseInventory.UpdateSlots;
+        
+        spellSlots.OnSlotSelected -= SpellSlotSelected;
+        spellSlots.Deinitialize();
 
         looseInventory.Deinitialize();
     }
@@ -55,5 +63,10 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
         }
 
         return null;
+    }
+
+    private void SpellSlotSelected(int mainSlotIndex, int modifierIndex)
+    {
+        GD.Print($"Spell slot selected {mainSlotIndex} - {modifierIndex}");
     }
 }

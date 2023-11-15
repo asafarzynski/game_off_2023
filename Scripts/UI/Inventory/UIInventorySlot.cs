@@ -6,7 +6,7 @@ namespace GameOff2023.Scripts.UI.Inventory;
 
 public partial class UIInventorySlot : UIBasicButton
 {
-    [Export] public TextureRect itemIcon;
+    [Export] private TextureRect itemIcon;
 
     public event Action<int> OnSlotSelected;
 
