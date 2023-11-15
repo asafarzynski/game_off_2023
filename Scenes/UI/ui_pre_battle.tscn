@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/UI/UIPreBattle.cs" id="1_gtig7"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_td1tm"]
 [ext_resource type="PackedScene" uid="uid://dgfa6a7tatpxv" path="res://Scenes/UI/Inventory/LooseInventory.tscn" id="3_5m3d6"]
-[ext_resource type="PackedScene" uid="uid://bfriolxim3oas" path="res://Scenes/UI/Inventory/SpellSlot.tscn" id="3_43juh"]
+[ext_resource type="PackedScene" uid="uid://bfriolxim3oas" path="res://Scenes/UI/Inventory/SpellSlots.tscn" id="3_n55ml"]
 [ext_resource type="PackedScene" uid="uid://dcuwemau3wpvv" path="res://Scenes/UI/Enemies/enemylist.tscn" id="5_astdy"]
 
-[node name="ui_pre_battle" type="Control" node_paths=PackedStringArray("spellSlots", "looseInventory", "showEnemies")]
+[node name="ui_pre_battle" type="Control" node_paths=PackedStringArray("looseInventory", "spellSlots", "showEnemies")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,8 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_td1tm")
 script = ExtResource("1_gtig7")
+looseInventory = NodePath("Panel/LooseInventory")
 spellSlots = NodePath("Panel/SpellSlots")
-looseInventory = NodePath("Panel/Panel")
 showEnemies = NodePath("EnemyList")
 
 [node name="Exit" type="Button" parent="."]
@@ -41,13 +41,6 @@ offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="SpellSlots" parent="Panel" instance=ExtResource("3_43juh")]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 123.0
-
 [node name="Confirm" type="Button" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
@@ -63,38 +56,11 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Confirm selected spells"
 
-[node name="GridContainer2" type="GridContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 5.0
-offset_top = 25.0
-offset_right = -5.0
-offset_bottom = 100.0
-grow_horizontal = 2
-columns = 4
+[node name="SpellSlots" parent="Panel" instance=ExtResource("3_n55ml")]
+layout_mode = 0
+anchors_preset = 0
 
-[node name="SpellSlot" parent="Panel/GridContainer2" instance=ExtResource("3_vr7uu")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="SpellSlot2" parent="Panel/GridContainer2" instance=ExtResource("3_vr7uu")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="SpellSlot3" parent="Panel/GridContainer2" instance=ExtResource("3_vr7uu")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="SpellSlot4" parent="Panel/GridContainer2" instance=ExtResource("3_vr7uu")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="Panel" parent="Panel" instance=ExtResource("3_5m3d6")]
+[node name="LooseInventory" parent="Panel" instance=ExtResource("3_5m3d6")]
 layout_mode = 1
 anchors_preset = 14
 anchor_left = 0.0

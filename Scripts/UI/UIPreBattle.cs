@@ -12,62 +12,62 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 {
     // show spell selection UI here
     [Export] private UILooseInventory looseInventory;
-	[Export] private UISpellsSlots spellSlots;
-	[Export] private UIShowEnemies showEnemies;
+    [Export] private UISpellSlots spellSlots;
+    [Export] private UIShowEnemies showEnemies;
 
     private GameplayCore.GameplayCore _core;
 
 
-	public override void _Ready()
-	{
-		base._Ready();
-		_core = GlobalGameData.Instance.Core;
+    public override void _Ready()
+    {
+        base._Ready();
+        _core = GlobalGameData.Instance.Core;
 
-		showEnemies.Initialize(_core.levelManager);
-		looseInventory.Initialize(_core.Inventory.LooseSlots, GetIcon);
+        showEnemies.Initialize(_core.levelManager);
+        looseInventory.Initialize(_core.Inventory.LooseSlots, GetIcon);
         looseInventory.UpdateSlots();
 
-		spellSlots.Initialize(_core.Inventory.SpellSlots, GetIcon);
+        spellSlots.Initialize(_core.Inventory.SpellSlots, GetIcon);
         spellSlots.UpdateSlots();
         spellSlots.OnSlotSelected += SpellSlotSelected;
 
-		_core.Events.InventoryChanged += looseInventory.UpdateSlots;
-	}
+        _core.Events.InventoryChanged += looseInventory.UpdateSlots;
+    }
 
-	public override void _ExitTree()
-	{
-		base._ExitTree();
+    public override void _ExitTree()
+    {
+        base._ExitTree();
 
         _core.Events.InventoryChanged -= looseInventory.UpdateSlots;
 
-		spellSlots.OnSlotSelected -= SpellSlotSelected;
+        spellSlots.OnSlotSelected -= SpellSlotSelected;
         spellSlots.Deinitialize();
 
-		looseInventory.Deinitialize();
-	}
+        looseInventory.Deinitialize();
+    }
 
-	public void _on_confirm_pressed()
-	{
-		State.InnerStateMachine.Trigger(GameplayTrigger.BattleStarted);
-	}
+    public void _on_confirm_pressed()
+    {
+        State.InnerStateMachine.Trigger(GameplayTrigger.BattleStarted);
+    }
 
-	public void _on_exit_pressed()
-	{
-		GameStateManager.Instance.StateMachine.Trigger(Triggers.GameEnded);
-	}
+    public void _on_exit_pressed()
+    {
+        GameStateManager.Instance.StateMachine.Trigger(Triggers.GameEnded);
+    }
 
-	private Texture2D
-		GetIcon(ResourceId resourceId) // TODO: move to a generic place where more UIs can use it; and utilize IIconContainer
-	{
-		if (GlobalGameData.Instance.SpellsList.ResourcesDictionary.TryGetValue(resourceId, out var container))
-		{
-			return container.GetIcon();
-		}
+    private Texture2D
+        GetIcon(ResourceId resourceId) // TODO: move to a generic place where more UIs can use it; and utilize IIconContainer
+    {
+        if (GlobalGameData.Instance.SpellsList.ResourcesDictionary.TryGetValue(resourceId, out var container))
+        {
+            return container.GetIcon();
+        }
 
         return null;
     }
 
-	private void SpellSlotSelected(int mainSlotIndex, int modifierIndex)
+    private void SpellSlotSelected(int mainSlotIndex, int modifierIndex)
     {
         GD.Print($"Spell slot selected {mainSlotIndex} - {modifierIndex}");
     }

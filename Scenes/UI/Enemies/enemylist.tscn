@@ -4,7 +4,7 @@
 
 [node name="EnemyList" type="Panel" node_paths=PackedStringArray("_enemyLabel")]
 script = ExtResource("1_s8r74")
-_enemyLabel = [NodePath("Enemy-1"), NodePath("Enemy-2"), NodePath("Enemy-3"), NodePath("Enemy-4")]
+_enemyLabel = [NodePath("ColorRect/Enemy-1"), NodePath("ColorRect2/Enemy-2"), NodePath("ColorRect3/Enemy-3"), NodePath("ColorRect4/Enemy-4")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -14,56 +14,87 @@ offset_right = 1490.86
 offset_bottom = 320.735
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
+[node name="Enemy-1" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -13.0
+offset_right = 41.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy-1"
+
 [node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 1666.45
 offset_top = 401.961
 offset_right = 1780.45
 offset_bottom = 441.961
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
+[node name="Enemy-2" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -13.0
+offset_right = 33.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy-2
+"
+
 [node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 1401.55
 offset_top = 494.003
 offset_right = 1515.55
 offset_bottom = 534.003
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
+[node name="Enemy-3" type="Label" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -17.0
+offset_right = 42.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy-3"
+
 [node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 1711.35
 offset_top = 554.616
 offset_right = 1825.35
 offset_bottom = 594.616
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
-[node name="Enemy-1" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1376.86
-offset_top = 280.735
-offset_right = 1459.86
-offset_bottom = 306.735
-text = "Enemy-1"
-
-[node name="Enemy-2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1666.45
-offset_top = 401.961
-offset_right = 1733.45
-offset_bottom = 427.961
-text = "Enemy-2
-"
-
-[node name="Enemy-3" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1401.55
-offset_top = 494.003
-offset_right = 1486.55
-offset_bottom = 528.003
-text = "Enemy-3"
-
-[node name="Enemy-4" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1711.35
-offset_top = 554.616
-offset_right = 1778.35
-offset_bottom = 580.616
+[node name="Enemy-4" type="Label" parent="ColorRect4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -13.0
+offset_right = 33.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Enemy-4"
