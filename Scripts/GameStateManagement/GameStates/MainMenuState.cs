@@ -10,11 +10,16 @@ public class MainMenuState : GameStateManagement.GameState
 {
     internal override string SceneName { get; } = "main_menu";
 
-    public FSM<MenuState, MenuTrigger, UIManagingSubState<MenuState>> InnerStateMachine { get; private set; }
+    public FSM<MenuState, MenuTrigger, UIManagingSubState<MenuState>> InnerStateMachine
+    {
+        get;
+        private set;
+    }
 
     private FSMLogger<MenuState, MenuTrigger, UIManagingSubState<MenuState>> _fsmLogger;
 
-    public MainMenuState(Node parentNode, GameState id) : base(parentNode, id)
+    public MainMenuState(Node parentNode, GameState id)
+        : base(parentNode, id)
     {
         InnerStateMachine = new();
 
@@ -57,7 +62,7 @@ public class MainMenuState : GameStateManagement.GameState
     {
         base.Exit();
         InnerStateMachine.ExitAllStates();
-        
+
         AudioManager.Instance.StopMusic();
     }
 }

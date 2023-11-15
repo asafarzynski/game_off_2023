@@ -26,7 +26,7 @@ public class FSMLogger<TStateId, TTrigger, TState>
         _fsm.OnTransitionStarted += PrintOnTransitionStarted;
 
         _identifier = identifier;
-        
+
         GD.Print(PrependWithFsmName("Linked!"));
     }
 
@@ -42,8 +42,11 @@ public class FSMLogger<TStateId, TTrigger, TState>
 
     private void PrintOnTransitionStarted(FSMTransition<TStateId, TTrigger> fsmTransition)
     {
-        GD.Print(PrependWithFsmName(
-            $"Transitioning from {fsmTransition.FromState} to {fsmTransition.ToState} because of {fsmTransition.Trigger}"));
+        GD.Print(
+            PrependWithFsmName(
+                $"Transitioning from {fsmTransition.FromState} to {fsmTransition.ToState} because of {fsmTransition.Trigger}"
+            )
+        );
     }
 
     private void PrintOnTriggerFired(TTrigger trigger)
@@ -53,12 +56,16 @@ public class FSMLogger<TStateId, TTrigger, TState>
 
     private void PrintOnEnter(TState state)
     {
-        GD.Print(PrependWithFsmName(state == null ? "Entered non-existing state" : $"Entered {state.Id}"));
+        GD.Print(
+            PrependWithFsmName(state == null ? "Entered non-existing state" : $"Entered {state.Id}")
+        );
     }
 
     private void PrintOnExit(TState state)
     {
-        GD.Print(PrependWithFsmName(state == null ? "Exiting non-existing state" : $"Exiting {state.Id}"));
+        GD.Print(
+            PrependWithFsmName(state == null ? "Exiting non-existing state" : $"Exiting {state.Id}")
+        );
     }
 
     private string PrependWithFsmName(string text)

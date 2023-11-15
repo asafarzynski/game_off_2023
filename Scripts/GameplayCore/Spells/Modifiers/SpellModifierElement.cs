@@ -7,11 +7,17 @@ namespace GameOff2023.Scripts.GameplayCore.Spells;
 /// </summary>
 public abstract partial class SpellModifierElement : Resource
 {
-    [Export] public float FloatValue;
-    [Export] public int IntValue;
-    [Export] public bool BoolValue;
+    [Export]
+    public float FloatValue;
 
-    public SpellModifierElement() : this(0, 0, false) {}
+    [Export]
+    public int IntValue;
+
+    [Export]
+    public bool BoolValue;
+
+    public SpellModifierElement()
+        : this(0, 0, false) { }
 
     public SpellModifierElement(float floatValue, int intValue, bool boolValue)
     {

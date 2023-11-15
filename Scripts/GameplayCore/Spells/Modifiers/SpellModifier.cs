@@ -5,7 +5,8 @@ namespace GameOff2023.Scripts.GameplayCore.Spells;
 
 public partial class SpellModifier : Resource, IInventoryItem
 {
-    [Export] public SpellModifierElement[] ModifierElements;
+    [Export]
+    public SpellModifierElement[] ModifierElements;
 
     public ResourceId ResourceId { get; } // TODO: fill it
 
@@ -17,7 +18,7 @@ public partial class SpellModifier : Resource, IInventoryItem
         {
             result = spellModifierElement.Modify(result);
         }
-        
+
         return result;
     }
 }

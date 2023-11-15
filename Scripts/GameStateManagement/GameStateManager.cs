@@ -13,20 +13,16 @@ public partial class GameStateManager : NodeSingleton<GameStateManager>
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        StateMachine = new ();
+        StateMachine = new();
 
         StateMachine.AddState(GameStates.GameState.Empty, null);
         var menuState = new MainMenuState(this, GameStates.GameState.MainMenu);
         StateMachine.AddState(menuState);
         var gameplayState = new GameplayState(this, GameStates.GameState.Gameplay);
         StateMachine.AddState(gameplayState);
-        
-        StateMachine.AddTransition(menuState.Id,
-            gameplayState.Id,
-            Triggers.GameStarted);
-        StateMachine.AddTransition(gameplayState.Id,
-            menuState.Id,
-            Triggers.GameEnded);
+
+        StateMachine.AddTransition(menuState.Id, gameplayState.Id, Triggers.GameStarted);
+        StateMachine.AddTransition(gameplayState.Id, menuState.Id, Triggers.GameEnded);
 
         _fsmLogger = new(StateMachine, "Game State Machine");
     }

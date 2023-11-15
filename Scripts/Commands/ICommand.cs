@@ -2,8 +2,8 @@
 
 public interface ICommand
 {
-	public bool Validate();
-	
-	public void Execute();
-	public void UnExecute();
+    public bool Validate();
+
+    public void Execute();
+    public void UnExecute();
 }

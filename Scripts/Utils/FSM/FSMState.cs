@@ -8,16 +8,10 @@ public class FSMState<T>
     {
         Id = id;
     }
-    
-    internal virtual void Exit()
-    {
-    }
 
-    internal virtual void Enter()
-    {
-    }
+    internal virtual void Exit() { }
 
-    internal virtual void Update(double deltaTime)
-    {
-    }
+    internal virtual void Enter() { }
+
+    internal virtual void Update(double deltaTime) { }
 }

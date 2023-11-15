@@ -9,12 +9,12 @@ public partial class UIBasicButton : Button
     {
         AudioManager.Instance.PlayUISound(UISound.Pressed);
     }
-    
+
     public virtual void _on_mouse_entered()
     {
         AudioManager.Instance.PlayUISound(UISound.MouseEnter);
     }
-    
+
     public virtual void _on_mouse_exited()
     {
         AudioManager.Instance.PlayUISound(UISound.MouseExit);
