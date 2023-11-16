@@ -66,6 +66,15 @@ public partial class UISpellSlots : Control
         }
     }
 
+    public void SelectSlot(int mainSlot, int modifierSlot)
+    {
+        for (var i = 0; i < _uiSlots.Count; i++)
+        {
+            _uiSlots[i].SelectMainSlot(mainSlot == i && modifierSlot == -1);
+            _uiSlots[i].SelectModifierSlot(mainSlot == i ? modifierSlot : -1);
+        }
+    }
+
     private void SlotSelected(int mainSlot, int modifierSlot)
     {
         OnSlotSelected?.Invoke(mainSlot, modifierSlot);

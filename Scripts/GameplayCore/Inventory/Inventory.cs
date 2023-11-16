@@ -11,6 +11,10 @@ public class Inventory
     public Inventory()
     {
         SpellSlots = new SpellSlot[SPELL_SLOTS_NUMBER];
+        for (int i = 0; i < SPELL_SLOTS_NUMBER; i++)
+        {
+            SpellSlots[i] = new();
+        }
         LooseSlots = new IInventoryItem[INVENTORY_SIZE];
     }
 
@@ -24,7 +28,5 @@ public class Inventory
                 return;
             }
         }
-
-
     }
 }

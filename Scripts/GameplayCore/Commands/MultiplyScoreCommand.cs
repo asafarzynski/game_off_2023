@@ -15,9 +15,9 @@ public class MultiplyScoreCommand : ICommand
         _multiplication = multiplication;
     }
 
-    public bool Validate()
+    public CommandValidation Validate()
     {
-        return true; // nothing to be validated
+        return CommandValidationCreator.Valid(); // nothing to be validated
     }
 
     public void Execute()

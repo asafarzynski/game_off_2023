@@ -51,6 +51,19 @@ public partial class UISpellSlot : Control
         }
     }
 
+    public void SelectMainSlot(bool selected)
+    {
+        mainSlot.ButtonPressed = selected;
+    }
+
+    public void SelectModifierSlot(int index)
+    {
+        for (var i = 0; i < modifierSlots.Length; i++)
+        {
+            modifierSlots[i].ButtonPressed = i == index;
+        }
+    }
+
     private void MainSlotSelected(int mainIndex)
     {
         OnSlotSelected?.Invoke(mainIndex, -1);

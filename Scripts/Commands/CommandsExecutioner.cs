@@ -7,15 +7,16 @@ public class CommandsExecutioner
     public readonly Stack<ICommand> DoneStack = new();
     public readonly Stack<ICommand> UndoneStack = new();
 
-    public bool Do(ICommand command)
+    public CommandValidation Do(ICommand command)
     {
-        if (!command.Validate())
-            return false;
+        var validation = command.Validate();
+        if (!validation.IsValid)
+            return validation;
 
         command.Execute();
         DoneStack.Push(command);
         UndoneStack.Clear();
-        return true;
+        return validation;
     }
 
     public void Undo(int numberOfUndos = 1)

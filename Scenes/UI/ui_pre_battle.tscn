@@ -57,8 +57,11 @@ grow_vertical = 0
 text = "Confirm selected spells"
 
 [node name="SpellSlots" parent="Panel" instance=ExtResource("3_n55ml")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 125.0
+grow_horizontal = 2
 
 [node name="LooseInventory" parent="Panel" instance=ExtResource("3_5m3d6")]
 layout_mode = 1

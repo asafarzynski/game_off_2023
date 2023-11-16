@@ -2,7 +2,7 @@
 
 public interface ICommand
 {
-    public bool Validate();
+    public CommandValidation Validate();
 
     public void Execute();
     public void UnExecute();

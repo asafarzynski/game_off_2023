@@ -13,8 +13,6 @@ public partial class UILooseInventory : Control
 
     public event Action<int> OnSlotSelected;
 
-    private int? _selectedSlot;
-
     private IInventoryItem[] _itemsArray;
 
     private List<UIInventorySlot> _uiSlots = new();
@@ -33,9 +31,14 @@ public partial class UILooseInventory : Control
             var uiSlot = newSlot.GetNode<UIInventorySlot>("./");
             uiSlot.Initialize(i);
             uiSlot.SetItemImage(null);
-            uiSlot.OnSlotSelected += SelectInventorySlot;
+            uiSlot.OnSlotSelected += SelectSlot;
             _uiSlots.Add(uiSlot);
         }
+    }
+
+    private void SelectSlot(int index)
+    {
+        OnSlotSelected?.Invoke(index);
     }
 
     public void Deinitialize()
@@ -43,7 +46,7 @@ public partial class UILooseInventory : Control
         _itemsArray = null;
         foreach (UIInventorySlot uiInventorySlot in _uiSlots)
         {
-            uiInventorySlot.OnSlotSelected -= SelectInventorySlot;
+            uiInventorySlot.OnSlotSelected -= SelectSlot;
             uiInventorySlot.Free();
         }
         _uiSlots.Clear();
@@ -66,12 +69,11 @@ public partial class UILooseInventory : Control
         }
     }
 
-    private void SelectInventorySlot(int slotIndex)
+    public void SelectInventorySlot(int slotIndex)
     {
-        _selectedSlot = _selectedSlot == slotIndex ? null : slotIndex;
         for (var i = 0; i < _uiSlots.Count; i++)
         {
-            _uiSlots[i].ButtonPressed = i == _selectedSlot;
+            _uiSlots[i].ButtonPressed = i == slotIndex;
         }
     }
 }

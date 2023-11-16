@@ -7,7 +7,7 @@ namespace GameOff2023.Scripts.GameplayCore.Commands;
 /// </summary>
 public class AddPlayerSpellCommand : ICommand
 {
-    public bool Validate()
+    public CommandValidation Validate()
     {
         throw new System.NotImplementedException();
     }

@@ -14,9 +14,9 @@ public class GivePlayerRandomSpellCommand : ICommand
         _gameplayCore = gameplayCore;
     }
 
-    public bool Validate()
+    public CommandValidation Validate()
     {
-        return true;
+        return CommandValidationCreator.Valid();
     }
 
     public void Execute()

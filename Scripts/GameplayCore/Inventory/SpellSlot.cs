@@ -9,9 +9,9 @@ public class SpellSlot
 
     public const int MAX_NUMBER_OF_MODIFIERS = 4;
 
-    public SpellSlot(Spell spell)
+    public SpellSlot()
     {
-        Spell = spell;
+        Spell = null;
         Modifiers = new SpellModifier[MAX_NUMBER_OF_MODIFIERS];
     }
 
