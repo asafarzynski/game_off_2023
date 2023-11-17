@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Godot;
 using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.GameplayCore.Commands;
 using GameOff2023.Scripts.GameplayCore.Spells;
@@ -12,7 +10,6 @@ public class GameplayCore
 {
 	public readonly CommandsExecutioner CommandsExecutioner = new();
 	
-	public float Score { get; internal set; } = 1f;
 	public float PlayerHealth { get; internal set; } = 100f;
 
 	/// <summary>
