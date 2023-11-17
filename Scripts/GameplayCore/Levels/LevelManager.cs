@@ -1,35 +1,40 @@
 using Godot;
 using System.Collections.Generic;
 using GameOff2023.Scripts.GameplayCore.Enemies;
+
 namespace GameOff2023.Scripts.GameplayCore.Levels;
 
 public class LevelManager
 {
-	public Enemy[] Enemies { get; private set; }
-	public List<Level> levels = new List<Level>();
+    public readonly List<Level> Levels = new List<Level>();
+    public Level CurrentLevel => Levels[^1];
+    public Fight CurrentFight => CurrentLevel.FightList[CurrentLevel.CurrentFightIndex];
 
-	public LevelManager(Enemy[] enemies)
-	{
-		Enemies = enemies;
-	}
+    private readonly Enemy[] _enemies;
 
-	public void GenerateLevel()
-	{
-		Level level = new Level();
+    public LevelManager(Enemy[] enemies)
+    {
+        _enemies = enemies;
+    }
 
-		for (int x = 0; x < level.FightList.Length; x++)
-		{
-			Fight fight = new Fight();
-			for (int y = 0; y < fight.EnemyList.Length; y++)
-			{
-				var random_generator = new RandomNumberGenerator();
-				random_generator.Randomize();
-				var random_value = random_generator.RandiRange(0, Enemies.Length-1);
+    internal Level GenerateNextLevel()
+    {
+        Level level = new Level(Levels.Count);
 
-				fight.EnemyList[y] = Enemies[random_value];
-			}
-			level.FightList[x] = fight;
-		}
-		levels.Add(level);
-	}
+        for (int x = 0; x < level.FightList.Length; x++)
+        {
+            Fight fight = new Fight(x);
+            for (int y = 0; y < fight.EnemyList.Length; y++)
+            {
+                var randomGenerator = new RandomNumberGenerator();
+                randomGenerator.Randomize();
+                var randomValue = randomGenerator.RandiRange(0, _enemies.Length-1);
+
+                fight.EnemyList[y] = _enemies[randomValue];
+            }
+            level.FightList[x] = fight;
+        }
+        Levels.Add(level);
+        return level;
+    }
 }

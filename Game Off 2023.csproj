@@ -5,9 +5,6 @@
     <RootNamespace>GameOff2023</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Scripts\GameplayCore\Creature" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="Scripts\GameplayCore\Spells\SpellSlot.cs" />
   </ItemGroup>
 </Project>

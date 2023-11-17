@@ -4,45 +4,43 @@ using GameOff2023.Scripts.GameplayCore.Spells;
 
 namespace GameOff2023.Scripts.GameplayCore.Commands;
 
-public class MoveFromInventoryToSpellSlot : ICommand
+public class MoveFromInventoryToSpellSlot : GameplayCoreCommand
 {
-    private readonly GameplayCore _gameplayCore;
     private readonly int _fromInventorySlot;
     private readonly int _toSpellSlot;
     private readonly int? _toModifierSlot;
 
     private IInventoryItem _replacedItem;
 
-    public MoveFromInventoryToSpellSlot(GameplayCore gameplayCore, int fromInventorySlot, int toSpellSlot, int? toModifierSlot)
+    public MoveFromInventoryToSpellSlot(GameplayCore gameplayCore, int fromInventorySlot, int toSpellSlot, int? toModifierSlot) : base(gameplayCore)
     {
-        _gameplayCore = gameplayCore;
         _fromInventorySlot = fromInventorySlot;
         _toSpellSlot = toSpellSlot;
         _toModifierSlot = toModifierSlot;
     }
 
-    public CommandValidation Validate()
+    public override CommandValidation Validate()
     {
-        if (_fromInventorySlot >= _gameplayCore.Inventory.LooseSlots.Length || _fromInventorySlot < 0)
+        if (_fromInventorySlot >= Core.Inventory.LooseSlots.Length || _fromInventorySlot < 0)
             return CommandValidationCreator.Invalid("inventory slot index out of bounds");
 
-        if (_toSpellSlot >= _gameplayCore.Inventory.SpellSlots.Length || _toSpellSlot < 0)
+        if (_toSpellSlot >= Core.Inventory.SpellSlots.Length || _toSpellSlot < 0)
             return CommandValidationCreator.Invalid("spell slot index out of bounds");
 
         if (_toModifierSlot.HasValue)
         {
-            if (_toModifierSlot.Value >= _gameplayCore.Inventory.SpellSlots[_toSpellSlot].Modifiers.Length || _toModifierSlot.Value < 0)
+            if (_toModifierSlot.Value >= Core.Inventory.SpellSlots[_toSpellSlot].Modifiers.Length || _toModifierSlot.Value < 0)
                 return CommandValidationCreator.Invalid("spell modifier index out of bounds");
         }
 
         return CommandValidationCreator.Valid();
     }
 
-    public void Execute()
+    public override void Execute()
     {
-        var inventoryItem = _gameplayCore.Inventory.LooseSlots[_fromInventorySlot];
+        var inventoryItem = Core.Inventory.LooseSlots[_fromInventorySlot];
 
-        var spellSlot = _gameplayCore.Inventory.SpellSlots[_toSpellSlot];
+        var spellSlot = Core.Inventory.SpellSlots[_toSpellSlot];
 
         switch (inventoryItem)
         {
@@ -82,12 +80,12 @@ public class MoveFromInventoryToSpellSlot : ICommand
             }
         }
 
-        _gameplayCore.Inventory.LooseSlots[_fromInventorySlot] = _replacedItem;
+        Core.Inventory.LooseSlots[_fromInventorySlot] = _replacedItem;
         
-        _gameplayCore.Events.InventoryChanged?.Invoke();
+        Core.Events.OnInventoryChanged?.Invoke();
     }
 
-    public void UnExecute()
+    public override void UnExecute()
     {
         throw new System.NotImplementedException();
     }

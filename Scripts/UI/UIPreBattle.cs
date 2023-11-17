@@ -24,7 +24,9 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
         base._Ready();
         _core = GlobalGameData.Instance.Core;
 
-        showEnemies.Initialize(_core.levelManager);
+        showEnemies.Initialize(_core.LevelManager);
+        showEnemies.UpdateLabels();
+        
         looseInventory.Initialize(_core.Inventory.LooseSlots, GetIcon);
         looseInventory.UpdateSlots();
         looseInventory.OnSlotSelected += InventorySlotSelected;
@@ -33,14 +35,14 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
         spellSlots.UpdateSlots();
         spellSlots.OnSlotSelected += SpellSlotSelected;
 
-        _core.Events.InventoryChanged += UpdateSlots;
+        _core.Events.OnInventoryChanged += UpdateSlots;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
 
-        _core.Events.InventoryChanged -= UpdateSlots;
+        _core.Events.OnInventoryChanged -= UpdateSlots;
 
         spellSlots.OnSlotSelected -= SpellSlotSelected;
         spellSlots.Deinitialize();
@@ -51,7 +53,15 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
 
     public void _on_confirm_pressed()
     {
-        State.InnerStateMachine.Trigger(GameplayTrigger.BattleStarted);
+       var validation = _core.CommandsExecutioner.Do(new FightNextBattleCommand(_core));
+       if (!validation.IsValid)
+       {
+           GD.Print(validation.Message);
+       }
+       else
+       {
+           State.InnerStateMachine.Trigger(GameplayTrigger.BattleStarted);
+       }
     }
 
     public void _on_exit_pressed()

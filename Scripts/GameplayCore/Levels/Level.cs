@@ -1,18 +1,32 @@
-using Godot;
-
 namespace GameOff2023.Scripts.GameplayCore.Levels;
 
 public class Level
 {
-	public int LevelNumber;
-	public Fight[] FightList;
-	const int NUMBER_OF_FIGHTS = 4;
+    private const int NUMBER_OF_FIGHTS = 4;
 
-	public Level() : this(0, new Fight[NUMBER_OF_FIGHTS]) { }
+    public bool IsCleared
+    {
+        get
+        {
+            foreach (var fight in FightList)
+            {
+                if (!fight.IsCleared)
+                    return false;
+            }
+            return true;
+        }
+    }
+    
+    public int CurrentFightIndex { get; internal set; }
 
-	public Level(int levelNumber, Fight[] fightList)
-	{
-		LevelNumber = levelNumber;
-		FightList = fightList;
-	}
+    public readonly int LevelNumber;
+    public readonly Fight[] FightList;
+
+    public Level(int levelNumber) : this(levelNumber, new Fight[NUMBER_OF_FIGHTS]) { }
+
+    public Level(int levelNumber, Fight[] fightList)
+    {
+        LevelNumber = levelNumber;
+        FightList = fightList;
+    }
 }

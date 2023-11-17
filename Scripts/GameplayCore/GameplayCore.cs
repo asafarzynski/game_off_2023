@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using GameOff2023.Scripts.Commands;
+using GameOff2023.Scripts.GameplayCore.Commands;
 using GameOff2023.Scripts.GameplayCore.Spells;
 using GameOff2023.Scripts.GameplayCore.Enemies;
 using GameOff2023.Scripts.GameplayCore.Levels;
@@ -12,23 +13,24 @@ public class GameplayCore
 	public readonly CommandsExecutioner CommandsExecutioner = new();
 	
 	public float Score { get; internal set; } = 1f;
-	
+	public float PlayerHealth { get; internal set; } = 100f;
+
 	/// <summary>
 	/// A list of all spells in game.
 	/// We will draw random spells from this list as rewards.
 	/// </summary>
-	public Spell[] AllSpellsInGame { get; private set; }
+	public readonly Spell[] AllSpellsInGame;
 
 	/// <summary>
 	/// A list of all enemies in game.
 	/// We will draw random enemies from this list for battles.
 	/// </summary>
-	public Enemy[] Enemies { get; private set; } // TODO: We should divide them between levels or something to make the game progressively harder (?) / levels more distinctive
+	public readonly Enemy[] Enemies;
 
 	public readonly Inventory.Inventory Inventory;
 	
 	public readonly SpellStack SpellStack;
-	public LevelManager levelManager;
+	public readonly LevelManager LevelManager;
 
 	public readonly GameplayCoreEvents Events;
 
@@ -39,12 +41,14 @@ public class GameplayCore
 		SpellStack = new SpellStack();
 		Inventory = new Inventory.Inventory();
 		Events = new GameplayCoreEvents();
-		levelManager = new LevelManager(Enemies);
-		levelManager.GenerateLevel();
+		LevelManager = new LevelManager(Enemies);
+		
+		Initialize();
 	}
-	
-	public void CreateNewLevel()
+
+	private void Initialize()
 	{
-		levelManager.GenerateLevel();
+		CommandsExecutioner.Do(new GivePlayerRandomSpellCommand(this));
+		LevelManager.GenerateNextLevel();
 	}
 }

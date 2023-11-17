@@ -7,6 +7,11 @@ public class SpellStack
 {
     private readonly Dictionary<float, List<Spell>> _stack = new Dictionary<float, List<Spell>>();
 
+    internal void Clear()
+    {
+        _stack.Clear();
+    }
+
     public override string ToString()
     {
         StringBuilder sb = new();

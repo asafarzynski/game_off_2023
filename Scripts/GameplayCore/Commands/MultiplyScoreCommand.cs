@@ -2,32 +2,30 @@
 
 namespace GameOff2023.Scripts.GameplayCore.Commands;
 
-public class MultiplyScoreCommand : ICommand
+public class MultiplyScoreCommand : GameplayCoreCommand
 {
-    private readonly GameplayCore _gameplayCore;
     private readonly float _multiplication;
 
     private float _previousValue;
 
-    public MultiplyScoreCommand(GameplayCore gameplayCore, float multiplication)
+    public MultiplyScoreCommand(GameplayCore gameplayCore, float multiplication) : base (gameplayCore)
     {
-        _gameplayCore = gameplayCore;
         _multiplication = multiplication;
     }
 
-    public CommandValidation Validate()
+    public override CommandValidation Validate()
     {
         return CommandValidationCreator.Valid(); // nothing to be validated
     }
 
-    public void Execute()
+    public override void Execute()
     {
-        _previousValue = _gameplayCore.Score;
-        _gameplayCore.Score *= _multiplication;
+        _previousValue = Core.Score;
+        Core.Score *= _multiplication;
     }
 
-    public void UnExecute()
+    public override void UnExecute()
     {
-        _gameplayCore.Score = _previousValue;
+        Core.Score = _previousValue;
     }
 }
