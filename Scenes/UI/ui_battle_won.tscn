@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://dac62w3y3t8jd"]
+
+[ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_hr2a8"]
+[ext_resource type="Script" path="res://Scripts/UI/UIPostBattle.cs" id="2_6h8oa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m00at"]
+font_size = 50
+font_color = Color(0, 0.952941, 0.454902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ysoc0"]
+font_size = 50
+font_color = Color(0.968627, 0, 0.427451, 1)
+
+[node name="ui_post_battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hr2a8")
+script = ExtResource("2_6h8oa")
+
+[node name="Next" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next battle"
+
+[node name="Give" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -185.0
+offset_top = -64.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Give Random Spell"
+
+[node name="WinText" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 643.0
+offset_top = 437.0
+offset_right = 1359.0
+offset_bottom = 505.0
+text = "You win Champ! Well done."
+label_settings = SubResource("LabelSettings_m00at")
+
+[node name="LoseText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 641.0
+offset_top = 437.0
+offset_right = 1357.0
+offset_bottom = 505.0
+text = "You lose sucker. Git gud."
+label_settings = SubResource("LabelSettings_ysoc0")
+
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Give" to="." method="_on_give_pressed"]

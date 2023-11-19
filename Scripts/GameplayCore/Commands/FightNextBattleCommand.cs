@@ -1,4 +1,9 @@
 using GameOff2023.Scripts.Commands;
+using GameOff2023.Scripts.Fight;
+using Godot;
+using GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
+using GameplayState = GameOff2023.Scripts.GameStateManagement.GameStates.GameplayState;
+using GameOff2023.Scripts.GameStateManagement;
 namespace GameOff2023.Scripts.GameplayCore.Commands;
 
 public class FightNextBattleCommand : GameplayCoreCommand
@@ -37,9 +42,17 @@ public class FightNextBattleCommand : GameplayCoreCommand
         var currentFight = currentLevel.FightList[currentLevel.CurrentFightIndex];
 
         Core.SpellStack.Clear();
-        
-        // TODO: use spell stack to process battle
-        currentFight.IsCleared = true;
+
+        var result = FightSimulator.Simulate();
+        if(result)
+        {
+            GD.Print("You Win!");
+            currentFight.IsCleared = true;
+        }
+        else {
+            GD.Print("You lose :(");
+            currentFight.IsCleared = false;
+        }
 
         if (currentLevel.IsCleared)
         {
