@@ -41,14 +41,13 @@ public class FightNextBattleCommand : GameplayCoreCommand
         var currentLevel = Core.LevelManager.CurrentLevel;
         var currentFight = currentLevel.FightList[currentLevel.CurrentFightIndex];
 
-        Core.SpellStack.Clear();
 
         currentFight.FightEvents = FightSimulator.Simulate();
         
-        // foreach (var fightEvent in currentFight.FightEvents)
-        // {
-        //     FightSimulator.LogFightEvent(fightEvent);
-        // }
+        foreach (var fightEvent in currentFight.FightEvents)
+        {
+            FightSimulator.LogFightEvent(fightEvent);
+        }
 
         // if(fightEvents[^1].FightResult == FightStatus.Win) {
         //     return true;

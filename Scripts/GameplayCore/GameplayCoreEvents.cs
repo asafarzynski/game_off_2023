@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace GameOff2023.Scripts.GameplayCore;
 

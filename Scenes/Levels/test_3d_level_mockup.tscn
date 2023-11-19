@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://buiwmcsyjrptw"]
 
-[ext_resource type="PackedScene" uid="uid://dr5drxtwbp2tj" path="res://Scenes/Characters/Rachel/rachel.tscn" id="2_3doys"]
+[ext_resource type="PackedScene" uid="uid://1m0h2tit1c23" path="res://Scenes/Characters/Rachel/Rachel.tscn" id="2_3doys"]
 [ext_resource type="PackedScene" uid="uid://di8m7kt8f12f3" path="res://Scenes/Levels/tower_level.tscn" id="2_70scj"]
 [ext_resource type="PackedScene" uid="uid://tr645cn6k8h7" path="res://Scenes/Enemies/Moth/moth.tscn" id="3_dwmpc"]
 [ext_resource type="PackedScene" uid="uid://1ywll8nccqer" path="res://Scenes/Enemies/Snail/snail.tscn" id="4_3k8an"]

@@ -26,7 +26,6 @@ public class GameplayCore
 
 	public readonly Inventory.Inventory Inventory;
 	
-	public readonly SpellStack SpellStack;
 	public readonly LevelManager LevelManager;
 
 	public readonly GameplayCoreEvents Events;
@@ -35,7 +34,6 @@ public class GameplayCore
 	{
 		Enemies = enemiesInGame;
 		AllSpellsInGame = spellsInGame;
-		SpellStack = new SpellStack();
 		Inventory = new Inventory.Inventory();
 		Events = new GameplayCoreEvents();
 		LevelManager = new LevelManager(Enemies);

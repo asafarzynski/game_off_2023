@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bmevtfwi0u2mt"]
+
+[ext_resource type="Resource" uid="uid://dfpqsud3cebry" path="res://CustomResources/Spells/basic_spell.tres" id="1_fuuoq"]
+[ext_resource type="Resource" path="res://CustomResources/Spells/super_spell.tres" id="2_grnho"]
+[ext_resource type="Script" path="res://Scripts/Resources/SpellsList.cs" id="2_gvav4"]
+
+[resource]
+script = ExtResource("2_gvav4")
+baseName = "UnlockableSpells"
+resources = Array[Resource]([ExtResource("1_fuuoq"), ExtResource("2_grnho")])
