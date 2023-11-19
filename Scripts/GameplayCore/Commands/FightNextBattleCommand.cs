@@ -43,25 +43,37 @@ public class FightNextBattleCommand : GameplayCoreCommand
 
         Core.SpellStack.Clear();
 
-        var result = FightSimulator.Simulate();
-        if(result)
-        {
-            GD.Print("You Win!");
-            currentFight.IsCleared = true;
-        }
-        else {
-            GD.Print("You lose :(");
-            currentFight.IsCleared = false;
-        }
+        currentFight.FightEvents = FightSimulator.Simulate();
+        
+        // foreach (var fightEvent in currentFight.FightEvents)
+        // {
+        //     FightSimulator.LogFightEvent(fightEvent);
+        // }
 
-        if (currentLevel.IsCleared)
-        {
-            Core.Events.OnLevelCleared?.Invoke();
-        }
-        else
-        {
-            currentLevel.CurrentFightIndex++;
-        }
+        // if(fightEvents[^1].FightResult == FightStatus.Win) {
+        //     return true;
+        // } else if(fightEvents[^1].FightResult == FightStatus.Draw) {
+        //     return false;
+        // } else {
+        //     return false;
+        // }
+
+        // if(result)
+        // {
+        //     currentFight.IsCleared = true;
+        // }
+        // else {
+        //     currentFight.IsCleared = false;
+        // }
+
+        // if (currentLevel.IsCleared)
+        // {
+        //     Core.Events.OnLevelCleared?.Invoke();
+        // }
+        // else
+        // {
+        //     currentLevel.CurrentFightIndex++;
+        // }
     }
 
     public override void UnExecute()

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GameOff2023.Scripts.GameplayCore.Spells;
+using GameOff2023.Scripts.GameplayCore.Levels;
 using Godot;
 
 namespace GameOff2023.Scripts.Fight;
@@ -12,7 +12,7 @@ public enum CharacterType
     Monster
 }
 
-public enum SpelllTarget
+public enum SpellTarget
 {
     Self,
     FirstEnemy,
@@ -25,7 +25,7 @@ public enum SpelllTarget
 public class Character
 {
     public CharacterType CharacterType { get; set; }
-    public List<Spelll> Spellls { get; set; }
+    public List<Spell> Spells { get; set; }
     public string Name { get; set; }
     public CharacterStats Stats { get; set; }
 }
@@ -35,64 +35,33 @@ public class CharacterStats
     public int Health { get; set; }
 }
 
-public class Spelll
+public class Spell
 {
     public int Dmg { get; set; }
     public int Cooldown { get; set; } // Multiples of 2: 1, 2, 4, 8, 16, etc.
-    public SpelllTarget Target { get; set; }
+    public SpellTarget Target { get; set; }
 }
 
-public class SpelllCast : Spelll
+public class SpellCast : Spell
 {
     public Character OriginCharacter { get; set; }
-}
-
-public enum FightStatus
-{
-    Win,
-    Lose,
-    Draw,
-    InProgress
-}
-
-public enum FightEventType
-{
-    FightStart,
-    FightResult,
-    SpelllCast,
-    CharacterDeath
-}
-
-public class FightEvent
-{
-    public FightEventType EventType { get; set; }
-    public FightStatus? FightResult { get; set; }
-    public SpelllCast SpelllCast { get; set; }
-    public Character TargetCharacter { get; set; }
-    public CharacterFightStatus TargetCharacterFightStatus { get; set; }
-}
-
-public class CharacterFightStatus
-{
-    public int Health { get; set; }
-    // Other effect properties...
 }
 
 public partial class FightSimulator: Node
 {
     public static List<FightEvent> SimulateFight(List<Character> playerCharacters, List<Character> monsterCharacters)
     {
-        var SpelllCastQueue = new List<SpelllCast>();
+        var SpellCastQueue = new List<SpellCast>();
         var fightEventQueue = new List<FightEvent> { new FightEvent { EventType = FightEventType.FightStart } };
         var characterFightStatusMap = new Dictionary<Character, CharacterFightStatus>();
 
         foreach (var character in playerCharacters.Concat(monsterCharacters))
         {
             characterFightStatusMap[character] = new CharacterFightStatus { Health = character.Stats.Health };
-            AddSpelllsToTheQueue(character, SpelllCastQueue);
+            AddSpellsToTheQueue(character, SpellCastQueue);
         }
 
-        SpelllCastQueue.Sort(delegate(SpelllCast a, SpelllCast b){
+        SpellCastQueue.Sort(delegate(SpellCast a, SpellCast b){
             var cooldownDifference = a.Cooldown - b.Cooldown;
             if(cooldownDifference == 0) {
                 if(a.OriginCharacter.CharacterType == CharacterType.Player && b.OriginCharacter.CharacterType == CharacterType.Monster) {
@@ -109,21 +78,21 @@ public partial class FightSimulator: Node
 
         var fightStatus = FightStatus.InProgress;
 
-        for (var SpelllIndex = 0; SpelllIndex < SpelllCastQueue.Count; SpelllIndex++)
+        for (var SpellIndex = 0; SpellIndex < SpellCastQueue.Count; SpellIndex++)
         {
-            var SpelllCast = SpelllCastQueue[SpelllIndex];
+            var SpellCast = SpellCastQueue[SpellIndex];
             Character targetCharacter = null;
 
-            if (characterFightStatusMap[SpelllCast.OriginCharacter].Health <= 0)
+            if (characterFightStatusMap[SpellCast.OriginCharacter].Health <= 0)
                 continue;
 
-            switch (SpelllCast.Target)
+            switch (SpellCast.Target)
             {
-                case SpelllTarget.Self:
-                    targetCharacter = SpelllCast.OriginCharacter;
+                case SpellTarget.Self:
+                    targetCharacter = SpellCast.OriginCharacter;
                     break;
-                case SpelllTarget.FirstEnemy:
-                    if (SpelllCast.OriginCharacter.CharacterType == CharacterType.Player)
+                case SpellTarget.FirstEnemy:
+                    if (SpellCast.OriginCharacter.CharacterType == CharacterType.Player)
                     {
                         var monster = monsterCharacters.FirstOrDefault(monsterCharacter => characterFightStatusMap[monsterCharacter].Health > 0);
                         if (monster != null)
@@ -131,7 +100,7 @@ public partial class FightSimulator: Node
                         else
                             fightStatus = FightStatus.Win;
                     }
-                    if (SpelllCast.OriginCharacter.CharacterType == CharacterType.Monster)
+                    if (SpellCast.OriginCharacter.CharacterType == CharacterType.Monster)
                     {
                         var player = playerCharacters.FirstOrDefault(playerCharacter => characterFightStatusMap[playerCharacter].Health > 0);
                         if (player != null)
@@ -144,11 +113,11 @@ public partial class FightSimulator: Node
 
             if (targetCharacter != null)
             {
-                characterFightStatusMap[targetCharacter].Health = DealDamage(targetCharacter, characterFightStatusMap[targetCharacter], SpelllCast.Dmg);
+                characterFightStatusMap[targetCharacter].Health = DealDamage(targetCharacter, characterFightStatusMap[targetCharacter], SpellCast.Dmg);
                 fightEventQueue.Add(new FightEvent
                 {
-                    EventType = FightEventType.SpelllCast,
-                    SpelllCast = SpelllCast,
+                    EventType = FightEventType.SpellCast,
+                    SpellCast = SpellCast,
                     TargetCharacter = targetCharacter,
                     TargetCharacterFightStatus = characterFightStatusMap[targetCharacter]
                 });
@@ -175,18 +144,18 @@ public partial class FightSimulator: Node
         return fightEventQueue;
     }
 
-    public static void AddSpelllsToTheQueue(Character character, List<SpelllCast> queue)
+    public static void AddSpellsToTheQueue(Character character, List<SpellCast> queue)
     {
-        foreach (var Spelll in character.Spellls)
+        foreach (var Spell in character.Spells)
         {
-            var numberOfSpelllsCast = (int)Math.Floor(256 / (double)Spelll.Cooldown);
-            for (var i = 0; i < numberOfSpelllsCast; i++)
+            var numberOfSpellsCast = (int)Math.Floor(256 / (double)Spell.Cooldown);
+            for (var i = 0; i < numberOfSpellsCast; i++)
             {
-                queue.Add(new SpelllCast
+                queue.Add(new SpellCast
                 {
-                    Dmg = Spelll.Dmg,
-                    Cooldown = Spelll.Cooldown * (i + 1),
-                    Target = Spelll.Target,
+                    Dmg = Spell.Dmg,
+                    Cooldown = Spell.Cooldown * (i + 1),
+                    Target = Spell.Target,
                     OriginCharacter = character
                 });
             }
@@ -218,12 +187,12 @@ public partial class FightSimulator: Node
                 GD.Print($"{fightEvent.TargetCharacter.Name} has died :(");
                 break;
             }
-            case FightEventType.SpelllCast: {
+            case FightEventType.SpellCast: {
                 LogHit(
-                    fightEvent.SpelllCast.OriginCharacter,
+                    fightEvent.SpellCast.OriginCharacter,
                     fightEvent.TargetCharacter,
                     fightEvent.TargetCharacterFightStatus,
-                    fightEvent.SpelllCast.Dmg
+                    fightEvent.SpellCast.Dmg
                 );
                 break;
             }
@@ -241,14 +210,14 @@ public partial class FightSimulator: Node
         }
     }
 
-    public static bool Simulate()
+    public static List<FightEvent> Simulate()
     {
         GD.Print("FIGHT!!");
         var player = new Character
         {
             Name = "Grzybiarz",
             CharacterType = CharacterType.Player,
-            Spellls = new List<Spelll> { new Spelll { Dmg = 5, Cooldown = 1, Target = SpelllTarget.FirstEnemy } },
+            Spells = new List<Spell> { new Spell { Dmg = 5, Cooldown = 1, Target = SpellTarget.FirstEnemy } },
             Stats = new CharacterStats { Health = 100 }
         };
 
@@ -256,10 +225,10 @@ public partial class FightSimulator: Node
         {
             Name = "Troll",
             CharacterType = CharacterType.Monster,
-            Spellls = new List<Spelll>
+            Spells = new List<Spell>
             {
-                new Spelll { Dmg = -2, Cooldown = 2, Target = SpelllTarget.Self },
-                new Spelll { Dmg = 3, Cooldown = 4, Target = SpelllTarget.FirstEnemy }
+                new Spell { Dmg = -2, Cooldown = 2, Target = SpellTarget.Self },
+                new Spell { Dmg = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy }
             },
             Stats = new CharacterStats { Health = 200 }
         };
@@ -268,37 +237,26 @@ public partial class FightSimulator: Node
         {
             Name = "Orc",
             CharacterType = CharacterType.Monster,
-            Spellls = new List<Spelll> { new Spelll { Dmg = 3, Cooldown = 4, Target = SpelllTarget.FirstEnemy } },
+            Spells = new List<Spell> { new Spell { Dmg = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
             Stats = new CharacterStats { Health = 50 }
         };
         var enemyOrc2 = new Character
         {
             Name = "Orc2",
             CharacterType = CharacterType.Monster,
-            Spellls = new List<Spelll> { new Spelll { Dmg = 3, Cooldown = 4, Target = SpelllTarget.FirstEnemy } },
+            Spells = new List<Spell> { new Spell { Dmg = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
             Stats = new CharacterStats { Health = 50 }
         };
         var enemyOrc3 = new Character
         {
             Name = "Orc3",
             CharacterType = CharacterType.Monster,
-            Spellls = new List<Spelll> { new Spelll { Dmg = 3, Cooldown = 4, Target = SpelllTarget.FirstEnemy } },
+            Spells = new List<Spell> { new Spell { Dmg = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
             Stats = new CharacterStats { Health = 50 }
         }; 
 
         var fightEvents = SimulateFight(new List<Character> { player }, new List<Character> { enemyOrc, enemyOrc2, enemyOrc3, enemyTroll });
 
-        foreach (var fightEvent in fightEvents)
-        {
-            LogFightEvent(fightEvent);
-        }
-
-        if(fightEvents[^1].FightResult == FightStatus.Win) {
-            return true;
-        } else if(fightEvents[^1].FightResult == FightStatus.Draw) {
-            return false;
-        } else {
-            return false;
-        }
+        return fightEvents;
     }
 }

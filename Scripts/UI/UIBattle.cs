@@ -20,4 +20,12 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
     {
         State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
     }
+
+    public void _on_fight_pressed()
+    {
+        foreach (var fightEvent in GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents)
+        {
+            FightSimulator.LogFightEvent(fightEvent);
+        }
+    }
 }

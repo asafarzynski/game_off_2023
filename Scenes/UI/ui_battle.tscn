@@ -32,9 +32,14 @@ alignment = 1
 layout_mode = 2
 text = "win"
 
+[node name="Fight" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Fight"
+
 [node name="Lose" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "lose"
 
 [connection signal="pressed" from="HBoxContainer/Win" to="." method="_on_win_pressed"]
+[connection signal="pressed" from="HBoxContainer/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="HBoxContainer/Lose" to="." method="_on_lose_pressed"]
