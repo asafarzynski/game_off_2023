@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr5drxtwbp2tj"]
+[gd_scene load_steps=3 format=3 uid="uid://djrt1b3f4xgr7"]
 
-[ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_q3hne"]
+[ext_resource type="Texture2D" uid="uid://cefbm8iqw8lgj" path="res://Visuals/Enemies/T_Enemy_Toad.png" id="1_44fxt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l50wq"]
 radius = 0.25
@@ -12,7 +12,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0691392, 0.206756, -0.0826
 shape = SubResource("SphereShape3D_l50wq")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.828322, 0)
 flip_h = true
-pixel_size = 0.002
-texture = ExtResource("1_q3hne")
+texture = ExtResource("1_44fxt")

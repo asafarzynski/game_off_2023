@@ -207,7 +207,6 @@ public partial class FightSimulator: Node
 
     public static List<FightEvent> Simulate()
     {
-        GD.Print("FIGHT!!");
         var player = new Character
         {
             Name = "Grzybiarz",

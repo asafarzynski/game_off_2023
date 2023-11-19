@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://buiwmcsyjrptw"]
+[gd_scene load_steps=8 format=3 uid="uid://buiwmcsyjrptw"]
 
 [ext_resource type="PackedScene" uid="uid://dr5drxtwbp2tj" path="res://Scenes/Characters/player_character.tscn" id="2_3doys"]
 [ext_resource type="PackedScene" uid="uid://di8m7kt8f12f3" path="res://Scenes/Levels/tower_level.tscn" id="2_70scj"]
-[ext_resource type="PackedScene" uid="uid://bpgdvv68klkrf" path="res://Scenes/Enemies/BasicWizard/basic_wizard.tscn" id="3_jlh0f"]
+[ext_resource type="PackedScene" uid="uid://tr645cn6k8h7" path="res://Scenes/Enemies/Moth/moth.tscn" id="3_dwmpc"]
+[ext_resource type="PackedScene" uid="uid://1ywll8nccqer" path="res://Scenes/Enemies/Snail/snail.tscn" id="4_3k8an"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2q6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -39,11 +40,11 @@ transform = Transform3D(0.614271, 0, 0.789095, 0, 1, 0, -0.789095, 0, 0.614271, 
 
 [node name="TowerLevel" parent="." instance=ExtResource("2_70scj")]
 
-[node name="Enemy1" parent="." instance=ExtResource("3_jlh0f")]
-transform = Transform3D(-0.67514, 0, -0.73769, 0, 1, 0, 0.73769, 0, -0.67514, -7.00154, 0.554163, -10.0636)
+[node name="Moth" parent="." instance=ExtResource("3_dwmpc")]
+transform = Transform3D(0.614285, 0, 0.789084, 0, 1, 0, -0.789084, 0, 0.614285, -5.16265, 1.53121, -10.4536)
 
-[node name="Enemy2" parent="." instance=ExtResource("3_jlh0f")]
-transform = Transform3D(-0.67514, 0, -0.73769, 0, 1, 0, 0.73769, 0, -0.67514, -6.10162, 0.554163, -10.2275)
+[node name="Moth2" parent="." instance=ExtResource("3_dwmpc")]
+transform = Transform3D(0.614285, 0, 0.789084, 0, 1, 0, -0.789084, 0, 0.614285, -3.86652, 1.5617, -11.6597)
 
-[node name="Enemy3" parent="." instance=ExtResource("3_jlh0f")]
-transform = Transform3D(-0.67514, 0, -0.73769, 0, 1, 0, 0.73769, 0, -0.67514, -5.20372, 0.554163, -10.2275)
+[node name="Snail" parent="." instance=ExtResource("4_3k8an")]
+transform = Transform3D(0.613147, -0.0195198, 0.789728, 0.0263141, 0.999645, 0.00427805, -0.789531, 0.0181579, 0.613443, -6.86301, 1.51801, -8.87261)
