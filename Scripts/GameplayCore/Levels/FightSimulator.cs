@@ -172,41 +172,36 @@ public partial class FightSimulator: Node
         return Math.Max(Math.Min(max, value), min);
     }
 
-    public static void LogFightEvent(FightEvent fightEvent)
+    public static string LogFightEvent(FightEvent fightEvent)
     {
         switch (fightEvent.EventType) {
             case FightEventType.FightStart: {
-                GD.Print("Start of the fight!");
-                break;
+                return "Start of the fight!";
             }
             case FightEventType.FightResult: {
-                GD.Print($"Fight result: {fightEvent.FightResult}");
-                break;
+                return $"Fight result: {fightEvent.FightResult}";
             }
             case FightEventType.CharacterDeath: {
-                GD.Print($"{fightEvent.TargetCharacter.Name} has died :(");
-                break;
+                return $"{fightEvent.TargetCharacter.Name} has died :(";
             }
             case FightEventType.SpellCast: {
-                LogHit(
+                return LogHit(
                     fightEvent.SpellCast.OriginCharacter,
                     fightEvent.TargetCharacter,
                     fightEvent.TargetCharacterFightStatus,
                     fightEvent.SpellCast.Dmg
                 );
-                break;
             }
             default:
-                GD.Print("Unsupported fight event");
-                break;
+                return "Unsupported fight event";
         }
     }
 
-    public static void LogHit(Character originCharacter, Character targetCharacter, CharacterFightStatus targetCharacterFightStatus, float damage) {
+    public static string LogHit(Character originCharacter, Character targetCharacter, CharacterFightStatus targetCharacterFightStatus, float damage) {
         if(damage < 0) {
-            GD.Print($"{originCharacter.Name} heals {targetCharacter.Name} for {Math.Abs(damage)}");
+            return $"{originCharacter.Name} heals {targetCharacter.Name} for {Math.Abs(damage)}";
         } else {
-            GD.Print($"{originCharacter.Name} deals {damage} to {targetCharacter.Name}");
+            return $"{originCharacter.Name} deals {damage} to {targetCharacter.Name}";
         }
     }
 

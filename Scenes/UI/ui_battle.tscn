@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddgd7n0bm2pp7"]
+[gd_scene load_steps=5 format=3 uid="uid://ddgd7n0bm2pp7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIBattle.cs" id="1_eo03y"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_hhyy5"]
+[ext_resource type="Texture2D" uid="uid://bj0vdstq13fcf" path="res://Visuals/UI/fight_log_backgroud.png" id="3_cpxi4"]
+[ext_resource type="FontFile" uid="uid://b5wai00rogivy" path="res://Visuals/UIThemes/SparkyStonesRegular-BW6ld.ttf" id="4_cx4fx"]
 
 [node name="ui_battle" type="Control"]
 layout_mode = 3
@@ -32,14 +34,49 @@ alignment = 1
 layout_mode = 2
 text = "win"
 
-[node name="Fight" type="Button" parent="HBoxContainer"]
+[node name="NextTurn" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "Fight"
+text = "Next Turn"
+
+[node name="FastForward" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Fast Forward"
 
 [node name="Lose" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "lose"
 
+[node name="FightTicker" type="Timer" parent="."]
+one_shot = true
+
+[node name="FightLog" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 866.0
+offset_top = 921.0
+offset_right = 906.0
+offset_bottom = 961.0
+
+[node name="TextureRect" type="TextureRect" parent="FightLog"]
+layout_mode = 0
+offset_left = -216.0
+offset_top = -172.0
+offset_right = 607.0
+offset_bottom = 264.0
+scale = Vector2(0.744556, 0.744556)
+texture = ExtResource("3_cpxi4")
+
+[node name="Text" type="RichTextLabel" parent="FightLog"]
+layout_mode = 0
+offset_left = -164.0
+offset_top = -116.0
+offset_right = 348.0
+offset_bottom = 90.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_cx4fx")
+theme_override_font_sizes/normal_font_size = 16
+scroll_following = true
+
 [connection signal="pressed" from="HBoxContainer/Win" to="." method="_on_win_pressed"]
-[connection signal="pressed" from="HBoxContainer/Fight" to="." method="_on_fight_pressed"]
+[connection signal="pressed" from="HBoxContainer/NextTurn" to="." method="_on_next_turn_pressed"]
+[connection signal="pressed" from="HBoxContainer/FastForward" to="." method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="HBoxContainer/Lose" to="." method="_on_lose_pressed"]

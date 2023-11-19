@@ -3,6 +3,9 @@ using GameplayState = GameOff2023.Scripts.GameStateManagement.GameStates.Gamepla
 using GameOff2023.Scripts.GameStateManagement;
 using GameOff2023.Scripts.Fight;
 using Godot;
+using System.Reflection.Metadata.Ecma335;
+using GameOff2023.Scripts.GameplayCore.Levels;
+using System.Collections.Generic;
 
 
 namespace GameOff2023.Scripts.UI;
@@ -21,11 +24,31 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
     }
 
-    public void _on_fight_pressed()
+    public override void _Ready()
     {
-        foreach (var fightEvent in GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents)
-        {
-            FightSimulator.LogFightEvent(fightEvent);
+        base._Ready();
+        GetNode<RichTextLabel>("FightLog").Text = "";
+    }
+
+    public void _on_next_turn_pressed()
+    {
+        var fightEvents = GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
+        var nextEvent = fightEvents[0];
+        fightEvents.RemoveAt(0);
+        LogFightEvent(nextEvent);
+    }
+
+    public void _on_fast_forward_pressed()
+    {
+        List<FightEvent> fightEvents = GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
+        foreach(var nextEvent in fightEvents) {
+            LogFightEvent(nextEvent);
         }
+        fightEvents.Clear();
+    }
+
+    private void LogFightEvent(FightEvent nextEvent) {
+        var logEntry = FightSimulator.LogFightEvent(nextEvent);
+        GetNode<RichTextLabel>("FightLog/Text").Text += logEntry + "\n"; 
     }
 }
