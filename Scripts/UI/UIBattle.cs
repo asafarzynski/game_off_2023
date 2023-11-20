@@ -33,11 +33,12 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
     }
 
+    private int _eventIndex;
+
     public void _on_next_turn_pressed()
     {
         var fightEvents = GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
-        var nextEvent = fightEvents[0];
-        fightEvents.RemoveAt(0);
+        var nextEvent = fightEvents[_eventIndex++];
         LogFightEvent(nextEvent);
     }
 
