@@ -9,4 +9,5 @@ Cooldown = 0.5
 Count = 3
 Damage = 2.0
 CriticalChance = 0.2
+Target = 0
 Icon = ExtResource("1_axv0v")

@@ -6,20 +6,22 @@ public struct Spell : IInventoryItem
 {
     public ResourceId ResourceId { get; }
 
-    public float Cooldown;
+    public int Cooldown; // Multiples of 2: 1, 2, 4, 8, 16, etc.
     public int Count;
     public float Damage;
     public float CriticalChance;
+    public SpellTarget Target { get; set; }
 
-    public Spell(ResourceId resourceId) : this(resourceId, 1f, 1, 1f, 0.1f) { }
+    public Spell(ResourceId resourceId) : this(resourceId, 1, 1, 1f, 0.1f, SpellTarget.FirstEnemy) { }
 
-    public Spell(ResourceId resourceId, float cooldown, int count, float damage, float criticalChance)
+    public Spell(ResourceId resourceId, int cooldown, int count, float damage, float criticalChance, SpellTarget target)
     {
         ResourceId = resourceId;
         Cooldown = cooldown;
         Count = count;
         Damage = damage;
         CriticalChance = criticalChance;
+        Target = target;
     }
 
     public override string ToString()

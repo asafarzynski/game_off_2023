@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bhuqgljmwcutd"]
+
+[ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_f0q6w"]
+[ext_resource type="Script" path="res://Scripts/Resources/CharacterResource.cs" id="1_kc5ff"]
+[ext_resource type="Resource" uid="uid://bmevtfwi0u2mt" path="res://CustomResources/Characters/Rachel/UnlockableSpells.tres" id="2_n2cms"]
+[ext_resource type="Resource" uid="uid://ce2o75u4e0nal" path="res://CustomResources/Characters/Rachel/SpellBook.tres" id="2_rurxm"]
+
+[resource]
+script = ExtResource("1_kc5ff")
+name = "Rachel"
+characterType = 0
+initialHealth = 100
+unlockableCharacterSpells = ExtResource("2_n2cms")
+spellbook = ExtResource("2_rurxm")
+plainTexture = ExtResource("1_f0q6w")

@@ -14,6 +14,15 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
 {
     // show combat UI here
 
+    private RichTextLabel _fightLogText;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        _fightLogText = GetNode<RichTextLabel>("FightLog/Text");
+        _fightLogText.Text = "";
+    }
+
     public void _on_win_pressed()
     {
         State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
@@ -22,12 +31,6 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
     public void _on_lose_pressed()
     {
         State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
-    }
-
-    public override void _Ready()
-    {
-        base._Ready();
-        GetNode<RichTextLabel>("FightLog").Text = "";
     }
 
     public void _on_next_turn_pressed()
@@ -49,6 +52,6 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
 
     private void LogFightEvent(FightEvent nextEvent) {
         var logEntry = FightSimulator.LogFightEvent(nextEvent);
-        GetNode<RichTextLabel>("FightLog/Text").Text += logEntry + "\n"; 
+        _fightLogText.Text += logEntry + "\n"; 
     }
 }

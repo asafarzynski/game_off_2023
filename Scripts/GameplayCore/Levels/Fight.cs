@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using GameOff2023.Scripts.Fight;
-using GameOff2023.Scripts.GameplayCore.Enemies;
+using GameOff2023.Scripts.GameplayCore.Characters;
+using GameOff2023.Scripts.GameplayCore.Spells;
 
 namespace GameOff2023.Scripts.GameplayCore.Levels;
 
@@ -31,7 +31,7 @@ public class FightEvent
 
 public class CharacterFightStatus
 {
-    public int Health { get; set; }
+    public float Health { get; set; }
     // Other effect properties...
 }
 
@@ -40,13 +40,13 @@ public class Fight
     public bool IsCleared { get; internal set; }
     
     public readonly int FightNumber;
-    public readonly Enemy?[] EnemyList;
+    public readonly Character[] EnemyList;
 
     public List<FightEvent> FightEvents;
 
-    public Fight(int fightNumber) : this(fightNumber, new Enemy?[4]) { }
+    public Fight(int fightNumber) : this(fightNumber, new Character[4]) { }
 
-    public Fight(int fightNumber, Enemy?[] enemyList)
+    public Fight(int fightNumber, Character[] enemyList)
     {
         FightNumber = fightNumber;
         EnemyList = enemyList;

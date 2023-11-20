@@ -1,6 +1,6 @@
 using Godot;
 using System.Collections.Generic;
-using GameOff2023.Scripts.GameplayCore.Enemies;
+using GameOff2023.Scripts.GameplayCore.Characters;
 
 namespace GameOff2023.Scripts.GameplayCore.Levels;
 
@@ -10,9 +10,9 @@ public class LevelManager
     public Level CurrentLevel => Levels[^1];
     public Fight CurrentFight => CurrentLevel.FightList[CurrentLevel.CurrentFightIndex];
 
-    private readonly Enemy[] _enemies;
+    private readonly Character[] _enemies;
 
-    public LevelManager(Enemy[] enemies)
+    public LevelManager(Character[] enemies)
     {
         _enemies = enemies;
     }

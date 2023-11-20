@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ci7np5qbc34nw"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cayxyn6vs4gkk"]
 
-[ext_resource type="Resource" uid="uid://6ljudh7q6xt2" path="res://CustomResources/Enemies/snail.tres" id="1_160jc"]
-[ext_resource type="Script" path="res://Scripts/Resources/EnemiesList.cs" id="1_r6apy"]
-[ext_resource type="Resource" uid="uid://ccwk6yvii5snq" path="res://CustomResources/Enemies/toad.tres" id="2_7y44d"]
+[ext_resource type="Script" path="res://Scripts/Resources/CharactersList.cs" id="1_r6apy"]
+[ext_resource type="Resource" uid="uid://0nmwigpuyiw" path="res://CustomResources/Enemies/Snail/snail.tres" id="1_uy748"]
+[ext_resource type="Resource" uid="uid://drgj65cnnw8q" path="res://CustomResources/Enemies/Toad/toad.tres" id="2_xi1np"]
 
 [resource]
 script = ExtResource("1_r6apy")
-baseName = ""
-resources = Array[Resource]([ExtResource("1_160jc"), ExtResource("2_7y44d")])
+baseName = "Enemy"
+resources = Array[Resource]([ExtResource("1_uy748"), ExtResource("2_xi1np")])

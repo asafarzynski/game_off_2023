@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://buiwmcsyjrptw"]
 
-[ext_resource type="PackedScene" uid="uid://1m0h2tit1c23" path="res://Scenes/Characters/Rachel/Rachel.tscn" id="2_3doys"]
+[ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_gog0f"]
 [ext_resource type="PackedScene" uid="uid://di8m7kt8f12f3" path="res://Scenes/Levels/tower_level.tscn" id="2_70scj"]
 [ext_resource type="PackedScene" uid="uid://tr645cn6k8h7" path="res://Scenes/Enemies/Moth/moth.tscn" id="3_dwmpc"]
 [ext_resource type="PackedScene" uid="uid://1ywll8nccqer" path="res://Scenes/Enemies/Snail/snail.tscn" id="4_3k8an"]
@@ -35,8 +35,12 @@ fov = 50.0
 size = 10.0
 far = 100.0
 
-[node name="Player" parent="." instance=ExtResource("2_3doys")]
-transform = Transform3D(0.614271, 0, 0.789095, 0, 1, 0, -0.789095, 0, 0.614271, -9.3371, 0.501126, -6.51613)
+[node name="PlayerPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3223, -2.38419e-07, -5.09695)
+
+[node name="Sprite3D" type="Sprite3D" parent="PlayerPosition"]
+transform = Transform3D(-0.145, 0, -0.251147, 0, 0.29, 0, 0.251147, 0, -0.145, 0, 1.70016, 0)
+texture = ExtResource("1_gog0f")
 
 [node name="TowerLevel" parent="." instance=ExtResource("2_70scj")]
 

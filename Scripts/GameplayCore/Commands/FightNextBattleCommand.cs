@@ -1,15 +1,14 @@
 using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.Fight;
-using Godot;
-using GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
-using GameplayState = GameOff2023.Scripts.GameStateManagement.GameStates.GameplayState;
-using GameOff2023.Scripts.GameStateManagement;
+using GameOff2023.Scripts.GameplayCore.Characters;
+using GameOff2023.Scripts.GameplayCore.Levels;
+
 namespace GameOff2023.Scripts.GameplayCore.Commands;
 
 public class FightNextBattleCommand : GameplayCoreCommand
 {
     public FightNextBattleCommand(GameplayCore gameplayCore) : base(gameplayCore) { }
-    
+
     public override CommandValidation Validate()
     {
         var atLeastOneSpell = false;
@@ -30,7 +29,7 @@ public class FightNextBattleCommand : GameplayCoreCommand
         {
             return CommandValidationCreator.Invalid("All fights on this level cleared");
         }
-        
+
         return CommandValidationCreator.Valid();
     }
 
@@ -42,37 +41,36 @@ public class FightNextBattleCommand : GameplayCoreCommand
         var currentFight = currentLevel.FightList[currentLevel.CurrentFightIndex];
 
 
-        currentFight.FightEvents = FightSimulator.Simulate();
-        
+        currentFight.FightEvents = FightSimulator.SimulateFight(new Character[]
+            {
+                Core.PlayerCharacter,
+            },
+            currentFight.EnemyList);
+
         foreach (var fightEvent in currentFight.FightEvents)
         {
             FightSimulator.LogFightEvent(fightEvent);
         }
 
-        // if(fightEvents[^1].FightResult == FightStatus.Win) {
-        //     return true;
-        // } else if(fightEvents[^1].FightResult == FightStatus.Draw) {
-        //     return false;
-        // } else {
-        //     return false;
-        // }
+        var result = currentFight.FightEvents[^1].FightResult == FightStatus.Win;
 
-        // if(result)
-        // {
-        //     currentFight.IsCleared = true;
-        // }
-        // else {
-        //     currentFight.IsCleared = false;
-        // }
+        if (result)
+        {
+            currentFight.IsCleared = true;
+        }
+        else
+        {
+            currentFight.IsCleared = false;
+        }
 
-        // if (currentLevel.IsCleared)
-        // {
-        //     Core.Events.OnLevelCleared?.Invoke();
-        // }
-        // else
-        // {
-        //     currentLevel.CurrentFightIndex++;
-        // }
+        if (currentLevel.IsCleared)
+        {
+            Core.Events.OnLevelCleared?.Invoke();
+        }
+        else
+        {
+            currentLevel.CurrentFightIndex++;
+        }
     }
 
     public override void UnExecute()

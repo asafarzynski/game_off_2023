@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dhkgcowjslu8r"]
+
+[ext_resource type="Resource" uid="uid://bhuqgljmwcutd" path="res://CustomResources/Characters/Rachel/rachel.tres" id="1_c8awr"]
+[ext_resource type="Script" path="res://Scripts/Resources/CharactersList.cs" id="1_s8qle"]
+
+[resource]
+script = ExtResource("1_s8qle")
+baseName = "Hero"
+resources = Array[Resource]([ExtResource("1_c8awr")])

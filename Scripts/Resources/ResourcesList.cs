@@ -10,10 +10,15 @@ public partial class ResourcesList<T> : Resource
     [Export] private string baseName;
     [Export] private Resource[] resources;
 
-    public readonly Dictionary<ResourceId, T> ResourcesDictionary = new();
+    public Dictionary<ResourceId, T> ResourcesDictionary;
 
     public void PrepareDictionary()
     {
+        if (ResourcesDictionary != null)
+            return;
+
+        ResourcesDictionary = new();
+
         foreach (Resource resource in resources)
         {
             if (resource is T typedResource)
