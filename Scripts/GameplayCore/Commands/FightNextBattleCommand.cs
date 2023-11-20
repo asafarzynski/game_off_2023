@@ -11,19 +11,19 @@ public class FightNextBattleCommand : GameplayCoreCommand
 
     public override CommandValidation Validate()
     {
-        var atLeastOneSpell = false;
-        foreach (var slot in Core.Inventory.SpellSlots)
-        {
-            if (slot.Spell.HasValue)
-            {
-                atLeastOneSpell = true;
-                break;
-            }
-        }
-        if (!atLeastOneSpell)
-        {
-            return CommandValidationCreator.Invalid("No spells selected");
-        }
+        // var atLeastOneSpell = false;
+        // foreach (var slot in Core.Inventory.SpellSlots)
+        // {
+        //     if (slot.Spell.HasValue)
+        //     {
+        //         atLeastOneSpell = true;
+        //         break;
+        //     }
+        // }
+        // if (!atLeastOneSpell)
+        // {
+        //     return CommandValidationCreator.Invalid("No spells selected");
+        // }
 
         if (Core.LevelManager.CurrentLevel.IsCleared)
         {
@@ -39,7 +39,6 @@ public class FightNextBattleCommand : GameplayCoreCommand
 
         var currentLevel = Core.LevelManager.CurrentLevel;
         var currentFight = currentLevel.FightList[currentLevel.CurrentFightIndex];
-
 
         currentFight.FightEvents = FightSimulator.SimulateFight(new Character[]
             {
