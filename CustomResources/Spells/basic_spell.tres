@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("1_0qeae")
-Cooldown = 1.0
+Cooldown = 0
 Count = 1
 Damage = 1.0
 CriticalChance = 0.1
+Target = 1
 Icon = ExtResource("1_1sj5l")
