@@ -61,15 +61,6 @@ public class FightNextBattleCommand : GameplayCoreCommand
         {
             currentFight.IsCleared = false;
         }
-
-        if (currentLevel.IsCleared)
-        {
-            Core.Events.OnLevelCleared?.Invoke();
-        }
-        else
-        {
-            currentLevel.CurrentFightIndex++;
-        }
     }
 
     public override void UnExecute()
