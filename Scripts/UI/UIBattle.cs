@@ -12,13 +12,13 @@ namespace GameOff2023.Scripts.UI;
 public partial class UIBattle : UIGameStateSpecific<GameplayState>
 {
     // show combat UI here
-
     private Button _summaryButton;
     private Timer _timer;
     private RichTextLabel _fightLogText;
 
     private int _eventIndex;
     private int _lastCooldown;
+    private float _timeSpeed = 1f;
 
     private List<FightEvent> FightEvents => GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
 
@@ -43,6 +43,13 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         base._ExitTree();
 
         _timer.Timeout -= TimeTick;
+    }
+
+    public void _on_speed_toggled(bool _, int speedValue)
+    {
+        var timeLeftFactor = _timeSpeed / speedValue;
+        _timer.WaitTime = _timer.TimeLeft * timeLeftFactor;
+        _timeSpeed = speedValue;
     }
 
     public void _on_pause_toggled(bool toggled)
@@ -74,6 +81,10 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
     private void TimeTick()
     {
         _timer.Stop();
+        
+        if (_eventIndex >= FightEvents.Count)
+            return;
+        
         var currentEvent = FightEvents[_eventIndex++];
         LogFightEvent(currentEvent);
 
@@ -87,7 +98,7 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
                 TimeTick();
                 return;
             }
-            _timer.WaitTime = nextWaitTime.Value;
+            _timer.WaitTime = nextWaitTime.Value / _timeSpeed;
             _timer.Start();
         }
         else

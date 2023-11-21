@@ -56,22 +56,19 @@ layout_mode = 2
 text = "Speed:"
 vertical_alignment = 1
 
-[node name="1x" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
+[node name="1x" type="CheckBox" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
 layout_mode = 2
-toggle_mode = true
 button_pressed = true
 button_group = ExtResource("3_8khp8")
 text = "1x"
 
-[node name="2x" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
+[node name="2x" type="CheckBox" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
 layout_mode = 2
-toggle_mode = true
 button_group = ExtResource("3_8khp8")
 text = "2x"
 
-[node name="3x" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
+[node name="3x" type="CheckBox" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
 layout_mode = 2
-toggle_mode = true
 button_group = ExtResource("3_8khp8")
 text = "3x"
 
@@ -114,5 +111,8 @@ theme_override_font_sizes/normal_font_size = 16
 scroll_following = true
 
 [connection signal="toggled" from="HBoxContainer/Pause" to="." method="_on_pause_toggled"]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection/1x" to="." method="_on_speed_toggled" binds= [1]]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection/2x" to="." method="_on_speed_toggled" binds= [2]]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection/3x" to="." method="_on_speed_toggled" binds= [3]]
 [connection signal="pressed" from="HBoxContainer/FastForward" to="." method="_on_fast_forward_pressed"]
 [connection signal="pressed" from="HBoxContainer/SummaryButton" to="." method="_on_summary_button_pressed"]
