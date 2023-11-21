@@ -113,5 +113,6 @@ theme_override_fonts/normal_font = ExtResource("4_cx4fx")
 theme_override_font_sizes/normal_font_size = 16
 scroll_following = true
 
+[connection signal="toggled" from="HBoxContainer/Pause" to="." method="_on_pause_toggled"]
 [connection signal="pressed" from="HBoxContainer/FastForward" to="." method="_on_fast_forward_pressed"]
-[connection signal="pressed" from="HBoxContainer/SummaryButton" to="." method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="HBoxContainer/SummaryButton" to="." method="_on_summary_button_pressed"]

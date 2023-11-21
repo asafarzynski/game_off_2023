@@ -45,6 +45,11 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         _timer.Timeout -= TimeTick;
     }
 
+    public void _on_pause_toggled(bool toggled)
+    {
+        _timer.Paused = toggled;
+    }
+
     public void _on_summary_button_pressed()
     {
         State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
