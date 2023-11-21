@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddgd7n0bm2pp7"]
+[gd_scene load_steps=6 format=3 uid="uid://ddgd7n0bm2pp7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIBattle.cs" id="1_eo03y"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_hhyy5"]
+[ext_resource type="ButtonGroup" uid="uid://b63od6yp81euu" path="res://Scenes/UI/Battle/speed_button_group.tres" id="3_8khp8"]
 [ext_resource type="Texture2D" uid="uid://bj0vdstq13fcf" path="res://Visuals/UI/fight_log_backgroud.png" id="3_cpxi4"]
 [ext_resource type="FontFile" uid="uid://b5wai00rogivy" path="res://Visuals/UIThemes/SparkyStonesRegular-BW6ld.ttf" id="4_cx4fx"]
 
@@ -25,28 +26,64 @@ anchor_bottom = 0.5
 offset_left = -236.0
 offset_top = -515.0
 offset_right = 236.0
-offset_bottom = -475.0
+offset_bottom = -481.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Win" type="Button" parent="HBoxContainer"]
+[node name="Pause" type="CheckButton" parent="HBoxContainer"]
 layout_mode = 2
-text = "win"
+text = "Pause"
 
-[node name="NextTurn" type="Button" parent="HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
-text = "Next Turn"
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SpeedSelection" type="HBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
+layout_mode = 2
+text = "Speed:"
+vertical_alignment = 1
+
+[node name="1x" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("3_8khp8")
+text = "1x"
+
+[node name="2x" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_8khp8")
+text = "2x"
+
+[node name="3x" type="Button" parent="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("3_8khp8")
+text = "3x"
 
 [node name="FastForward" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "Fast Forward"
+text = "Fast forward"
 
-[node name="Lose" type="Button" parent="HBoxContainer"]
+[node name="SummaryButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-text = "lose"
+text = "See summary"
 
-[node name="FightTicker" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="FightLog" type="Control" parent="."]
@@ -76,7 +113,5 @@ theme_override_fonts/normal_font = ExtResource("4_cx4fx")
 theme_override_font_sizes/normal_font_size = 16
 scroll_following = true
 
-[connection signal="pressed" from="HBoxContainer/Win" to="." method="_on_win_pressed"]
-[connection signal="pressed" from="HBoxContainer/NextTurn" to="." method="_on_next_turn_pressed"]
 [connection signal="pressed" from="HBoxContainer/FastForward" to="." method="_on_fast_forward_pressed"]
-[connection signal="pressed" from="HBoxContainer/Lose" to="." method="_on_lose_pressed"]
+[connection signal="pressed" from="HBoxContainer/SummaryButton" to="." method="_on_fast_forward_pressed"]

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_lix8l")
-Cooldown = 0
+Cooldown = 3
 Count = 3
 Damage = 2.0
 CriticalChance = 0.2

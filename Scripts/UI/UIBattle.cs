@@ -3,7 +3,6 @@ using GameplayState = GameOff2023.Scripts.GameStateManagement.GameStates.Gamepla
 using GameOff2023.Scripts.GameStateManagement;
 using GameOff2023.Scripts.Fight;
 using Godot;
-using System.Reflection.Metadata.Ecma335;
 using GameOff2023.Scripts.GameplayCore.Levels;
 using System.Collections.Generic;
 
@@ -14,45 +13,78 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
 {
     // show combat UI here
 
+    private Button _summaryButton;
+    private Timer _timer;
     private RichTextLabel _fightLogText;
+
+    private int _eventIndex;
+    private int _lastCooldown;
+
+    private List<FightEvent> FightEvents => GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
 
     public override void _Ready()
     {
         base._Ready();
+        _summaryButton = (Button)FindChild("SummaryButton");
+        _summaryButton.Disabled = true;
+
         _fightLogText = GetNode<RichTextLabel>("FightLog/Text");
         _fightLogText.Text = "";
+
+        _timer = GetNode<Timer>("Timer");
+        _timer.Timeout += TimeTick;
+        _timer.Start();
+
+        _eventIndex = 0;
     }
 
-    public void _on_win_pressed()
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        _timer.Timeout -= TimeTick;
+    }
+
+    public void _on_summary_button_pressed()
     {
         State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
-    }
-
-    public void _on_lose_pressed()
-    {
-        State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
-    }
-
-    private int _eventIndex;
-
-    public void _on_next_turn_pressed()
-    {
-        var fightEvents = GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
-        var nextEvent = fightEvents[_eventIndex++];
-        LogFightEvent(nextEvent);
     }
 
     public void _on_fast_forward_pressed()
     {
-        List<FightEvent> fightEvents = GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
-        foreach(var nextEvent in fightEvents) {
+        foreach (var nextEvent in FightEvents)
+        {
             LogFightEvent(nextEvent);
         }
-        fightEvents.Clear();
+        _eventIndex = FightEvents.Count;
+        _summaryButton.Disabled = false;
     }
 
-    private void LogFightEvent(FightEvent nextEvent) {
+    private void LogFightEvent(FightEvent nextEvent)
+    {
         var logEntry = FightSimulator.LogFightEvent(nextEvent);
-        _fightLogText.Text += logEntry + "\n"; 
+        _fightLogText.Text += logEntry + "\n";
+    }
+
+    private void TimeTick()
+    {
+        _timer.Stop();
+        var currentEvent = FightEvents[_eventIndex++];
+        LogFightEvent(currentEvent);
+
+        if (_eventIndex < FightEvents.Count)
+        {
+            var nextEvent = FightEvents[_eventIndex];
+            _timer.WaitTime = nextEvent.SpellCast?.Cooldown - _lastCooldown ?? 1f;
+            _timer.Start();
+        }
+        else
+        {
+            _summaryButton.Disabled = false;
+        }
+        if (currentEvent.SpellCast != null)
+        {
+            _lastCooldown = currentEvent.SpellCast.Cooldown;
+        }
     }
 }
