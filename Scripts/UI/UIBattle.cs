@@ -75,7 +75,14 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         if (_eventIndex < FightEvents.Count)
         {
             var nextEvent = FightEvents[_eventIndex];
-            _timer.WaitTime = nextEvent.SpellCast?.Cooldown - _lastCooldown ?? 1f;
+            int? nextWaitTime = nextEvent.SpellCast?.Cooldown - _lastCooldown;
+            if (nextWaitTime is null or < 1)
+            {
+                // events happening in the same time (kinda)
+                TimeTick();
+                return;
+            }
+            _timer.WaitTime = nextWaitTime.Value;
             _timer.Start();
         }
         else
