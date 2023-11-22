@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d0a0t4m5paqn2" path="res://Visuals/Models/TowerRoom/TowerRoom.glb" id="5_kkun0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2q6"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.231373, 0.411765, 0.552941, 1)
+sky_horizon_color = Color(0.686275, 0.772549, 0.827451, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
 [sub_resource type="Sky" id="Sky_e6dta"]
@@ -16,10 +17,29 @@ sky_material = SubResource("ProceduralSkyMaterial_mi2q6")
 [sub_resource type="Environment" id="Environment_6xde0"]
 background_mode = 2
 sky = SubResource("Sky_e6dta")
+ambient_light_source = 1
+ambient_light_color = Color(0.756863, 0.756863, 0.756863, 1)
+ambient_light_sky_contribution = 0.63
+ambient_light_energy = 10.54
 tonemap_mode = 2
 ssao_enabled = true
+ssao_intensity = 5.0
+ssil_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
+glow_normalized = true
+glow_strength = 1.5
+glow_blend_mode = 1
+fog_enabled = true
+fog_light_color = Color(0.580392, 0.537255, 0.541176, 1)
+fog_light_energy = 0.5
+fog_sun_scatter = 1.0
+fog_density = 0.001
+fog_aerial_perspective = 1.0
+fog_height = 1.0
+fog_height_density = 0.4
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
 
 [node name="test_3d_level_mockup" type="Node3D"]
 
@@ -27,19 +47,20 @@ glow_enabled = true
 environment = SubResource("Environment_6xde0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.859852, -0.347537, 0.373995, 0, 0.732543, 0.680721, -0.510543, -0.585319, 0.629879, 0, 0, 0)
+transform = Transform3D(0.859852, -0.361008, 0.361008, 0, 0.707107, 0.707107, -0.510543, -0.608007, 0.608008, 0, 0, 0)
 light_color = Color(0.866667, 0.901961, 0.886275, 1)
 light_energy = 0.3
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.906032, -0.0397024, 0.421343, 0.00943146, 0.997237, 0.073687, -0.423104, -0.0627889, 0.903903, -0.294661, 4.11442, 1.23441)
+transform = Transform3D(0.92388, -0.0499502, 0.37941, 0, 0.991445, 0.130526, -0.382683, -0.12059, 0.915976, 1.71854, 5.15719, 2.99487)
+projection = 2
 fov = 48.5
-size = 10.0
+size = 0.04
 far = 100.0
 
 [node name="PlayerPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.84465, -2.38419e-07, -5.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.34258, 2.38418e-07, -7.1068)
 
 [node name="Sprite3D" type="Sprite3D" parent="PlayerPosition"]
 transform = Transform3D(-0.145, 0, -0.251147, 0, 0.29, 0, 0.251147, 0, -0.145, 0, 1.70016, 0)
@@ -49,14 +70,20 @@ alpha_cut = 2
 texture = ExtResource("1_gog0f")
 
 [node name="Moth" parent="." instance=ExtResource("3_dwmpc")]
-transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, -2.98959, 1.45136, -10.6455)
+transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, -1.64602, 1.45136, -10.5007)
 
 [node name="Moth2" parent="." instance=ExtResource("3_dwmpc")]
-transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, -1.37117, 1.48185, -11.3634)
+transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, 1.86111, 1.48185, -10.3575)
 
 [node name="Snail" parent="." instance=ExtResource("4_3k8an")]
-transform = Transform3D(0.836969, -0.0243716, 0.546707, 0.0263141, 0.999645, 0.00427805, -0.546618, 0.0108055, 0.837314, -5.11095, 1.44529, -9.70584)
+transform = Transform3D(0.836969, -0.0243716, 0.546707, 0.0263141, 0.999645, 0.00427805, -0.546618, 0.0108055, 0.837314, -3.76113, 1.47842, -9.72629)
 
 [node name="TowerLevel2" parent="." instance=ExtResource("4_vymwo")]
+
+[node name="TowerLevel3" parent="." instance=ExtResource("4_vymwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="TowerLevel4" parent="." instance=ExtResource("4_vymwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="TowerRoom" parent="." instance=ExtResource("5_kkun0")]
