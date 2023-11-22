@@ -1,11 +1,10 @@
 using GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
 using GameplayState = GameOff2023.Scripts.GameStateManagement.GameStates.GameplayState;
 using GameOff2023.Scripts.GameStateManagement;
-using GameOff2023.Scripts.Fight;
 using Godot;
 using GameOff2023.Scripts.GameplayCore.Levels;
 using System.Collections.Generic;
-
+using GameOff2023.Scripts.UI.Battle;
 
 namespace GameOff2023.Scripts.UI;
 
@@ -74,7 +73,7 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
 
     private void LogFightEvent(FightEvent nextEvent)
     {
-        var logEntry = FightSimulator.LogFightEvent(nextEvent);
+        var logEntry = FightLogger.LogFightEvent(nextEvent);
         _fightLogText.Text += logEntry + "\n";
     }
 

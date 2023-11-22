@@ -126,39 +126,6 @@ public static class FightSimulator
         return Math.Clamp(characterFightStatus.Health - damage, 0, character.Stats.Health);
     }
 
-    public static string LogFightEvent(FightEvent fightEvent)
-    {
-        switch (fightEvent.EventType) {
-            case FightEventType.FightStart: {
-                return "Start of the fight!";
-            }
-            case FightEventType.FightResult: {
-                return $"Fight result: {fightEvent.FightResult}";
-            }
-            case FightEventType.CharacterDeath: {
-                return $"{fightEvent.TargetCharacter.Name} has died :(";
-            }
-            case FightEventType.SpellCast: {
-                return LogHit(
-                    fightEvent.SpellCast.OriginCharacter,
-                    fightEvent.TargetCharacter,
-                    fightEvent.TargetCharacterFightStatus,
-                    fightEvent.SpellCast.Spell.Damage
-                );
-            }
-            default:
-                return "Unsupported fight event";
-        }
-    }
-
-    public static string LogHit(Character originCharacter, Character targetCharacter, CharacterFightStatus targetCharacterFightStatus, float damage) {
-        if(damage < 0) {
-            return $"{originCharacter.Name} heals {targetCharacter.Name} for {Math.Abs(damage)}";
-        } else {
-            return $"{originCharacter.Name} deals {damage} to {targetCharacter.Name}";
-        }
-    }
-
     public static List<FightEvent> Simulate()
     {
         var player = new Character

@@ -48,11 +48,6 @@ public class FightNextBattleCommand : GameplayCoreCommand
             },
             currentFight.EnemyList);
 
-        foreach (var fightEvent in currentFight.FightEvents)
-        {
-            FightSimulator.LogFightEvent(fightEvent);
-        }
-
         var result = currentFight.FightEvents[^1].FightResult == FightStatus.Win;
 
         if (result)
