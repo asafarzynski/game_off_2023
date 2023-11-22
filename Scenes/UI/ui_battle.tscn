@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddgd7n0bm2pp7"]
+[gd_scene load_steps=5 format=3 uid="uid://ddgd7n0bm2pp7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIBattle.cs" id="1_eo03y"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_hhyy5"]
 [ext_resource type="ButtonGroup" uid="uid://b63od6yp81euu" path="res://Scenes/UI/Battle/speed_button_group.tres" id="3_8khp8"]
-[ext_resource type="Texture2D" uid="uid://bj0vdstq13fcf" path="res://Visuals/UI/fight_log_backgroud.png" id="3_cpxi4"]
 [ext_resource type="FontFile" uid="uid://b5wai00rogivy" path="res://Visuals/UIThemes/SparkyStonesRegular-BW6ld.ttf" id="4_cx4fx"]
 
 [node name="ui_battle" type="Control"]
@@ -83,34 +82,31 @@ text = "See summary"
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="FightLog" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 866.0
-offset_top = 921.0
-offset_right = 906.0
-offset_bottom = 961.0
-
-[node name="TextureRect" type="NinePatchRect" parent="FightLog"]
-layout_mode = 0
-offset_left = -216.0
-offset_top = -172.0
-offset_right = 607.0
-offset_bottom = 264.0
-scale = Vector2(0.744556, 0.744556)
-texture = ExtResource("3_cpxi4")
-region_rect = Rect2(0.530411, 1.9973, 820.436, 433.509)
-patch_margin_left = 67
-patch_margin_top = 71
-patch_margin_right = 61
-patch_margin_bottom = 86
+[node name="FightLog" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -327.5
+offset_top = -225.0
+offset_right = 327.5
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Text" type="RichTextLabel" parent="FightLog"]
-layout_mode = 0
-offset_left = -164.0
-offset_top = -116.0
-offset_right = 348.0
-offset_bottom = 90.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("4_cx4fx")
 theme_override_font_sizes/normal_font_size = 16
 scroll_following = true
