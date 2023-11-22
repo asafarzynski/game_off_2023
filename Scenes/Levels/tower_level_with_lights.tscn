@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd0u6hl4pu33j"]
+
+[ext_resource type="PackedScene" uid="uid://ckgqcdetejrjd" path="res://Visuals/Models/TowerLevel/TowerLevel.glb" id="1_hka7w"]
+
+[node name="TowerLevel" instance=ExtResource("1_hka7w")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95734, 6.89125, -3.30367)
+light_color = Color(0, 0.984314, 0.988235, 1)
+light_size = 0.1
+shadow_enabled = true
+shadow_opacity = 0.5
+shadow_blur = 5.0
+omni_range = 8.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32624, 6.84098, -7.92898)
+light_color = Color(0, 0.984314, 0.988235, 1)
+light_size = 0.1
+shadow_enabled = true
+shadow_opacity = 0.5
+shadow_blur = 5.0
+omni_range = 8.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27081, 6.92704, -7.99517)
+light_color = Color(0, 0.984314, 0.988235, 1)
+light_size = 0.1
+shadow_enabled = true
+shadow_opacity = 0.5
+shadow_blur = 5.0
+omni_range = 8.0

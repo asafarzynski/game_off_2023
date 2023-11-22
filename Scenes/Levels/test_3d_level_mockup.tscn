@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://buiwmcsyjrptw"]
+[gd_scene load_steps=9 format=3 uid="uid://buiwmcsyjrptw"]
 
 [ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_gog0f"]
-[ext_resource type="PackedScene" uid="uid://di8m7kt8f12f3" path="res://Scenes/Levels/tower_level.tscn" id="2_70scj"]
 [ext_resource type="PackedScene" uid="uid://tr645cn6k8h7" path="res://Scenes/Enemies/Moth/moth.tscn" id="3_dwmpc"]
 [ext_resource type="PackedScene" uid="uid://1ywll8nccqer" path="res://Scenes/Enemies/Snail/snail.tscn" id="4_3k8an"]
+[ext_resource type="PackedScene" uid="uid://cd0u6hl4pu33j" path="res://Scenes/Levels/tower_level_with_lights.tscn" id="4_vymwo"]
+[ext_resource type="PackedScene" uid="uid://d0a0t4m5paqn2" path="res://Visuals/Models/TowerRoom/TowerRoom.glb" id="5_kkun0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2q6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,28 +28,35 @@ environment = SubResource("Environment_6xde0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.859852, -0.347537, 0.373995, 0, 0.732543, 0.680721, -0.510543, -0.585319, 0.629879, 0, 0, 0)
+light_color = Color(0.866667, 0.901961, 0.886275, 1)
+light_energy = 0.3
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.700909, -0.123855, 0.702415, 0, 0.984808, 0.173648, -0.71325, -0.121712, 0.690261, 0.892052, 4.06297, -0.291265)
-fov = 50.0
+transform = Transform3D(0.8576, -0.0303172, 0.513424, 0.00406525, 0.99863, 0.0521778, -0.514302, -0.0426605, 0.856548, -0.387881, 4.07171, 0.492688)
+fov = 60.0
 size = 10.0
 far = 100.0
 
 [node name="PlayerPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3223, -2.38419e-07, -5.09695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.84465, -2.38419e-07, -5.65)
 
 [node name="Sprite3D" type="Sprite3D" parent="PlayerPosition"]
 transform = Transform3D(-0.145, 0, -0.251147, 0, 0.29, 0, 0.251147, 0, -0.145, 0, 1.70016, 0)
+flip_h = true
+billboard = 2
+alpha_cut = 2
 texture = ExtResource("1_gog0f")
 
-[node name="TowerLevel" parent="." instance=ExtResource("2_70scj")]
-
 [node name="Moth" parent="." instance=ExtResource("3_dwmpc")]
-transform = Transform3D(0.614285, 0, 0.789084, 0, 1, 0, -0.789084, 0, 0.614285, -5.16265, 1.53121, -10.4536)
+transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, -2.98959, 1.45136, -10.6455)
 
 [node name="Moth2" parent="." instance=ExtResource("3_dwmpc")]
-transform = Transform3D(0.614285, 0, 0.789084, 0, 1, 0, -0.789084, 0, 0.614285, -3.86652, 1.5617, -11.6597)
+transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, -1.37117, 1.48185, -11.3634)
 
 [node name="Snail" parent="." instance=ExtResource("4_3k8an")]
-transform = Transform3D(0.613147, -0.0195198, 0.789728, 0.0263141, 0.999645, 0.00427805, -0.789531, 0.0181579, 0.613443, -6.86301, 1.51801, -8.87261)
+transform = Transform3D(0.836969, -0.0243716, 0.546707, 0.0263141, 0.999645, 0.00427805, -0.546618, 0.0108055, 0.837314, -5.11095, 1.44529, -9.70584)
+
+[node name="TowerLevel2" parent="." instance=ExtResource("4_vymwo")]
+
+[node name="TowerRoom" parent="." instance=ExtResource("5_kkun0")]
