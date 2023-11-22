@@ -25,7 +25,7 @@ public partial class UISpellSlot : Control
         }
 
         UpdateSlots(null,
-            new Texture2D[]
+            new UIInventorySlot.UIInventorySlotData[]
             {
                 null,
                 null,
@@ -42,12 +42,12 @@ public partial class UISpellSlot : Control
         }
     }
 
-    public void UpdateSlots(Texture2D mainIcon, Texture2D[] modifiersIcons)
+    public void UpdateSlots(UIInventorySlot.UIInventorySlotData mainIcon, UIInventorySlot.UIInventorySlotData[] modifiersIcons)
     {
-        mainSlot.SetItemImage(mainIcon);
+        mainSlot.SetUp(mainIcon);
         for (var i = 0; i < modifierSlots.Length; i++)
         {
-            modifierSlots[i].SetItemImage(modifiersIcons[i]);
+            modifierSlots[i].SetUp(modifiersIcons[i]);
         }
     }
 

@@ -10,4 +10,6 @@ Count = 3
 Damage = 2.0
 CriticalChance = 0.2
 Target = 1
+Name = "Ice Blast"
+Description = "Greater damage; greater crit chance"
 Icon = ExtResource("1_axv0v")

@@ -12,23 +12,23 @@ namespace GameOff2023.Scripts.GameplayCore;
 /// </summary>
 public readonly struct ResourceId : IEquatable<ResourceId>
 {
-    private readonly string _baseName;
-    private readonly int _number;
+    public readonly string BaseName { get; }
+    public readonly int Number { get; }
     
     public ResourceId(string baseName, int number)
     {
-        _baseName = baseName;
-        _number = number;
+        BaseName = baseName;
+        Number = number;
     }
 
     public override string ToString()
     {
-        return $"<{_baseName}:{_number}>";
+        return $"<{BaseName}:{Number}>";
     }
 
     public bool Equals(ResourceId other)
     {
-        return _baseName == other._baseName && _number == other._number;
+        return BaseName == other.BaseName && Number == other.Number;
     }
 
     public override bool Equals(object obj)
@@ -38,6 +38,6 @@ public readonly struct ResourceId : IEquatable<ResourceId>
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(_baseName, _number);
+        return HashCode.Combine(BaseName, Number);
     }
 }

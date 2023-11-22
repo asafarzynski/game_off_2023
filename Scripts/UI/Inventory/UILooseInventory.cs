@@ -16,12 +16,12 @@ public partial class UILooseInventory : Control
     private IInventoryItem[] _itemsArray;
 
     private List<UIInventorySlot> _uiSlots = new();
-    private Func<ResourceId, Texture2D> _iconsProviders;
+    private Func<ResourceId, UIInventorySlot.UIInventorySlotData> _slotDataProviders;
 
-    public void Initialize(IInventoryItem[] itemsArray, Func<ResourceId, Texture2D> iconsProviders)
+    public void Initialize(IInventoryItem[] itemsArray, Func<ResourceId, UIInventorySlot.UIInventorySlotData> iconsProviders)
     {
         _itemsArray = itemsArray;
-        _iconsProviders = iconsProviders;
+        _slotDataProviders = iconsProviders;
 
         for (var i = 0; i < _itemsArray.Length; i++)
         {
@@ -30,7 +30,7 @@ public partial class UILooseInventory : Control
 
             var uiSlot = newSlot.GetNode<UIInventorySlot>("./");
             uiSlot.Initialize(i);
-            uiSlot.SetItemImage(null);
+            uiSlot.SetUp(null);
             uiSlot.OnSlotSelected += SelectSlot;
             _uiSlots.Add(uiSlot);
         }
@@ -59,12 +59,12 @@ public partial class UILooseInventory : Control
             var coreSlot = _itemsArray[i];
             if (coreSlot != null)
             {
-                var icon = _iconsProviders(coreSlot.ResourceId);
-                _uiSlots[i].SetItemImage(icon);
+                var slotData = _slotDataProviders(coreSlot.ResourceId);
+                _uiSlots[i].SetUp(slotData);
             }
             else
             {
-                _uiSlots[i].SetItemImage(null);
+                _uiSlots[i].SetUp(null);
             }
         }
     }

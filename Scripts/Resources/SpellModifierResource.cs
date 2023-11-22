@@ -3,10 +3,10 @@ using Godot;
 
 namespace GameOff2023.Scripts.Resources;
 
-public partial class SpellModifierResource : Resource, IIconContainer
+public partial class SpellModifierResource : Resource, IIconProvider, INameProvider, IDescriptionProvider
 {
     [Export] private SpellModifierElementResource[] modifierElements;
-    [Export] private Texture2D icon;
-
-    public Texture2D GetIcon() => icon;
+    [Export] public Texture2D Icon { get; private set; }
+    [Export] public string Name { get; private set; }
+    [Export] public string Description { get; private set; }
 }

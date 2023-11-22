@@ -16,9 +16,9 @@ public partial class UISpellSlots : Control
     private SpellSlot[] _spellSlots;
 
     private readonly List<UISpellSlot> _uiSlots = new();
-    private Func<ResourceId, Texture2D> _getIcon;
+    private Func<ResourceId, UIInventorySlot.UIInventorySlotData> _getSlotData;
 
-    public void Initialize(SpellSlot[] spellSlots, Func<ResourceId, Texture2D> iconsProviderFunc)
+    public void Initialize(SpellSlot[] spellSlots, Func<ResourceId, UIInventorySlot.UIInventorySlotData> iconsProviderFunc)
     {
         _spellSlots = spellSlots;
 
@@ -33,7 +33,8 @@ public partial class UISpellSlots : Control
             _uiSlots.Add(uiSlot);
         }
         
-        _getIcon = iconsProviderFunc;
+        _getSlotData = iconsProviderFunc;
+        UpdateSlots();
     }
 
     public void Deinitialize()
@@ -46,7 +47,7 @@ public partial class UISpellSlots : Control
         }
         _uiSlots.Clear();
 
-        _getIcon = null;
+        _getSlotData = null;
     }
 
     public void UpdateSlots()
@@ -56,13 +57,13 @@ public partial class UISpellSlots : Control
             if (_spellSlots[i] == null)
                 continue;
 
-            Texture2D mainSlotIcon = _spellSlots[i].Spell.HasValue ? _getIcon(_spellSlots[i].Spell.Value.ResourceId) : null;
-            Texture2D[] modifierIcons = new Texture2D[3];
+            var mainSlotData = _spellSlots[i].Spell.HasValue ? _getSlotData(_spellSlots[i].Spell.Value.ResourceId) : null;
+            var modifierIcons = new UIInventorySlot.UIInventorySlotData[3];
             for (var j = 0; j < modifierIcons.Length; j++)
             {
-                modifierIcons[j] = _spellSlots[i].Modifiers[j] == null ? null : _getIcon(_spellSlots[i].Modifiers[j].ResourceId);
+                modifierIcons[j] = _spellSlots[i].Modifiers[j] == null ? null : _getSlotData(_spellSlots[i].Modifiers[j].ResourceId);
             }
-            _uiSlots[i].UpdateSlots(mainSlotIcon, modifierIcons);
+            _uiSlots[i].UpdateSlots(mainSlotData, modifierIcons);
         }
     }
 

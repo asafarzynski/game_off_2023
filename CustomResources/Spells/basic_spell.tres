@@ -7,7 +7,9 @@
 script = ExtResource("1_0qeae")
 Cooldown = 2
 Count = 1
-Damage = 1.0
+Damage = 2.0
 CriticalChance = 0.1
 Target = 1
+Name = "Small Fireball"
+Description = "Pretty basic fire spell"
 Icon = ExtResource("1_1sj5l")

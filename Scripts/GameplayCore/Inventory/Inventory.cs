@@ -1,4 +1,7 @@
-﻿namespace GameOff2023.Scripts.GameplayCore.Inventory;
+﻿using System.Collections.Generic;
+using GameOff2023.Scripts.GameplayCore.Spells;
+
+namespace GameOff2023.Scripts.GameplayCore.Inventory;
 
 public class Inventory
 {
@@ -28,5 +31,18 @@ public class Inventory
                 return;
             }
         }
+    }
+
+    public List<Spell> ParseSpells()
+    {
+        var result = new List<Spell>();
+        foreach (var spellSlot in SpellSlots)
+        {
+            if (spellSlot == null || !spellSlot.Spell.HasValue)
+                continue;
+            
+            result.Add(spellSlot.GetModifiedSpell());
+        }
+        return result;
     }
 }

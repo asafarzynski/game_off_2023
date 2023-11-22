@@ -3,6 +3,8 @@ using GameOff2023.Scripts.GameplayCore.Commands;
 using GameOff2023.Scripts.GameStateManagement;
 using GameOff2023.Scripts.GameStateManagement.GameStates;
 using GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
+using GameOff2023.Scripts.Resources;
+using GameOff2023.Scripts.Resources.Interfaces;
 using GameOff2023.Scripts.UI.Inventory;
 using Godot;
 using GameplayState = GameOff2023.Scripts.GameStateManagement.GameStates.GameplayState;
@@ -27,11 +29,11 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
         showEnemies.Initialize(_core.LevelManager);
         showEnemies.UpdateLabels();
         
-        looseInventory.Initialize(_core.Inventory.LooseSlots, GetIcon);
+        looseInventory.Initialize(_core.Inventory.LooseSlots, GetSlotData);
         looseInventory.UpdateSlots();
         looseInventory.OnSlotSelected += InventorySlotSelected;
 
-        spellSlots.Initialize(_core.Inventory.SpellSlots, GetIcon);
+        spellSlots.Initialize(_core.Inventory.SpellSlots, GetSlotData);
         spellSlots.UpdateSlots();
         spellSlots.OnSlotSelected += SpellSlotSelected;
 
@@ -75,15 +77,28 @@ public partial class UIPreBattle : UIGameStateSpecific<GameplayState>
         looseInventory.UpdateSlots();
     }
 
-    private Texture2D
-        GetIcon(ResourceId resourceId) // TODO: move to a generic place where more UIs can use it; and utilize IIconContainer
+    private UIInventorySlot.UIInventorySlotData GetSlotData(ResourceId resourceId)
     {
-        if (GlobalGameData.Instance.SpellsList.ResourcesDictionary.TryGetValue(resourceId, out var container))
+        var resource = ResourcesManager.GetResource<Resource>(resourceId);
+
+        if (resource == null)
+            return null;
+
+        var slotData = new UIInventorySlot.UIInventorySlotData();
+        if (resource is IIconProvider provider)
         {
-            return container.GetIcon();
+            slotData.Icon = provider.Icon;
+        }
+        if (resource is INameProvider nameProvider)
+        {
+            slotData.Name = nameProvider.Name;
+        }
+        if (resource is IDescriptionProvider descriptionProvider)
+        {
+            slotData.Description = descriptionProvider.Description;
         }
 
-        return null;
+        return slotData;
     }
 
     private void SpellSlotSelected(int mainSlotIndex, int modifierIndex)

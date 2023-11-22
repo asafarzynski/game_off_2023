@@ -10,4 +10,6 @@ Count = 1
 Damage = 1.0
 CriticalChance = 0.0
 Target = 1
+Name = "Puff"
+Description = "Slow and weak"
 Icon = ExtResource("1_lg3c7")

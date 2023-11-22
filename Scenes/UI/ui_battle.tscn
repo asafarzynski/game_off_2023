@@ -90,7 +90,7 @@ offset_top = 921.0
 offset_right = 906.0
 offset_bottom = 961.0
 
-[node name="TextureRect" type="TextureRect" parent="FightLog"]
+[node name="TextureRect" type="NinePatchRect" parent="FightLog"]
 layout_mode = 0
 offset_left = -216.0
 offset_top = -172.0
@@ -98,6 +98,11 @@ offset_right = 607.0
 offset_bottom = 264.0
 scale = Vector2(0.744556, 0.744556)
 texture = ExtResource("3_cpxi4")
+region_rect = Rect2(0.530411, 1.9973, 820.436, 433.509)
+patch_margin_left = 67
+patch_margin_top = 71
+patch_margin_right = 61
+patch_margin_bottom = 86
 
 [node name="Text" type="RichTextLabel" parent="FightLog"]
 layout_mode = 0

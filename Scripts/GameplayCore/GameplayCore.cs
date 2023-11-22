@@ -38,15 +38,16 @@ public class GameplayCore
 		Events = new GameplayCoreEvents();
 		LevelManager = new LevelManager(Enemies);
 		PlayerCharacter = playerCharacter;
-		for (var i = 0; i < PlayerCharacter.Spells.Count; i++)
-		{
-			Inventory.SpellSlots[i].Spell = PlayerCharacter.Spells[i];
-		}
+		
 		Initialize();
 	}
 
 	private void Initialize()
 	{
 		LevelManager.GenerateNextLevel();
+		for (var i = 0; i < PlayerCharacter.Spells.Count; i++)
+		{
+			Inventory.SpellSlots[i].Spell = PlayerCharacter.Spells[i];
+		}
 	}
 }

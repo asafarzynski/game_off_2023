@@ -2,21 +2,28 @@ using System.Linq;
 using GameOff2023.Scripts.GameplayCore;
 using GameOff2023.Scripts.GameplayCore.Characters;
 using GameOff2023.Scripts.GameplayCore.Spells;
+using GameOff2023.Scripts.Resources.Interfaces;
 using Godot;
 
 namespace GameOff2023.Scripts.Resources;
 
-public partial class CharacterResource : Resource
+public partial class CharacterResource : Resource, IInnerResourceLists
 {
     [ExportGroup("Data")]
     [Export] private string name;
     [Export] private CharacterType characterType;
     [Export] private int initialHealth;
-    [Export] private SpellsList unlockableCharacterSpells;
     [Export] private SpellsList spellbook;
+    [Export] private SpellsList unlockableCharacterSpells;
 
     [ExportGroup("Visuals")]
     [Export] private Texture2D plainTexture;
+
+    public void PrepareDictionaries()
+    {
+        spellbook.PrepareDictionary();
+        unlockableCharacterSpells?.PrepareDictionary();
+    }
 
     public Spell[] GetUnlockableSpells()
     {

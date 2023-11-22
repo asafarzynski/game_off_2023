@@ -8,6 +8,9 @@ public static class SpellsParser
 
         foreach (SpellModifier spellModifier in modifiers)
         {
+            if (spellModifier == null)
+                continue;
+            
             spellBase = spellModifier.ApplyModifier(spellBase);
         }
 

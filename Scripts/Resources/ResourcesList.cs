@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using GameOff2023.Scripts.GameplayCore;
+using GameOff2023.Scripts.Resources.Interfaces;
 using Godot;
 
 namespace GameOff2023.Scripts.Resources;
@@ -23,7 +24,14 @@ public partial class ResourcesList<T> : Resource
         {
             if (resource is T typedResource)
             {
-                ResourcesDictionary.Add(ResourcesManager.GetId(baseName), typedResource);
+                if (ResourcesManager.TryRegister(baseName, typedResource, out var id))
+                {
+                    ResourcesDictionary.Add(id, typedResource);
+                    if (typedResource is IInnerResourceLists innerResourceList)
+                    {
+                        innerResourceList.PrepareDictionaries();
+                    }
+                }
             }
         }
     }

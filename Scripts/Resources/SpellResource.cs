@@ -5,7 +5,7 @@ using Godot;
 
 namespace GameOff2023.Scripts.Resources;
 
-public partial class SpellResource : Resource, IIconContainer
+public partial class SpellResource : Resource, IIconProvider, INameProvider, IDescriptionProvider
 {
     [ExportGroup("Core Data")]
     [Export] private int Cooldown;
@@ -14,9 +14,10 @@ public partial class SpellResource : Resource, IIconContainer
     [Export] private float CriticalChance;
     [Export] private SpellTarget Target;
 
-    [ExportGroup("Visuals")] [Export] public Texture2D Icon;
+    [ExportGroup("Visuals")]
+    [Export] public string Name { get; private set; }
+    [Export] public string Description { get; private set; }
+    [Export] public Texture2D Icon { get; private set; }
 
     public Spell ToSpell(ResourceId resourceId) => new Spell(resourceId, Cooldown, Count, Damage, CriticalChance, Target);
-
-    public Texture2D GetIcon() => Icon;
 }
