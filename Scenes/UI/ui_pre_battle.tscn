@@ -34,10 +34,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -450.0
-offset_right = 220.0
-offset_bottom = -84.0
+offset_left = -538.0
+offset_top = -366.0
+offset_right = -118.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -74,7 +73,18 @@ offset_right = 0.0
 offset_bottom = 115.0
 
 [node name="EnemyList" parent="." instance=ExtResource("5_astdy")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -921.0
+offset_top = -232.0
+offset_right = -921.0
+offset_bottom = -129.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Panel/Confirm" to="." method="_on_confirm_pressed"]

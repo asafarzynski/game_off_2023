@@ -1,7 +1,7 @@
 using Godot;
 using GameOff2023.Scripts.GameplayCore.Levels;
 
-public partial class UIShowEnemies : Panel
+public partial class UIShowEnemies : Control
 {
     [Export] private Label[] _enemyLabel;
     private LevelManager _levelManager { get; set; }
