@@ -18,6 +18,7 @@ public partial class CharacterResource : Resource, IInnerResourceLists
 
     [ExportGroup("Visuals")]
     [Export] private Texture2D plainTexture;
+    [Export] public PackedScene VisualsToSpawn { get; private set; }
 
     public void PrepareDictionaries()
     {

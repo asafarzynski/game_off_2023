@@ -17,7 +17,7 @@ public partial class UIShowEnemies : Control
         {
             if (_levelManager.CurrentFight.EnemyList[i] != null)
             {
-                _enemyLabel[i].Text = _levelManager.CurrentFight.EnemyList[i].Name;
+                _enemyLabel[i].Text = _levelManager.CurrentFight.EnemyList[i].Character.Name;
             }
         }
     }

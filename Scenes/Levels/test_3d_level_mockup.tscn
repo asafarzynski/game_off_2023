@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://buiwmcsyjrptw"]
+[gd_scene load_steps=7 format=3 uid="uid://buiwmcsyjrptw"]
 
-[ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_gog0f"]
-[ext_resource type="PackedScene" uid="uid://tr645cn6k8h7" path="res://Scenes/Enemies/Moth/moth.tscn" id="3_dwmpc"]
-[ext_resource type="PackedScene" uid="uid://1ywll8nccqer" path="res://Scenes/Enemies/Snail/snail.tscn" id="4_3k8an"]
 [ext_resource type="PackedScene" uid="uid://cd0u6hl4pu33j" path="res://Scenes/Levels/tower_level_with_lights.tscn" id="4_vymwo"]
 [ext_resource type="PackedScene" uid="uid://d0a0t4m5paqn2" path="res://Visuals/Models/TowerRoom/TowerRoom.glb" id="5_kkun0"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharactersManager.cs" id="7_l844m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2q6"]
 sky_top_color = Color(0.231373, 0.411765, 0.552941, 1)
@@ -55,28 +53,33 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.92388, -0.0499502, 0.37941, 0, 0.991445, 0.130526, -0.382683, -0.12059, 0.915976, 1.71854, 5.15719, 2.99487)
 projection = 2
-fov = 48.5
+current = true
+fov = 37.8493
 size = 0.04
-far = 100.0
 
-[node name="PlayerPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.34258, 2.38418e-07, -7.1068)
+[node name="CharactersManager" type="Node3D" parent="." node_paths=PackedStringArray("_playerPositions", "_enemyPositions")]
+script = ExtResource("7_l844m")
+_playerPositions = [NodePath("PlayerPosition")]
+_enemyPositions = [NodePath("EnemyPosition1"), NodePath("EnemyPosition2"), NodePath("EnemyPosition3"), NodePath("EnemyPosition4")]
 
-[node name="Sprite3D" type="Sprite3D" parent="PlayerPosition"]
-transform = Transform3D(-0.145, 0, -0.251147, 0, 0.29, 0, 0.251147, 0, -0.145, 0, 1.70016, 0)
-flip_h = true
-billboard = 2
-alpha_cut = 2
-texture = ExtResource("1_gog0f")
+[node name="PlayerPosition" type="Node3D" parent="CharactersManager"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.20698, 0.538917, -6.4632)
 
-[node name="Moth" parent="." instance=ExtResource("3_dwmpc")]
-transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, -1.64602, 1.45136, -10.5007)
+[node name="EnemyPosition1" type="Node3D" parent="CharactersManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.898, 0.559, -9.381)
+metadata/_edit_group_ = true
 
-[node name="Moth2" parent="." instance=ExtResource("3_dwmpc")]
-transform = Transform3D(0.8379, 0, 0.545824, 0, 1, 0, -0.545824, 0, 0.8379, 1.86111, 1.48185, -10.3575)
+[node name="EnemyPosition2" type="Node3D" parent="CharactersManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.056, 0.559, -10.797)
+metadata/_edit_group_ = true
 
-[node name="Snail" parent="." instance=ExtResource("4_3k8an")]
-transform = Transform3D(0.836969, -0.0243716, 0.546707, 0.0263141, 0.999645, 0.00427805, -0.546618, 0.0108055, 0.837314, -3.76113, 1.47842, -9.72629)
+[node name="EnemyPosition3" type="Node3D" parent="CharactersManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.706, 0.559, -11.327)
+metadata/_edit_group_ = true
+
+[node name="EnemyPosition4" type="Node3D" parent="CharactersManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.673, 0.559, -10.6)
+metadata/_edit_group_ = true
 
 [node name="TowerLevel2" parent="." instance=ExtResource("4_vymwo")]
 

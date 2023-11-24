@@ -1,0 +1,238 @@
+[gd_scene load_steps=17 format=3 uid="uid://c2fx6vi1kves4"]
+
+[ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_ayx1d"]
+[ext_resource type="Script" path="res://Scripts/Characters/CharacterVisuals.cs" id="1_o44ss"]
+
+[sub_resource type="Animation" id="Animation_e6e0y"]
+resource_name = "Attack"
+length = 0.7
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.2, 1, 0.9, 1, 1, 0.3, 1, 1.2, 1, 1, 0.7, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_sda60"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 1, 0.95, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_v08md"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_tuclv"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.122173, -0.25, 0, 0.25, 0, -0.122173, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.014, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nx8i5"]
+_data = {
+"Attack": SubResource("Animation_e6e0y"),
+"Idle": SubResource("Animation_sda60"),
+"RESET": SubResource("Animation_v08md"),
+"Walk": SubResource("Animation_tuclv")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uubww"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_phwbm"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8t6g3"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgi8l"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wucyj"]
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jy0s0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gu58i"]
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_go87r"]
+advance_condition = &"!walk"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wv65f"]
+states/Attack/node = SubResource("AnimationNodeAnimation_uubww")
+states/Attack/position = Vector2(426, 223)
+states/Idle/node = SubResource("AnimationNodeAnimation_phwbm")
+states/Idle/position = Vector2(376, 100)
+states/Start/position = Vector2(197, 100)
+states/Walk/node = SubResource("AnimationNodeAnimation_8t6g3")
+states/Walk/position = Vector2(568, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pgi8l"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_wucyj"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_jy0s0"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_gu58i"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_go87r")]
+
+[node name="Rachel" type="Node3D"]
+script = ExtResource("1_o44ss")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.974126, 0, 0, 0, 1, 0, 0, 0)
+offset = Vector2(0, 512)
+flip_h = true
+pixel_size = 0.002
+alpha_cut = 2
+texture = ExtResource("1_ayx1d")
+region_rect = Rect2(16.685, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_nx8i5")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
+unique_name_in_owner = true
+tree_root = SubResource("AnimationNodeStateMachine_wv65f")
+anim_player = NodePath("..")
+active = true
+parameters/conditions/!walk = false
+parameters/conditions/attack = false
+parameters/conditions/walk = false

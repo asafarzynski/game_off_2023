@@ -1,6 +1,6 @@
 using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.GameplayCore.Characters;
-using GameOff2023.Scripts.GameplayCore.Commands;
+using GameOff2023.Scripts.GameplayCore.Id;
 using GameOff2023.Scripts.GameplayCore.Levels;
 using GameOff2023.Scripts.GameplayCore.Spells;
 
@@ -10,7 +10,7 @@ public class GameplayCore
 {
 	public readonly CommandsExecutioner CommandsExecutioner = new();
 
-	public readonly Character PlayerCharacter;
+	public readonly FightingCharacter PlayerCharacter;
 
 	/// <summary>
 	/// A list of all spells in game.
@@ -29,6 +29,8 @@ public class GameplayCore
 	public readonly LevelManager LevelManager;
 
 	public readonly GameplayCoreEvents Events;
+    
+	private static readonly SimpleIdGenerator<FightingCharacter> FightingCharactersIdGenerator = new();
 
 	public GameplayCore(Character playerCharacter, Spell[] spellsInGame, Character[] enemiesInGame)
 	{
@@ -36,18 +38,28 @@ public class GameplayCore
 		AllSpellsInGame = spellsInGame;
 		Inventory = new Inventory.Inventory();
 		Events = new GameplayCoreEvents();
-		LevelManager = new LevelManager(Enemies);
-		PlayerCharacter = playerCharacter;
+		LevelManager = new LevelManager(Enemies, FightingCharactersIdGenerator);
+		PlayerCharacter = PreparePlayerCharacter(playerCharacter);
 		
 		Initialize();
+	}
+
+	private FightingCharacter PreparePlayerCharacter(Character character)
+	{
+		return new FightingCharacter()
+		{
+			Character = character,
+			Id = FightingCharactersIdGenerator.GetNextId(),
+			FightStatus = new CharacterFightStatus(character.Stats),
+		};
 	}
 
 	private void Initialize()
 	{
 		LevelManager.GenerateNextLevel();
-		for (var i = 0; i < PlayerCharacter.Spells.Count; i++)
+		for (var i = 0; i < PlayerCharacter.Character.Spells.Count; i++)
 		{
-			Inventory.SpellSlots[i].Spell = PlayerCharacter.Spells[i];
+			Inventory.SpellSlots[i].Spell = PlayerCharacter.Character.Spells[i];
 		}
 	}
 }

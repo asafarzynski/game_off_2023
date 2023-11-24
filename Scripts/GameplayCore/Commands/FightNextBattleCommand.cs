@@ -1,6 +1,5 @@
 using GameOff2023.Scripts.Commands;
 using GameOff2023.Scripts.Fight;
-using GameOff2023.Scripts.GameplayCore.Characters;
 using GameOff2023.Scripts.GameplayCore.Levels;
 
 namespace GameOff2023.Scripts.GameplayCore.Commands;
@@ -37,12 +36,12 @@ public class FightNextBattleCommand : GameplayCoreCommand
     {
         Core.Events.OnBattleStarted?.Invoke();
 
-        Core.PlayerCharacter.Spells = Core.Inventory.ParseSpells(); // we use spells selected from inventory
+        Core.PlayerCharacter.Character.Spells = Core.Inventory.ParseSpells(); // we use spells selected from inventory
 
         var currentLevel = Core.LevelManager.CurrentLevel;
         var currentFight = currentLevel.FightList[currentLevel.CurrentFightIndex];
 
-        currentFight.FightEvents = FightSimulator.SimulateFight(new Character[]
+        currentFight.FightEvents = FightSimulator.SimulateFight(new FightingCharacter[]
             {
                 Core.PlayerCharacter,
             },

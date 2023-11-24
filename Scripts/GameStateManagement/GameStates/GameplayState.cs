@@ -1,4 +1,6 @@
 using System;
+using GameOff2023.Scripts.Characters;
+using GameOff2023.Scripts.GameplayCore.Levels;
 using GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
 using GameOff2023.Scripts.UI;
 using GameOff2023.Scripts.Utils.FSM;
@@ -57,6 +59,10 @@ public class GameplayState : GameStateManagement.GameState
         {
             throw new Exception("Why the initial state cannot be set up?");
         }
+
+        var charactersManager = (CharactersManager)LoadedScene.FindChild("CharactersManager");
+        var core = GlobalGameData.Instance.Core;
+        charactersManager.SpawnAllCharacters(new FightingCharacter[] {core.PlayerCharacter}, core.LevelManager.CurrentFight.EnemyList);
 
         AudioManager.Instance.PlayMusic();
     }

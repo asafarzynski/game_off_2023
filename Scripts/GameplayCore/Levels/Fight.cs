@@ -33,6 +33,13 @@ public class CharacterFightStatus
 {
     public float Health { get; set; }
     // Other effect properties...
+
+    public CharacterFightStatus() {}
+    
+    public CharacterFightStatus(CharacterStats stats)
+    {
+        Health = stats.Health;
+    }
 }
 
 public class FightingCharacter
@@ -47,13 +54,13 @@ public class Fight
     public bool IsCleared { get; internal set; }
     
     public readonly int FightNumber;
-    public readonly Character[] EnemyList;
+    public readonly FightingCharacter[] EnemyList;
 
     public List<FightEvent> FightEvents;
 
-    public Fight(int fightNumber) : this(fightNumber, new Character[4]) { }
+    public Fight(int fightNumber) : this(fightNumber, new FightingCharacter[4]) { }
 
-    public Fight(int fightNumber, Character[] enemyList)
+    public Fight(int fightNumber, FightingCharacter[] enemyList)
     {
         FightNumber = fightNumber;
         EnemyList = enemyList;

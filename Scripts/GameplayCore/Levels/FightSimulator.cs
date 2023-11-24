@@ -10,9 +10,7 @@ namespace GameOff2023.Scripts.Fight;
 
 public static class FightSimulator
 {
-    private static readonly SimpleIdGenerator<FightingCharacter> IdGenerator = new();
-
-    public static List<FightEvent> SimulateFight(Character[] playerCharacters, Character[] monsterCharacters)
+    public static List<FightEvent> SimulateFight(FightingCharacter[] playerCharacters, FightingCharacter[] monsterCharacters)
     {
         var spellCastQueue = new List<SpellCast>();
         var fightEventQueue = new List<FightEvent> { new FightEvent { EventType = FightEventType.FightStart } };
@@ -22,30 +20,16 @@ public static class FightSimulator
 
         for (var index = 0; index < playerCharacters.Length; index++)
         {
-            var character = playerCharacters[index];
-            var id = IdGenerator.GetNextId();
-            var fightingCharacter = new FightingCharacter()
-            {
-                Character = character,
-                Id = id,
-                FightStatus = new CharacterFightStatus { Health = character.Stats.Health },
-            };
-            fightingCharacters.Add(id, fightingCharacter);
+            var fightingCharacter = playerCharacters[index];
+            fightingCharacters.Add(fightingCharacter.Id, fightingCharacter);
             AddSpellsToTheQueue(fightingCharacter, spellCastQueue);
             playersFighting[index] = fightingCharacter;
         }
 
         for (var index = 0; index < monsterCharacters.Length; index++)
         {
-            var character = monsterCharacters[index];
-            var id = IdGenerator.GetNextId();
-            var fightingCharacter = new FightingCharacter()
-            {
-                Character = character,
-                Id = id,
-                FightStatus = new CharacterFightStatus { Health = character.Stats.Health },
-            };
-            fightingCharacters.Add(id, fightingCharacter);
+            var fightingCharacter = monsterCharacters[index];
+            fightingCharacters.Add(fightingCharacter.Id, fightingCharacter);
             AddSpellsToTheQueue(fightingCharacter, spellCastQueue);
             monstersFighting[index] = fightingCharacter;
         }
@@ -157,52 +141,52 @@ public static class FightSimulator
         return Math.Clamp(character.FightStatus.Health - damage, 0, character.Character.Stats.Health);
     }
 
-    public static List<FightEvent> Simulate()
-    {
-        var player = new Character
-        {
-            Name = "Grzybiarz",
-            CharacterType = CharacterType.Player,
-            Spells = new List<Spell> { new Spell { Damage = 5, Cooldown = 1, Target = SpellTarget.FirstEnemy } },
-            Stats = new CharacterStats { Health = 100 }
-        };
-
-        var enemyTroll = new Character
-        {
-            Name = "Troll",
-            CharacterType = CharacterType.Monster,
-            Spells = new List<Spell>
-            {
-                new Spell { Damage = -2, Cooldown = 2, Target = SpellTarget.Self },
-                new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy }
-            },
-            Stats = new CharacterStats { Health = 200 }
-        };
-
-        var enemyOrc = new Character
-        {
-            Name = "Orc",
-            CharacterType = CharacterType.Monster,
-            Spells = new List<Spell> { new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
-            Stats = new CharacterStats { Health = 50 }
-        };
-        var enemyOrc2 = new Character
-        {
-            Name = "Orc2",
-            CharacterType = CharacterType.Monster,
-            Spells = new List<Spell> { new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
-            Stats = new CharacterStats { Health = 50 }
-        };
-        var enemyOrc3 = new Character
-        {
-            Name = "Orc3",
-            CharacterType = CharacterType.Monster,
-            Spells = new List<Spell> { new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
-            Stats = new CharacterStats { Health = 50 }
-        };
-
-        var fightEvents = SimulateFight(new Character[] { player }, new Character[] { enemyOrc, enemyOrc2, enemyOrc3, enemyTroll });
-
-        return fightEvents;
-    }
+    // public static List<FightEvent> Simulate()
+    // {
+    //     var player = new Character
+    //     {
+    //         Name = "Grzybiarz",
+    //         CharacterType = CharacterType.Player,
+    //         Spells = new List<Spell> { new Spell { Damage = 5, Cooldown = 1, Target = SpellTarget.FirstEnemy } },
+    //         Stats = new CharacterStats { Health = 100 }
+    //     };
+    //
+    //     var enemyTroll = new Character
+    //     {
+    //         Name = "Troll",
+    //         CharacterType = CharacterType.Monster,
+    //         Spells = new List<Spell>
+    //         {
+    //             new Spell { Damage = -2, Cooldown = 2, Target = SpellTarget.Self },
+    //             new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy }
+    //         },
+    //         Stats = new CharacterStats { Health = 200 }
+    //     };
+    //
+    //     var enemyOrc = new Character
+    //     {
+    //         Name = "Orc",
+    //         CharacterType = CharacterType.Monster,
+    //         Spells = new List<Spell> { new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
+    //         Stats = new CharacterStats { Health = 50 }
+    //     };
+    //     var enemyOrc2 = new Character
+    //     {
+    //         Name = "Orc2",
+    //         CharacterType = CharacterType.Monster,
+    //         Spells = new List<Spell> { new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
+    //         Stats = new CharacterStats { Health = 50 }
+    //     };
+    //     var enemyOrc3 = new Character
+    //     {
+    //         Name = "Orc3",
+    //         CharacterType = CharacterType.Monster,
+    //         Spells = new List<Spell> { new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
+    //         Stats = new CharacterStats { Health = 50 }
+    //     };
+    //
+    //     var fightEvents = SimulateFight(new Character[] { player }, new Character[] { enemyOrc, enemyOrc2, enemyOrc3, enemyTroll });
+    //
+    //     return fightEvents;
+    // }
 }

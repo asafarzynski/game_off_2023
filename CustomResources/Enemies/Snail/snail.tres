@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://0nmwigpuyiw"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://0nmwigpuyiw"]
 
 [ext_resource type="Texture2D" uid="uid://bsgdv6ojjqlbv" path="res://Visuals/Enemies/T_Enemy_Snail.png" id="1_dkrw0"]
+[ext_resource type="PackedScene" uid="uid://1ywll8nccqer" path="res://Scenes/Enemies/Snail/snail.tscn" id="1_empb7"]
 [ext_resource type="Script" path="res://Scripts/Resources/CharacterResource.cs" id="1_uxo5k"]
 [ext_resource type="Resource" uid="uid://bgllmh5c6cusw" path="res://CustomResources/Enemies/Snail/snail_spells.tres" id="3_ohw7y"]
 
@@ -11,3 +12,4 @@ characterType = 1
 initialHealth = 15
 spellbook = ExtResource("3_ohw7y")
 plainTexture = ExtResource("1_dkrw0")
+VisualsToSpawn = ExtResource("1_empb7")

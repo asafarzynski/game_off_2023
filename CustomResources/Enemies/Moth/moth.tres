@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://lludrmutefgd"]
+
+[ext_resource type="PackedScene" uid="uid://tr645cn6k8h7" path="res://Scenes/Enemies/Moth/moth.tscn" id="1_13171"]
+[ext_resource type="Texture2D" uid="uid://qbjxqmw1ui53" path="res://Visuals/Enemies/T_Enemy_Moth.png" id="2_73hkb"]
+[ext_resource type="Script" path="res://Scripts/Resources/CharacterResource.cs" id="3_p4w8b"]
+[ext_resource type="Resource" uid="uid://7mgttchdxep7" path="res://CustomResources/Enemies/Moth/moth_spells.tres" id="4_l37fn"]
+
+[resource]
+script = ExtResource("3_p4w8b")
+name = "Moth"
+characterType = 1
+initialHealth = 5
+spellbook = ExtResource("4_l37fn")
+plainTexture = ExtResource("2_73hkb")
+VisualsToSpawn = ExtResource("1_13171")
