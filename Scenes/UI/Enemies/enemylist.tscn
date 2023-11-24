@@ -20,7 +20,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("1_rqq20")
 script = ExtResource("1_s8r74")
-_enemyLabel = [NodePath("Panel/Enemy-1"), NodePath("Panel2/Enemy-2"), NodePath("Panel3/Enemy-4"), NodePath("Panel4/Enemy-3")]
+_enemyLabel = [NodePath("Panel/Enemy-1"), NodePath("Panel2/Enemy-2"), NodePath("Panel3/Enemy-3"), NodePath("Panel4/Enemy-4")]
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -65,31 +65,11 @@ vertical_alignment = 1
 
 [node name="Panel3" type="Panel" parent="."]
 layout_mode = 2
-offset_left = 640.0
-offset_right = 840.0
-offset_bottom = 50.0
-
-[node name="Enemy-4" type="Label" parent="Panel3"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.0
-offset_bottom = 11.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Enemy-4"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel4" type="Panel" parent="."]
-layout_mode = 2
 offset_left = 404.0
 offset_right = 604.0
 offset_bottom = 50.0
 
-[node name="Enemy-3" type="Label" parent="Panel4"]
+[node name="Enemy-3" type="Label" parent="Panel3"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -100,5 +80,25 @@ offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Enemy-3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel4" type="Panel" parent="."]
+layout_mode = 2
+offset_left = 640.0
+offset_right = 840.0
+offset_bottom = 50.0
+
+[node name="Enemy-4" type="Label" parent="Panel4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy-4"
 horizontal_alignment = 1
 vertical_alignment = 1
