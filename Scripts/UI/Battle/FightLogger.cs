@@ -1,6 +1,5 @@
 using System;
 using GameOff2023.Scripts.GameplayCore;
-using GameOff2023.Scripts.GameplayCore.Characters;
 using GameOff2023.Scripts.GameplayCore.Levels;
 using GameOff2023.Scripts.Resources;
 using GameOff2023.Scripts.Resources.Interfaces;
@@ -24,7 +23,7 @@ public class FightLogger
             }
             case FightEventType.CharacterDeath:
             {
-                return $"{fightEvent.TargetCharacter.Name} has died :(";
+                return $"{fightEvent.TargetCharacter.Character.Name} ({fightEvent.TargetCharacter.Id}) has died :(";
             }
             case FightEventType.SpellCast:
             {
@@ -32,7 +31,6 @@ public class FightLogger
                     fightEvent.SpellCast.OriginCharacter,
                     fightEvent.SpellCast.Spell.ResourceId,
                     fightEvent.TargetCharacter,
-                    fightEvent.TargetCharacterFightStatus,
                     fightEvent.SpellCast.Spell.Damage
                 );
             }
@@ -41,23 +39,17 @@ public class FightLogger
         }
     }
 
-    public static string LogHit(Character originCharacter,
+    public static string LogHit(FightingCharacter originCharacter,
         ResourceId spellResourceId,
-        Character targetCharacter,
-        CharacterFightStatus targetCharacterFightStatus,
+        FightingCharacter targetCharacter,
         float damage)
     {
         var spellResource = ResourcesManager.GetResource<Resource>(spellResourceId);
 
         var spellName = spellResource is INameProvider nameProvider ? nameProvider.Name : "";
-        
-        if (damage < 0)
-        {
-            return $"{originCharacter.Name} heals {targetCharacter.Name} for {Math.Abs(damage)} using {spellName}";
-        }
-        else
-        {
-            return $"{originCharacter.Name} deals {damage} to {targetCharacter.Name} using {spellName}";
-        }
+
+        return damage < 0
+            ? $"{originCharacter.Character.Name} ({originCharacter.Id}) heals {targetCharacter.Character.Name} ({targetCharacter.Id}) for {Math.Abs(damage)} using {spellName}"
+            : $"{originCharacter.Character.Name} ({originCharacter.Id}) deals {damage} to {targetCharacter.Character.Name} ({targetCharacter.Id}) using {spellName}";
     }
 }

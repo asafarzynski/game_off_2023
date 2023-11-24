@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameOff2023.Scripts.GameplayCore.Characters;
+using GameOff2023.Scripts.GameplayCore.Id;
 using GameOff2023.Scripts.GameplayCore.Levels;
 using GameOff2023.Scripts.GameplayCore.Spells;
 
@@ -9,60 +10,91 @@ namespace GameOff2023.Scripts.Fight;
 
 public static class FightSimulator
 {
+    private static readonly SimpleIdGenerator<FightingCharacter> IdGenerator = new();
+
     public static List<FightEvent> SimulateFight(Character[] playerCharacters, Character[] monsterCharacters)
     {
-        var SpellCastQueue = new List<SpellCast>();
+        var spellCastQueue = new List<SpellCast>();
         var fightEventQueue = new List<FightEvent> { new FightEvent { EventType = FightEventType.FightStart } };
-        var characterFightStatusMap = new Dictionary<Character, CharacterFightStatus>();
+        var fightingCharacters = new Dictionary<ID<FightingCharacter, int>, FightingCharacter>();
+        var playersFighting = new FightingCharacter[playerCharacters.Length];
+        var monstersFighting = new FightingCharacter[monsterCharacters.Length];
 
-        foreach (var character in playerCharacters.Concat(monsterCharacters))
+        for (var index = 0; index < playerCharacters.Length; index++)
         {
-            characterFightStatusMap[character] = new CharacterFightStatus { Health = character.Stats.Health };
-            AddSpellsToTheQueue(character, SpellCastQueue);
+            var character = playerCharacters[index];
+            var id = IdGenerator.GetNextId();
+            var fightingCharacter = new FightingCharacter()
+            {
+                Character = character,
+                Id = id,
+                FightStatus = new CharacterFightStatus { Health = character.Stats.Health },
+            };
+            fightingCharacters.Add(id, fightingCharacter);
+            AddSpellsToTheQueue(fightingCharacter, spellCastQueue);
+            playersFighting[index] = fightingCharacter;
         }
 
-        SpellCastQueue.Sort(delegate(SpellCast a, SpellCast b){
+        for (var index = 0; index < monsterCharacters.Length; index++)
+        {
+            var character = monsterCharacters[index];
+            var id = IdGenerator.GetNextId();
+            var fightingCharacter = new FightingCharacter()
+            {
+                Character = character,
+                Id = id,
+                FightStatus = new CharacterFightStatus { Health = character.Stats.Health },
+            };
+            fightingCharacters.Add(id, fightingCharacter);
+            AddSpellsToTheQueue(fightingCharacter, spellCastQueue);
+            monstersFighting[index] = fightingCharacter;
+        }
+
+        spellCastQueue.Sort(delegate(SpellCast a, SpellCast b)
+        {
             var cooldownDifference = a.Cooldown - b.Cooldown;
-            if(cooldownDifference == 0) {
-                if(a.OriginCharacter.CharacterType == CharacterType.Player && b.OriginCharacter.CharacterType == CharacterType.Monster) {
+            if (cooldownDifference == 0)
+            {
+                if (a.OriginCharacter.Character.CharacterType == CharacterType.Player && b.OriginCharacter.Character.CharacterType == CharacterType.Monster)
+                {
                     return -1;
                 }
 
-                if(a.OriginCharacter.CharacterType == CharacterType.Monster && b.OriginCharacter.CharacterType == CharacterType.Player) {
+                if (a.OriginCharacter.Character.CharacterType == CharacterType.Monster && b.OriginCharacter.Character.CharacterType == CharacterType.Player)
+                {
                     return 1;
                 }
             }
-            
+
             return cooldownDifference;
         });
 
         var fightStatus = FightStatus.InProgress;
 
-        for (var SpellIndex = 0; SpellIndex < SpellCastQueue.Count; SpellIndex++)
+        foreach (var spellCast in spellCastQueue)
         {
-            var SpellCast = SpellCastQueue[SpellIndex];
-            Character targetCharacter = null;
+            FightingCharacter targetCharacter = null;
 
-            if (characterFightStatusMap[SpellCast.OriginCharacter].Health <= 0)
+            if (fightingCharacters[spellCast.OriginCharacter.Id].FightStatus.Health <= 0)
                 continue;
 
-            switch (SpellCast.Spell.Target)
+            switch (spellCast.Spell.Target)
             {
                 case SpellTarget.Self:
-                    targetCharacter = SpellCast.OriginCharacter;
+                    targetCharacter = spellCast.OriginCharacter;
                     break;
                 case SpellTarget.FirstEnemy:
-                    if (SpellCast.OriginCharacter.CharacterType == CharacterType.Player)
+                    if (spellCast.OriginCharacter.Character.CharacterType == CharacterType.Player)
                     {
-                        var monster = monsterCharacters.FirstOrDefault(monsterCharacter => characterFightStatusMap[monsterCharacter].Health > 0);
+                        var monster = monstersFighting.FirstOrDefault(monsterCharacter => fightingCharacters[monsterCharacter.Id].FightStatus.Health > 0);
                         if (monster != null)
                             targetCharacter = monster;
                         else
                             fightStatus = FightStatus.Win;
                     }
-                    if (SpellCast.OriginCharacter.CharacterType == CharacterType.Monster)
+                    if (spellCast.OriginCharacter.Character.CharacterType == CharacterType.Monster)
                     {
-                        var player = playerCharacters.FirstOrDefault(playerCharacter => characterFightStatusMap[playerCharacter].Health > 0);
+                        var player = playersFighting.FirstOrDefault(playerCharacter => fightingCharacters[playerCharacter.Id].FightStatus.Health > 0);
                         if (player != null)
                             targetCharacter = player;
                         else
@@ -73,16 +105,15 @@ public static class FightSimulator
 
             if (targetCharacter != null)
             {
-                characterFightStatusMap[targetCharacter].Health = DealDamage(targetCharacter, characterFightStatusMap[targetCharacter], SpellCast.Spell.Damage);
+                fightingCharacters[targetCharacter.Id].FightStatus.Health = DealDamage(targetCharacter, spellCast.Spell.Damage);
                 fightEventQueue.Add(new FightEvent
                 {
                     EventType = FightEventType.SpellCast,
-                    SpellCast = SpellCast,
+                    SpellCast = spellCast,
                     TargetCharacter = targetCharacter,
-                    TargetCharacterFightStatus = characterFightStatusMap[targetCharacter]
                 });
 
-                if (characterFightStatusMap[targetCharacter].Health == 0)
+                if (fightingCharacters[targetCharacter.Id].FightStatus.Health == 0)
                 {
                     fightEventQueue.Add(new FightEvent
                     {
@@ -104,26 +135,26 @@ public static class FightSimulator
         return fightEventQueue;
     }
 
-    public static void AddSpellsToTheQueue(Character character, List<SpellCast> queue)
+    private static void AddSpellsToTheQueue(FightingCharacter character, List<SpellCast> queue)
     {
-        foreach (var Spell in character.Spells)
+        foreach (var spell in character.Character.Spells)
         {
-            var numberOfSpellsCast = (int)Math.Floor(256 / (double)Spell.Cooldown);
+            var numberOfSpellsCast = (int)Math.Floor(256 / (double)spell.Cooldown);
             for (var i = 0; i < numberOfSpellsCast; i++)
             {
                 queue.Add(new SpellCast
                 {
-                    Spell = Spell,
-                    Cooldown = Spell.Cooldown * (i + 1),
-                    OriginCharacter = character
+                    Spell = spell,
+                    Cooldown = spell.Cooldown * (i + 1),
+                    OriginCharacter = character,
                 });
             }
         }
     }
 
-    public static float DealDamage(Character character, CharacterFightStatus characterFightStatus, float damage)
+    private static float DealDamage(FightingCharacter character, float damage)
     {
-        return Math.Clamp(characterFightStatus.Health - damage, 0, character.Stats.Health);
+        return Math.Clamp(character.FightStatus.Health - damage, 0, character.Character.Stats.Health);
     }
 
     public static List<FightEvent> Simulate()
@@ -168,7 +199,7 @@ public static class FightSimulator
             CharacterType = CharacterType.Monster,
             Spells = new List<Spell> { new Spell { Damage = 3, Cooldown = 4, Target = SpellTarget.FirstEnemy } },
             Stats = new CharacterStats { Health = 50 }
-        }; 
+        };
 
         var fightEvents = SimulateFight(new Character[] { player }, new Character[] { enemyOrc, enemyOrc2, enemyOrc3, enemyTroll });
 
