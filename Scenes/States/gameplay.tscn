@@ -10,3 +10,6 @@ script = ExtResource("1_lrjwg")
 GameState = 2
 
 [node name="test_3d_level_mockup" parent="." instance=ExtResource("2_72wys")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

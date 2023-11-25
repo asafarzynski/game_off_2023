@@ -79,9 +79,6 @@ text = "Fast forward"
 layout_mode = 2
 text = "See summary"
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="FightLog" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 7

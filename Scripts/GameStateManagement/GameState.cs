@@ -8,7 +8,7 @@ public abstract class GameState : FSMState<GameStates.GameState>
     internal abstract string SceneName { get; }
 
     protected Node ParentNode { get; private set; }
-    protected Node LoadedScene { get; private set; }
+    internal Node LoadedScene { get; private set; }
 
     protected GameState(Node parentNode, GameStates.GameState id)
         : base(id)

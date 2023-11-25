@@ -58,6 +58,7 @@ fov = 37.8493
 size = 0.04
 
 [node name="CharactersManager" type="Node3D" parent="." node_paths=PackedStringArray("_playerPositions", "_enemyPositions")]
+unique_name_in_owner = true
 script = ExtResource("7_l844m")
 _playerPositions = [NodePath("PlayerPosition")]
 _enemyPositions = [NodePath("EnemyPosition1"), NodePath("EnemyPosition2"), NodePath("EnemyPosition3"), NodePath("EnemyPosition4")]
