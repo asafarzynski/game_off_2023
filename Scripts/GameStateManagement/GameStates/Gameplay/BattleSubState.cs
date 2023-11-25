@@ -15,12 +15,16 @@ public class BattleSubState : UIManagingSubState<GameplayState>
     private int _eventIndex;
     private int _lastCooldown;
     private float _timeSpeed = 1f;
+    
+    private readonly Func<LevelVisuals.LevelVisuals> _visualsGetter;
 
     private List<FightEvent> FightEvents => GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
 
-    public BattleSubState(Node uiParent, GameplayState id)
+    public BattleSubState(Node uiParent, GameplayState id, Func<LevelVisuals.LevelVisuals> visualsGetter)
         : base(uiParent, id)
-    {}
+    {
+        _visualsGetter = visualsGetter;
+    }
 
     protected override string UIFilePath => "res://Scenes/UI/ui_battle.tscn";
 
@@ -73,6 +77,7 @@ public class BattleSubState : UIManagingSubState<GameplayState>
             return;
         
         var currentEvent = FightEvents[_eventIndex++];
+        AnimateEvent(currentEvent);
         OnFightEventFired?.Invoke(currentEvent, skip);
 
         if (_eventIndex < FightEvents.Count)
@@ -85,17 +90,26 @@ public class BattleSubState : UIManagingSubState<GameplayState>
                 TimeTick(skip);
                 return;
             }
+            
             _timer.WaitTime = nextWaitTime.Value / _timeSpeed;
             _timer.Start();
+        
+            if (currentEvent.SpellCast != null)
+            {
+                _lastCooldown = currentEvent.SpellCast.Cooldown;
+            }
         }
         else
         {
             OnFightEnded?.Invoke();
         }
-        
-        if (currentEvent.SpellCast != null)
+    }
+
+    private void AnimateEvent(FightEvent fightEvent)
+    {
+        if (fightEvent.EventType == FightEventType.SpellCast)
         {
-            _lastCooldown = currentEvent.SpellCast.Cooldown;
+            _visualsGetter().CharactersManager.AnimateAttack(fightEvent.SpellCast.OriginCharacter.Id);
         }
     }
 }

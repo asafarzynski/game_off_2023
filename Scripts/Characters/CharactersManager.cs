@@ -8,12 +8,22 @@ namespace GameOff2023.Scripts.Characters;
 
 public partial class CharactersManager : Node3D
 {
+    [Export] private Node3D _playerSpawningPosition;
     [Export] private Node3D[] _playerPositions;
+    [Export] private Node3D _enemySpawningPosition;
     [Export] private Node3D[] _enemyPositions;
 
     private readonly Dictionary<ID<FightingCharacter, int>, CharacterVisuals> _spawnedNodes = new();
 
-    public void SpawnAllCharacters(FightingCharacter[] players, FightingCharacter[] enemies)
+    public void AnimateAttack(ID<FightingCharacter, int> attacker)
+    {
+        if (!_spawnedNodes.TryGetValue(attacker, out var attackerVisuals))
+            return;
+        
+        attackerVisuals.AnimateAttack();
+    }
+
+    public void GetAllCharactersInPositions(FightingCharacter[] players, FightingCharacter[] enemies)
     {
         SpawnCharacters(players, _playerPositions);
         SpawnCharacters(enemies, _enemyPositions);

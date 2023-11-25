@@ -5,5 +5,11 @@ namespace GameOff2023.Scripts.LevelVisuals;
 
 public partial class LevelVisuals : Node3D
 {
-    [Export] public CharactersManager _charactersManager;
+    public CharactersManager CharactersManager { get; private set; }
+    
+    public override void _Ready()
+    {
+        base._Ready();
+        CharactersManager = GetNode<CharactersManager>("%CharactersManager");
+    }
 }

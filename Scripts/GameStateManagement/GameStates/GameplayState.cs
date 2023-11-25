@@ -18,6 +18,8 @@ public class GameplayState : GameStateManagement.GameState
         UIManagingSubState<Gameplay.GameplayState>
     > InnerStateMachine { get; private set; }
 
+    private LevelVisuals.LevelVisuals _levelVisuals;
+
     private FSMLogger<
         Gameplay.GameplayState,
         GameplayTrigger,
@@ -30,9 +32,9 @@ public class GameplayState : GameStateManagement.GameState
         InnerStateMachine = new();
 
         InnerStateMachine.AddState(Gameplay.GameplayState.Empty, null);
-        var preBattle = new PreBattleSubState(UIManager.Instance, Gameplay.GameplayState.PreBattle);
+        var preBattle = new PreBattleSubState(UIManager.Instance, Gameplay.GameplayState.PreBattle, VisualsGetter);
         InnerStateMachine.AddState(preBattle);
-        var battle = new BattleSubState(UIManager.Instance, Gameplay.GameplayState.Battle);
+        var battle = new BattleSubState(UIManager.Instance, Gameplay.GameplayState.Battle, VisualsGetter);
         InnerStateMachine.AddState(battle);
         var postBattle = new PostBattleSubState(
             UIManager.Instance,
@@ -55,14 +57,12 @@ public class GameplayState : GameStateManagement.GameState
     {
         base.Enter();
 
+        _levelVisuals = (LevelVisuals.LevelVisuals)LoadedScene.FindChild("LevelVisuals");
+
         if (!InnerStateMachine.TrySetInitialState(Gameplay.GameplayState.PreBattle))
         {
             throw new Exception("Why the initial state cannot be set up?");
         }
-
-        var charactersManager = (CharactersManager)LoadedScene.FindChild("CharactersManager");
-        var core = GlobalGameData.Instance.Core;
-        charactersManager.SpawnAllCharacters(new FightingCharacter[] {core.PlayerCharacter}, core.LevelManager.CurrentFight.EnemyList);
 
         AudioManager.Instance.PlayMusic();
     }
@@ -80,4 +80,6 @@ public class GameplayState : GameStateManagement.GameState
 
         AudioManager.Instance.StopMusic();
     }
+
+    private LevelVisuals.LevelVisuals VisualsGetter() => _levelVisuals;
 }

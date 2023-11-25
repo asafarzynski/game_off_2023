@@ -6,12 +6,14 @@ public partial class CharacterVisuals : Node3D
 {
     private AnimationPlayer _animationPlayer;
     private AnimationTree _animationTree;
+    private AnimationNodeStateMachinePlayback _animationTreePlayback;
     private Sprite3D _sprite;
 
     public override void _Ready()
     {
         _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
         _animationTree = GetNode<AnimationTree>("%AnimationTree");
+        _animationTreePlayback = (AnimationNodeStateMachinePlayback)_animationTree.Get("parameters/playback");
         _sprite = GetNode<Sprite3D>("%Sprite3D");
 
         _animationTree.Active = true;
@@ -19,12 +21,12 @@ public partial class CharacterVisuals : Node3D
 
     public void AnimateAttack()
     {
-        _animationTree.SetCondition("attack", true);
+        _animationTreePlayback.Travel("Attack");
     }
 
     public void AnimateWalk(bool isWalking)
     {
-        _animationTree.SetCondition("walk", isWalking);
+        _animationTreePlayback.Travel(isWalking ? "Walk" : "Idle");
     }
 
     public void SetRotation(bool isLeft = false)
