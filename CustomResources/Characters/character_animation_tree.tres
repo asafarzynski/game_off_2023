@@ -1,0 +1,36 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=9 format=3 uid="uid://cnpl3yerfs6y0"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uubww"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_phwbm"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8t6g3"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgi8l"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wucyj"]
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jy0s0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gu58i"]
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_go87r"]
+advance_condition = &"!walk"
+
+[resource]
+states/Attack/node = SubResource("AnimationNodeAnimation_uubww")
+states/Attack/position = Vector2(426, 223)
+states/Idle/node = SubResource("AnimationNodeAnimation_phwbm")
+states/Idle/position = Vector2(376, 100)
+states/Start/position = Vector2(197, 100)
+states/Walk/node = SubResource("AnimationNodeAnimation_8t6g3")
+states/Walk/position = Vector2(568, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_pgi8l"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_wucyj"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_jy0s0"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_gu58i"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_go87r")]

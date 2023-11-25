@@ -10,11 +10,11 @@ public partial class CharacterVisuals : Node3D
 
     public override void _Ready()
     {
-        // commented out until characters are set up properly
-        
-        // _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
-        // _animationTree = GetNode<AnimationTree>("%AnimationTree");
-        // _sprite = GetNode<Sprite3D>("%Sprite3D");
+        _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
+        _animationTree = GetNode<AnimationTree>("%AnimationTree");
+        _sprite = GetNode<Sprite3D>("%Sprite3D");
+
+        _animationTree.Active = true;
     }
 
     public void AnimateAttack()

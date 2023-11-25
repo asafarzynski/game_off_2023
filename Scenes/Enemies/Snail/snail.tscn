@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1ywll8nccqer"]
+[gd_scene load_steps=6 format=3 uid="uid://1ywll8nccqer"]
 
 [ext_resource type="Texture2D" uid="uid://bsgdv6ojjqlbv" path="res://Visuals/Enemies/T_Enemy_Snail.png" id="1_0rg4n"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterVisuals.cs" id="1_h0p3k"]
+[ext_resource type="AnimationLibrary" uid="uid://dtt1rra6kqdqs" path="res://CustomResources/Characters/character_animation_library.tres" id="3_hvsfd"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cnpl3yerfs6y0" path="res://CustomResources/Characters/character_animation_tree.tres" id="4_eilce"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l50wq"]
 radius = 0.25
@@ -14,9 +16,25 @@ script = ExtResource("1_h0p3k")
 shape = SubResource("SphereShape3D_l50wq")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.855629, 0)
+unique_name_in_owner = true
+offset = Vector2(0, 294)
 flip_h = true
 pixel_size = 0.003
 billboard = 2
 alpha_cut = 2
 texture = ExtResource("1_0rg4n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "Idle"
+libraries = {
+"": ExtResource("3_hvsfd")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
+unique_name_in_owner = true
+tree_root = ExtResource("4_eilce")
+anim_player = NodePath("..")
+parameters/conditions/!walk = false
+parameters/conditions/attack = false
+parameters/conditions/walk = false
