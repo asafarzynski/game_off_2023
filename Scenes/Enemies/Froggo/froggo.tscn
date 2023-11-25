@@ -20,6 +20,7 @@ unique_name_in_owner = true
 offset = Vector2(0, 277)
 flip_h = true
 pixel_size = 0.003
+shaded = true
 texture = ExtResource("1_44fxt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

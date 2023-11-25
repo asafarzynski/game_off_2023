@@ -21,6 +21,7 @@ offset = Vector2(0, 750)
 flip_h = true
 pixel_size = 0.003
 billboard = 2
+shaded = true
 alpha_cut = 2
 texture = ExtResource("1_gf3tc")
 
