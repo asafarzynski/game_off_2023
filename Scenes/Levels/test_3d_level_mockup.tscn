@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://buiwmcsyjrptw"]
+[gd_scene load_steps=10 format=3 uid="uid://buiwmcsyjrptw"]
 
 [ext_resource type="Script" path="res://Scripts/LevelVisuals/LevelVisuals.cs" id="1_8ha1p"]
+[ext_resource type="PackedScene" uid="uid://cgvptynrht3u0" path="res://Scenes/Levels/tower_level.tscn" id="4_p4ryj"]
 [ext_resource type="PackedScene" uid="uid://cd0u6hl4pu33j" path="res://Scenes/Levels/tower_level_with_lights.tscn" id="4_vymwo"]
 [ext_resource type="PackedScene" uid="uid://d0a0t4m5paqn2" path="res://Visuals/Models/TowerRoom/TowerRoom.glb" id="5_kkun0"]
 [ext_resource type="PackedScene" uid="uid://ce7dl125piru" path="res://Scenes/VFX/Orb.tscn" id="5_na402"]
@@ -62,10 +63,12 @@ current = true
 fov = 37.8493
 size = 0.04
 
-[node name="CharactersManager" type="Node3D" parent="." node_paths=PackedStringArray("_playerPositions", "_enemyPositions")]
+[node name="CharactersManager" type="Node3D" parent="." node_paths=PackedStringArray("_playerSpawningPosition", "_playerPositions", "_enemySpawningPosition", "_enemyPositions")]
 unique_name_in_owner = true
 script = ExtResource("7_l844m")
+_playerSpawningPosition = NodePath("PlayerSpawnPosition")
 _playerPositions = [NodePath("PlayerPosition")]
+_enemySpawningPosition = NodePath("EnemySpawnPosition")
 _enemyPositions = [NodePath("EnemyPosition1"), NodePath("EnemyPosition2"), NodePath("EnemyPosition3"), NodePath("EnemyPosition4")]
 
 [node name="PlayerSpawnPosition" type="Node3D" parent="CharactersManager"]
@@ -93,12 +96,12 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.673, 0.559, -10.6)
 metadata/_edit_group_ = true
 
-[node name="TowerLevel2" parent="." instance=ExtResource("4_vymwo")]
+[node name="TowerLevelWithLights" parent="." instance=ExtResource("4_vymwo")]
 
-[node name="TowerLevel3" parent="." instance=ExtResource("4_vymwo")]
+[node name="TowerLevel" parent="." instance=ExtResource("4_p4ryj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
-[node name="TowerLevel4" parent="." instance=ExtResource("4_vymwo")]
+[node name="TowerLevel3" parent="." instance=ExtResource("4_p4ryj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="TowerRoom" parent="." instance=ExtResource("5_kkun0")]
@@ -113,3 +116,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30008, 6.7, -7.90763)
 
 [node name="Orb3" parent="Orbs" instance=ExtResource("5_na402")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32338, 6.63707, -7.81781)
+
+[node name="SpriteLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0, 0, 0)
+light_energy = 0.3
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 0
+light_cull_mask = 4293919744
+directional_shadow_mode = 0
+sky_mode = 1

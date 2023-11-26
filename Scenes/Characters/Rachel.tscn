@@ -10,6 +10,8 @@ script = ExtResource("1_o44ss")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 unique_name_in_owner = true
+layers = 1025
+gi_mode = 2
 offset = Vector2(0, 512)
 flip_h = true
 pixel_size = 0.003

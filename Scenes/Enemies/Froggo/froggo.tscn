@@ -17,6 +17,7 @@ shape = SubResource("SphereShape3D_l50wq")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 unique_name_in_owner = true
+layers = 1025
 offset = Vector2(0, 277)
 flip_h = true
 pixel_size = 0.003

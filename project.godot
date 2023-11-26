@@ -34,6 +34,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Game Off 2023"
 
+[layer_names]
+
+3d_render/layer_11="Sprites"
+
 [physics]
 
 common/physics_ticks_per_second=20
