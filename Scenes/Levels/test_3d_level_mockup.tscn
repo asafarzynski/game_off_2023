@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://buiwmcsyjrptw"]
+[gd_scene load_steps=9 format=3 uid="uid://buiwmcsyjrptw"]
 
 [ext_resource type="Script" path="res://Scripts/LevelVisuals/LevelVisuals.cs" id="1_8ha1p"]
 [ext_resource type="PackedScene" uid="uid://cd0u6hl4pu33j" path="res://Scenes/Levels/tower_level_with_lights.tscn" id="4_vymwo"]
 [ext_resource type="PackedScene" uid="uid://d0a0t4m5paqn2" path="res://Visuals/Models/TowerRoom/TowerRoom.glb" id="5_kkun0"]
+[ext_resource type="PackedScene" uid="uid://ce7dl125piru" path="res://Scenes/VFX/Orb.tscn" id="5_na402"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharactersManager.cs" id="7_l844m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mi2q6"]
@@ -61,12 +62,10 @@ current = true
 fov = 37.8493
 size = 0.04
 
-[node name="CharactersManager" type="Node3D" parent="." node_paths=PackedStringArray("_playerSpawningPosition", "_playerPositions", "_enemySpawningPosition", "_enemyPositions")]
+[node name="CharactersManager" type="Node3D" parent="." node_paths=PackedStringArray("_playerPositions", "_enemyPositions")]
 unique_name_in_owner = true
 script = ExtResource("7_l844m")
-_playerSpawningPosition = NodePath("PlayerSpawnPosition")
 _playerPositions = [NodePath("PlayerPosition")]
-_enemySpawningPosition = NodePath("EnemySpawnPosition")
 _enemyPositions = [NodePath("EnemyPosition1"), NodePath("EnemyPosition2"), NodePath("EnemyPosition3"), NodePath("EnemyPosition4")]
 
 [node name="PlayerSpawnPosition" type="Node3D" parent="CharactersManager"]
@@ -103,3 +102,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="TowerRoom" parent="." instance=ExtResource("5_kkun0")]
+
+[node name="Orbs" type="Node" parent="."]
+
+[node name="Orb" parent="Orbs" instance=ExtResource("5_na402")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.77127, 6.63707, -3.26392)
+
+[node name="Orb2" parent="Orbs" instance=ExtResource("5_na402")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30008, 6.7, -7.90763)
+
+[node name="Orb3" parent="Orbs" instance=ExtResource("5_na402")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32338, 6.63707, -7.81781)
