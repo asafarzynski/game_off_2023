@@ -21,8 +21,6 @@ public class PreBattleSubState : UIManagingSubState<GameplayState>
 
         var levelVisuals = _visualsGetter();
         var core = GlobalGameData.Instance.Core;
-        levelVisuals.CharactersManager.GetAllCharactersInPositions(new[] { core.PlayerCharacter }, core.LevelManager.CurrentFight.EnemyList);
-        
-        // TODO: animate characters getting into the scene instead
+        levelVisuals.CharactersManager.SpawnAllCharacters(new[] { core.PlayerCharacter }, core.LevelManager.CurrentFight.EnemyList);
     }
 }

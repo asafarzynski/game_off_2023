@@ -20,8 +20,20 @@ public class PostBattleSubState : UIManagingSubState<GameplayState>
         base.Enter();
 
         var levelVisuals = _visualsGetter();
-        levelVisuals.CharactersManager.Clear();
+        levelVisuals.CharactersManager.AnimateProgress();
+        levelVisuals.CharactersManager.OnEverybodyInPosition += Clear;
+    }
+
+    internal override void Exit()
+    {
+        base.Exit();
         
-        // TODO: animate characters getting out of the scene instead
+        _visualsGetter().CharactersManager.OnEverybodyInPosition -= Clear;
+        Clear();
+    }
+
+    private void Clear()
+    {
+        _visualsGetter().CharactersManager.Clear();
     }
 }

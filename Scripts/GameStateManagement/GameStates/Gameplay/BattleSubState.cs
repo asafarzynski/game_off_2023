@@ -81,10 +81,7 @@ public class BattleSubState : UIManagingSubState<GameplayState>
             return;
         
         var currentEvent = FightEvents[_eventIndex++];
-        if (!skip)
-        {
-            AnimateEvent(currentEvent);
-        }
+        AnimateEvent(currentEvent, skip);
         OnFightEventFired?.Invoke(currentEvent, skip);
 
         if (_eventIndex < FightEvents.Count)
@@ -112,15 +109,15 @@ public class BattleSubState : UIManagingSubState<GameplayState>
         }
     }
 
-    private void AnimateEvent(FightEvent fightEvent)
+    private void AnimateEvent(FightEvent fightEvent, bool skip)
     {
-        if (fightEvent.EventType == FightEventType.SpellCast)
+        if (!skip && fightEvent.EventType == FightEventType.SpellCast)
         {
             var visuals = _visualsGetter();
             visuals.CharactersManager.AnimateAttack(fightEvent.SpellCast.OriginCharacter.Id);
             visuals.CharactersManager.AnimateHurt(fightEvent.TargetCharacter.Id);
         }
-        if (fightEvent.EventType == FightEventType.CharacterDeath)
+        if (fightEvent.EventType == FightEventType.CharacterDeath) // never skip death
         {
             var visuals = _visualsGetter();
             visuals.CharactersManager.AnimateDeath(fightEvent.TargetCharacter.Id);
