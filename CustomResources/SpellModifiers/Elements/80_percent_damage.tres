@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dntnyo8tgkigd"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/SpellModifiers/DamageModifierResource.cs" id="1_qk31f"]
+
+[resource]
+script = ExtResource("1_qk31f")
+FloatValue = 0.8
+IntValue = 0
+BoolValue = false

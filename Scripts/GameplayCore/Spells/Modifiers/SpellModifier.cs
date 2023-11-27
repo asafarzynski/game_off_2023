@@ -1,14 +1,18 @@
 ﻿using GameOff2023.Scripts.GameplayCore.Inventory;
-using Godot;
 
 namespace GameOff2023.Scripts.GameplayCore.Spells;
 
-public partial class SpellModifier : Resource, IInventoryItem
+public class SpellModifier : IInventoryItem
 {
-    [Export]
-    public SpellModifierElement[] ModifierElements;
+    public SpellModifierElement[] ModifierElements { get; }
 
-    public ResourceId ResourceId { get; } // TODO: fill it
+    public ResourceId ResourceId { get; }
+
+    public SpellModifier(ResourceId resourceId, SpellModifierElement[] elements)
+    {
+        ResourceId = resourceId;
+        ModifierElements = elements;
+    }
 
     public Spell ApplyModifier(Spell spellBase)
     {

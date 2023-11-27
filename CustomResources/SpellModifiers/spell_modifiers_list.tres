@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2i8by7kjcgbd"]
+
+[ext_resource type="Resource" uid="uid://bbmnk1tm7u8ke" path="res://CustomResources/SpellModifiers/lunar_resonance.tres" id="1_72tob"]
+[ext_resource type="Script" path="res://Scripts/Resources/SpellModifiersList.cs" id="1_flxs6"]
+
+[resource]
+script = ExtResource("1_flxs6")
+baseName = "SpellModifier"
+resources = Array[Resource]([ExtResource("1_72tob")])

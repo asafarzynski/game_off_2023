@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bpgn5p7v35w6s"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/SpellModifiers/CriticalChanceModifierResource.cs" id="1_vumn7"]
+
+[resource]
+script = ExtResource("1_vumn7")
+FloatValue = 3.0
+IntValue = 0
+BoolValue = false

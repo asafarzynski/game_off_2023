@@ -1,30 +1,28 @@
-﻿using Godot;
+﻿using System;
 
 namespace GameOff2023.Scripts.GameplayCore.Spells;
 
 /// <summary>
 /// Use float / int / bool depending on modifier implementation
 /// </summary>
-public abstract partial class SpellModifierElement : Resource
+public class SpellModifierElement
 {
-    [Export]
-    public float FloatValue;
+    private float FloatValue { get; }
 
-    [Export]
-    public int IntValue;
+    private int IntValue { get; }
 
-    [Export]
-    public bool BoolValue;
+    private bool BoolValue { get; }
+
+    public readonly Func<Spell, Spell> Modify;
 
     public SpellModifierElement()
-        : this(0, 0, false) { }
+        : this(0, 0, false, (spell) => spell) { }
 
-    public SpellModifierElement(float floatValue, int intValue, bool boolValue)
+    public SpellModifierElement(float floatValue, int intValue, bool boolValue, Func<Spell, Spell> modifyingFunction)
     {
         FloatValue = floatValue;
         IntValue = intValue;
         BoolValue = boolValue;
+        Modify = modifyingFunction;
     }
-
-    public abstract Spell Modify(Spell spell);
 }

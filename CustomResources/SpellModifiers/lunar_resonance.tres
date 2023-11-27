@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bbmnk1tm7u8ke"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/SpellModifierResource.cs" id="1_kmqg0"]
+[ext_resource type="Resource" uid="uid://dntnyo8tgkigd" path="res://CustomResources/SpellModifiers/Elements/80_percent_damage.tres" id="1_ovrfr"]
+[ext_resource type="Texture2D" uid="uid://catxaqjhm2y0i" path="res://Visuals/Spells/Modifiers/lunar_resonance_icon_bing_cutout.jpg" id="1_vnvu5"]
+[ext_resource type="Resource" uid="uid://bpgn5p7v35w6s" path="res://CustomResources/SpellModifiers/Elements/triple_crit_chance.tres" id="2_g8jdg"]
+
+[resource]
+script = ExtResource("1_kmqg0")
+modifierElements = Array[Resource]([ExtResource("1_ovrfr"), ExtResource("2_g8jdg")])
+Icon = ExtResource("1_vnvu5")
+Name = "Lunar Resonance"
+Description = "Boosts the critical hit chance of the spell, allowing for more devastating attacks but at the cost of slightly reduced base damage."
