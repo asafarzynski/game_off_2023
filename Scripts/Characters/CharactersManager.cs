@@ -15,12 +15,28 @@ public partial class CharactersManager : Node3D
 
     private readonly Dictionary<ID<FightingCharacter, int>, CharacterVisuals> _spawnedNodes = new();
 
+    public void ChangeAnimationSpeed(float newValue)
+    {
+        foreach (var visuals in _spawnedNodes.Values)
+        {
+            visuals.SetAnimationSpeed(newValue);
+        }
+    }
+
     public void AnimateAttack(ID<FightingCharacter, int> attacker)
     {
         if (!_spawnedNodes.TryGetValue(attacker, out var attackerVisuals))
             return;
         
         attackerVisuals.AnimateAttack();
+    }
+
+    public void AnimateHurt(ID<FightingCharacter, int> victim)
+    {
+        if (!_spawnedNodes.TryGetValue(victim, out var victimVisuals))
+            return;
+        
+        victimVisuals.AnimateHurt();
     }
 
     public void GetAllCharactersInPositions(FightingCharacter[] players, FightingCharacter[] enemies)
@@ -48,5 +64,13 @@ public partial class CharactersManager : Node3D
             positions[index].AddChild(instantiated);
             _spawnedNodes.Add(character.Id, instantiated);
         }
+    }
+
+    public void AnimateDeath(ID<FightingCharacter, int> targetCharacterId)
+    {
+        if (!_spawnedNodes.TryGetValue(targetCharacterId, out var victimVisuals))
+            return;
+        
+        victimVisuals.AnimateDeath();
     }
 }

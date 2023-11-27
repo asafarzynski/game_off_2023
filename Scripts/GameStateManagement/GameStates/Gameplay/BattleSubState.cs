@@ -53,6 +53,8 @@ public class BattleSubState : UIManagingSubState<GameplayState>
         var timeLeftFactor = _timeSpeed / speedValue;
         _timer.WaitTime = _timer.TimeLeft * timeLeftFactor;
         _timeSpeed = speedValue;
+
+        _visualsGetter().CharactersManager.ChangeAnimationSpeed(_timeSpeed);
     }
 
     public void Pause(bool toggled)
@@ -114,7 +116,14 @@ public class BattleSubState : UIManagingSubState<GameplayState>
     {
         if (fightEvent.EventType == FightEventType.SpellCast)
         {
-            _visualsGetter().CharactersManager.AnimateAttack(fightEvent.SpellCast.OriginCharacter.Id);
+            var visuals = _visualsGetter();
+            visuals.CharactersManager.AnimateAttack(fightEvent.SpellCast.OriginCharacter.Id);
+            visuals.CharactersManager.AnimateHurt(fightEvent.TargetCharacter.Id);
+        }
+        if (fightEvent.EventType == FightEventType.CharacterDeath)
+        {
+            var visuals = _visualsGetter();
+            visuals.CharactersManager.AnimateDeath(fightEvent.TargetCharacter.Id);
         }
     }
 }

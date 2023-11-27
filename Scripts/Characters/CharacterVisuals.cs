@@ -19,6 +19,11 @@ public partial class CharacterVisuals : Node3D
         _animationTree.Active = true;
     }
 
+    public void SetAnimationSpeed(float speed)
+    {
+        _animationPlayer.SpeedScale = speed;
+    }
+
     public void AnimateAttack()
     {
         _animationTreePlayback.Travel("Attack");
@@ -32,5 +37,15 @@ public partial class CharacterVisuals : Node3D
     public void SetRotation(bool isLeft = false)
     {
         _sprite.FlipH = isLeft;
+    }
+
+    public void AnimateHurt()
+    {
+        _animationTreePlayback.Travel("Hurt");
+    }
+
+    public void AnimateDeath()
+    {
+        _animationTreePlayback.Travel("Dead");
     }
 }
