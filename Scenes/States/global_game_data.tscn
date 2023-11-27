@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpmicuj3pm6ql"]
+[gd_scene load_steps=6 format=3 uid="uid://dpmicuj3pm6ql"]
 
 [ext_resource type="Script" path="res://Scripts/GameStateManagement/GlobalGameData.cs" id="1_sltgh"]
 [ext_resource type="Resource" uid="uid://ckhf6b1llb8sf" path="res://CustomResources/Spells/spells_list.tres" id="2_eo5ig"]
 [ext_resource type="Resource" uid="uid://dhkgcowjslu8r" path="res://CustomResources/Characters/hero_list.tres" id="2_er7vg"]
 [ext_resource type="Resource" uid="uid://cayxyn6vs4gkk" path="res://CustomResources/Enemies/enemy_list.tres" id="3_15bia"]
+[ext_resource type="Resource" uid="uid://d2i8by7kjcgbd" path="res://CustomResources/SpellModifiers/spell_modifiers_list.tres" id="5_3hl76"]
 
 [node name="GlobalGameData" type="Node"]
 script = ExtResource("1_sltgh")
 HeroesList = ExtResource("2_er7vg")
 EnemiesList = ExtResource("3_15bia")
 SpellsList = ExtResource("2_eo5ig")
+SpellsModifiersList = ExtResource("5_3hl76")

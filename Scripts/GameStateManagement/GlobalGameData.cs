@@ -10,6 +10,7 @@ public partial class GlobalGameData : NodeSingleton<GlobalGameData>
 	[Export] public CharactersList HeroesList;
     [Export] public CharactersList EnemiesList;
     [Export] public SpellsList SpellsList; // not used right now - we are using per-character defined unlockable spell lists
+    [Export] public SpellModifiersList SpellsModifiersList;
 
     public GameplayCore.GameplayCore Core { get; private set; }
 
@@ -19,6 +20,7 @@ public partial class GlobalGameData : NodeSingleton<GlobalGameData>
         HeroesList.PrepareDictionary();
         EnemiesList.PrepareDictionary();
         SpellsList.PrepareDictionary();
+        SpellsModifiersList.PrepareDictionary();
     }
 
     /// <summary>
@@ -30,11 +32,14 @@ public partial class GlobalGameData : NodeSingleton<GlobalGameData>
         var mainCharacter = firstPair.Value;
         var mainCharacterData = mainCharacter.GetCharacter(firstPair.Key);
         var spellsList = mainCharacter.GetUnlockableSpells();
+        var spellModifiers = SpellsModifiersList.ResourcesDictionary.Select((resource, _) => resource.Value.ToSpellModifier(resource.Key)).ToArray();
+        var enemies = EnemiesList.ResourcesDictionary.Select((resource, _) => resource.Value.GetCharacter(resource.Key)).ToArray();
         
         Core = new GameplayCore.GameplayCore(
             mainCharacterData,
             spellsList,
-            EnemiesList.ResourcesDictionary.Select((resource, _) => resource.Value.GetCharacter(resource.Key)).ToArray());
+            spellModifiers,
+            enemies);
     }
 
     public void ClearCore()

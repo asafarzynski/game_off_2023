@@ -61,7 +61,7 @@ public partial class UISpellSlots : Control
             var modifierIcons = new UIInventorySlot.UIInventorySlotData[3];
             for (var j = 0; j < modifierIcons.Length; j++)
             {
-                modifierIcons[j] = _spellSlots[i].Modifiers[j] == null ? null : _getSlotData(_spellSlots[i].Modifiers[j].ResourceId);
+                modifierIcons[j] = _spellSlots[i].Modifiers[j] == null ? null : _getSlotData(_spellSlots[i].Modifiers[j].Value.ResourceId);
             }
             _uiSlots[i].UpdateSlots(mainSlotData, modifierIcons);
         }

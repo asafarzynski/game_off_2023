@@ -7,10 +7,13 @@ namespace GameOff2023.Scripts.UI;
 
 public partial class UIPostBattle : UIGameStateSpecific<GameplayState>
 {
+    private bool _spellOrModifier;
+
     public void _on_give_pressed()
     {
         GlobalGameData.Instance.Core.CommandsExecutioner.Do(
-            new GivePlayerRandomSpellCommand(GlobalGameData.Instance.Core));
+            _spellOrModifier ? new GivePlayerRandomSpellModifierCommand(GlobalGameData.Instance.Core) : new GivePlayerRandomSpellCommand(GlobalGameData.Instance.Core));
+        _spellOrModifier = !_spellOrModifier;
     }
 
     public void _on_next_pressed()

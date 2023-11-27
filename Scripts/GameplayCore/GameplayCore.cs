@@ -19,6 +19,12 @@ public class GameplayCore
 	public readonly Spell[] AllSpellsInGame;
 
 	/// <summary>
+	/// A list of all spell modifiers in game.
+	/// We will draw random spell modifiers from this list as rewards.
+	/// </summary>
+	public readonly SpellModifier[] AllSpellModifiersInGame;
+
+	/// <summary>
 	/// A list of all enemies in game.
 	/// We will draw random enemies from this list for battles.
 	/// </summary>
@@ -32,14 +38,16 @@ public class GameplayCore
     
 	private static readonly SimpleIdGenerator<FightingCharacter> FightingCharactersIdGenerator = new();
 
-	public GameplayCore(Character playerCharacter, Spell[] spellsInGame, Character[] enemiesInGame)
+	public GameplayCore(Character playerCharacter, Spell[] spellsInGame, SpellModifier[] spellModifiers, Character[] enemiesInGame)
 	{
+		PlayerCharacter = PreparePlayerCharacter(playerCharacter);
 		Enemies = enemiesInGame;
 		AllSpellsInGame = spellsInGame;
+		AllSpellModifiersInGame = spellModifiers;
+		
 		Inventory = new Inventory.Inventory();
 		Events = new GameplayCoreEvents();
 		LevelManager = new LevelManager(Enemies, FightingCharactersIdGenerator);
-		PlayerCharacter = PreparePlayerCharacter(playerCharacter);
 		
 		Initialize();
 	}

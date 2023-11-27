@@ -2,7 +2,7 @@
 
 namespace GameOff2023.Scripts.GameplayCore.Spells;
 
-public class SpellModifier : IInventoryItem
+public struct SpellModifier : IInventoryItem
 {
     public SpellModifierElement[] ModifierElements { get; }
 
