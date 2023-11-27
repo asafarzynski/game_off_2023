@@ -10,7 +10,7 @@ public class Level
         {
             foreach (var fight in FightList)
             {
-                if (!fight.IsCleared)
+                if (fight.FightStatus != FightStatus.Win)
                     return false;
             }
             return true;

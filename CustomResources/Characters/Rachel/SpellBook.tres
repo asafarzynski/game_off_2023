@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ce2o75u4e0nal"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ce2o75u4e0nal"]
 
 [ext_resource type="Resource" uid="uid://q3m60ojwedjr" path="res://CustomResources/Spells/almost_useless_spell.tres" id="1_iisg1"]
+[ext_resource type="Resource" uid="uid://dfpqsud3cebry" path="res://CustomResources/Spells/basic_spell.tres" id="2_neytx"]
 [ext_resource type="Script" path="res://Scripts/Resources/SpellsList.cs" id="3_38qyx"]
 
 [resource]
 script = ExtResource("3_38qyx")
-baseName = "UnlockableSpells"
-resources = Array[Resource]([ExtResource("1_iisg1")])
+baseName = "SpellBook"
+resources = Array[Resource]([ExtResource("1_iisg1"), ExtResource("2_neytx")])

@@ -8,7 +8,7 @@ namespace GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
 public class BattleSubState : UIManagingSubState<GameplayState>
 {
     public event Action<FightEvent, bool> OnFightEventFired;
-    public event Action OnFightEnded;
+    public event Action OnFightEventsEnded;
     
     private Timer _timer;
 
@@ -32,11 +32,13 @@ public class BattleSubState : UIManagingSubState<GameplayState>
     {
         base.Enter();
 
+        _eventIndex = 0;
+        _lastCooldown = 0;
+
         _timer = ((GameStates.GameplayState)GameStateManager.Instance.StateMachine.CurrentState).LoadedScene.GetNode<Timer>("Timer");
+        _timer.WaitTime = 1f;
         _timer.Timeout += TimeTick;
         _timer.Start();
-
-        _eventIndex = 0;
     }
 
     internal override void Exit()
@@ -77,7 +79,10 @@ public class BattleSubState : UIManagingSubState<GameplayState>
             return;
         
         var currentEvent = FightEvents[_eventIndex++];
-        AnimateEvent(currentEvent);
+        if (!skip)
+        {
+            AnimateEvent(currentEvent);
+        }
         OnFightEventFired?.Invoke(currentEvent, skip);
 
         if (_eventIndex < FightEvents.Count)
@@ -101,7 +106,7 @@ public class BattleSubState : UIManagingSubState<GameplayState>
         }
         else
         {
-            OnFightEnded?.Invoke();
+            OnFightEventsEnded?.Invoke();
         }
     }
 

@@ -1,6 +1,4 @@
 using System;
-using GameOff2023.Scripts.Characters;
-using GameOff2023.Scripts.GameplayCore.Levels;
 using GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
 using GameOff2023.Scripts.UI;
 using GameOff2023.Scripts.Utils.FSM;
@@ -36,10 +34,7 @@ public class GameplayState : GameStateManagement.GameState
         InnerStateMachine.AddState(preBattle);
         var battle = new BattleSubState(UIManager.Instance, Gameplay.GameplayState.Battle, VisualsGetter);
         InnerStateMachine.AddState(battle);
-        var postBattle = new PostBattleSubState(
-            UIManager.Instance,
-            Gameplay.GameplayState.PostBattle
-        );
+        var postBattle = new PostBattleSubState(UIManager.Instance, Gameplay.GameplayState.PostBattle, VisualsGetter);
         InnerStateMachine.AddState(postBattle);
 
         InnerStateMachine.AddTransition(preBattle.Id, battle.Id, GameplayTrigger.BattleStarted);
@@ -64,6 +59,11 @@ public class GameplayState : GameStateManagement.GameState
             throw new Exception("Why the initial state cannot be set up?");
         }
 
+        GlobalGameData.Instance.Core.Events.OnBattleStarted += MoveToBattle;
+        GlobalGameData.Instance.Core.Events.OnBattleEnded += MoveToSummary;
+        GlobalGameData.Instance.Core.Events.OnNewBattleAhead += MoveToPreparations;
+        GlobalGameData.Instance.Core.Events.OnGameOver += MoveToSummary;
+
         AudioManager.Instance.PlayMusic();
     }
 
@@ -76,10 +76,30 @@ public class GameplayState : GameStateManagement.GameState
     internal override void Exit()
     {
         base.Exit();
+
+        GlobalGameData.Instance.Core.Events.OnBattleStarted -= MoveToBattle;
+        GlobalGameData.Instance.Core.Events.OnBattleEnded -= MoveToSummary;
+        GlobalGameData.Instance.Core.Events.OnNewBattleAhead -= MoveToPreparations;
+        GlobalGameData.Instance.Core.Events.OnGameOver -= MoveToSummary;
+        
         InnerStateMachine.ExitAllStates();
 
         AudioManager.Instance.StopMusic();
     }
 
     private LevelVisuals.LevelVisuals VisualsGetter() => _levelVisuals;
+    private void MoveToBattle()
+    {
+        InnerStateMachine.Trigger(GameplayTrigger.BattleStarted);
+    }
+
+    private void MoveToSummary()
+    {
+        InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
+    }
+
+    private void MoveToPreparations()
+    {
+        InnerStateMachine.Trigger(GameplayTrigger.NextBattleRequested);
+    }
 }

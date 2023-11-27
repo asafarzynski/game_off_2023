@@ -1,7 +1,9 @@
+using GameOff2023.Scripts.GameplayCore.Commands;
 using GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
 using GameplayState = GameOff2023.Scripts.GameStateManagement.GameStates.GameplayState;
 using Godot;
 using GameOff2023.Scripts.GameplayCore.Levels;
+using GameOff2023.Scripts.GameStateManagement;
 using GameOff2023.Scripts.UI.Battle;
 
 namespace GameOff2023.Scripts.UI;
@@ -27,7 +29,7 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         _fightLogText.Text = "";
 
         _subState.OnFightEventFired += LogFightEvent;
-        _subState.OnFightEnded += UnlockSummaryButton;
+        _subState.OnFightEventsEnded += UnlockSummaryButton;
     }
 
     public override void _ExitTree()
@@ -35,7 +37,7 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         base._ExitTree();
         
         _subState.OnFightEventFired -= LogFightEvent;
-        _subState.OnFightEnded -= UnlockSummaryButton;
+        _subState.OnFightEventsEnded -= UnlockSummaryButton;
     }
 
     public void _on_speed_toggled(bool _, int speedValue)
@@ -50,7 +52,7 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
 
     public void _on_summary_button_pressed()
     {
-        State.InnerStateMachine.Trigger(GameplayTrigger.BattleEnded);
+        GlobalGameData.Instance.Core.CommandsExecutioner.Do(new FinishBattleCommand(GlobalGameData.Instance.Core));
     }
 
     public void _on_fast_forward_pressed()

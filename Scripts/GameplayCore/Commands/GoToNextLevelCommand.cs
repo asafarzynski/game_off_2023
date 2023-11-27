@@ -14,8 +14,6 @@ public class GoToNextLevelCommand : GameplayCoreCommand
 
     public override void Execute()
     {
-        Core.LevelManager.GenerateNextLevel();
-        Core.Events.OnLevelChanged?.Invoke();
     }
 
     public override void UnExecute()

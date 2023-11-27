@@ -51,7 +51,7 @@ public class FightingCharacter
 
 public class Fight
 {
-    public bool IsCleared { get; internal set; }
+    public FightStatus? FightStatus { get; internal set; }
     
     public readonly int FightNumber;
     public readonly FightingCharacter[] EnemyList;

@@ -41,22 +41,15 @@ public class FightNextBattleCommand : GameplayCoreCommand
         var currentLevel = Core.LevelManager.CurrentLevel;
         var currentFight = currentLevel.FightList[currentLevel.CurrentFightIndex];
 
+        currentFight.FightStatus = FightStatus.InProgress;
+
         currentFight.FightEvents = FightSimulator.SimulateFight(new FightingCharacter[]
             {
                 Core.PlayerCharacter,
             },
             currentFight.EnemyList);
 
-        var result = currentFight.FightEvents[^1].FightResult == FightStatus.Win;
-
-        if (result)
-        {
-            currentFight.IsCleared = true;
-        }
-        else
-        {
-            currentFight.IsCleared = false;
-        }
+        currentFight.FightStatus = currentFight.FightEvents[^1].FightResult;
     }
 
     public override void UnExecute()
