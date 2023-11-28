@@ -17,6 +17,6 @@ public partial class UIBasicButton : Button
 
     public virtual void _on_mouse_exited()
     {
-        AudioManager.Instance.PlayUISound(UISound.MouseExit);
+        // AudioManager.Instance.PlayUISound(UISound.MouseExit);
     }
 }

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/LevelVisuals/LevelVisuals.cs" id="1_8ha1p"]
 [ext_resource type="PackedScene" uid="uid://cgvptynrht3u0" path="res://Scenes/Levels/tower_level.tscn" id="4_p4ryj"]
-[ext_resource type="PackedScene" uid="uid://cd0u6hl4pu33j" path="res://Scenes/Levels/tower_level_with_lights.tscn" id="4_vymwo"]
+[ext_resource type="PackedScene" uid="uid://dhdhmxvipfyf0" path="res://Scenes/Levels/tower_level_with_lights.tscn" id="4_vymwo"]
 [ext_resource type="PackedScene" uid="uid://d0a0t4m5paqn2" path="res://Visuals/Models/TowerRoom/TowerRoom.glb" id="5_kkun0"]
 [ext_resource type="PackedScene" uid="uid://ce7dl125piru" path="res://Scenes/VFX/Orb.tscn" id="5_na402"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharactersManager.cs" id="7_l844m"]

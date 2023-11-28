@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://q3m60ojwedjr"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://52cye60qqkdk"]
 
 [ext_resource type="Texture2D" uid="uid://c2insbbbkirbh" path="res://Visuals/UI/SPELL_FIREBALL_128px.png" id="1_lg3c7"]
 [ext_resource type="Script" path="res://Scripts/Resources/SpellResource.cs" id="2_3q5ba"]

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/GameStateManagement/GlobalGameData.cs" id="1_sltgh"]
 [ext_resource type="Resource" uid="uid://ckhf6b1llb8sf" path="res://CustomResources/Spells/spells_list.tres" id="2_eo5ig"]
-[ext_resource type="Resource" uid="uid://dhkgcowjslu8r" path="res://CustomResources/Characters/hero_list.tres" id="2_er7vg"]
+[ext_resource type="Resource" path="res://CustomResources/Characters/hero_list.tres" id="2_er7vg"]
 [ext_resource type="Resource" uid="uid://cayxyn6vs4gkk" path="res://CustomResources/Enemies/enemy_list.tres" id="3_15bia"]
-[ext_resource type="Resource" uid="uid://d2i8by7kjcgbd" path="res://CustomResources/SpellModifiers/spell_modifiers_list.tres" id="5_3hl76"]
+[ext_resource type="Resource" path="res://CustomResources/SpellModifiers/spell_modifiers_list.tres" id="5_3hl76"]
 
 [node name="GlobalGameData" type="Node"]
 script = ExtResource("1_sltgh")
