@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddgd7n0bm2pp7"]
+[gd_scene load_steps=10 format=3 uid="uid://ddgd7n0bm2pp7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIBattle.cs" id="1_eo03y"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_hhyy5"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://b5wai00rogivy" path="res://Visuals/UIThemes/SparkyStonesRegular-BW6ld.ttf" id="4_cx4fx"]
 [ext_resource type="Script" path="res://Scripts/UI/Battle/UIHealthBars.cs" id="5_07eb3"]
 [ext_resource type="Script" path="res://Scripts/UI/Battle/UIHealthBar.cs" id="6_i5hb3"]
+
+[sub_resource type="Theme" id="Theme_rrc5n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnu72"]
 bg_color = Color(0.827451, 0.490196, 0.509804, 1)
@@ -106,7 +108,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = 5.0
+offset_top = 26.0
 offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 2
@@ -115,6 +117,16 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("4_cx4fx")
 theme_override_font_sizes/normal_font_size = 16
 scroll_following = true
+
+[node name="CheckButton" type="CheckButton" parent="FightLog"]
+layout_mode = 0
+offset_left = 1.5
+offset_right = 124.5
+offset_bottom = 24.0
+theme = SubResource("Theme_rrc5n")
+text = "Battle Log"
+alignment = 1
+icon_alignment = 1
 
 [node name="HealthBars" type="Control" parent="."]
 unique_name_in_owner = true
@@ -126,6 +138,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("5_07eb3")
+_healthBarOffset = null
 
 [node name="HealthBar" type="CenterContainer" parent="HealthBars"]
 layout_mode = 1
