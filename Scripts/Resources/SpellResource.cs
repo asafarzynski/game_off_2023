@@ -18,6 +18,7 @@ public partial class SpellResource : Resource, IIconProvider, INameProvider, IDe
     [Export] public string Name { get; private set; }
     [Export] public string Description { get; private set; }
     [Export] public Texture2D Icon { get; private set; }
+    [Export] public PackedScene VFX {get; private set;}
 
-    public Spell ToSpell(ResourceId resourceId) => new Spell(resourceId, Cooldown, Count, Damage, CriticalChance, Target);
+    public Spell ToSpell(ResourceId resourceId) => new Spell(resourceId, Cooldown, Count, Damage, CriticalChance, Target, VFX);
 }

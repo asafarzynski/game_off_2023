@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://0ibn7hc7hbup"]
+[gd_scene load_steps=17 format=3 uid="uid://0ibn7hc7hbup"]
 
+[ext_resource type="Script" path="res://Scripts/VFX/VFX.cs" id="1_0h6m3"]
 [ext_resource type="Shader" uid="uid://brlf72137cutm" path="res://Scenes/VFX/Shaders/Fireball.tres" id="1_bx35j"]
 [ext_resource type="Texture2D" uid="uid://cvtywd7fjxv8p" path="res://Scenes/VFX/Shaders/Textures/Voronoi01.png" id="2_ris5d"]
 [ext_resource type="Texture2D" uid="uid://driru4e272tlm" path="res://Scenes/VFX/Shaders/Textures/Flare00.PNG" id="3_wkh0o"]
@@ -73,11 +74,14 @@ color = Color(0, 0, 0, 1)
 color_ramp = SubResource("GradientTexture1D_pf4sa")
 
 [node name="Fireball" type="Node3D"]
+script = ExtResource("1_0h6m3")
+speed = 2.5
 
 [node name="Ball" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_6f4j0")
 amount = 1
 lifetime = 5.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_kns0r")
 draw_pass_1 = SubResource("QuadMesh_npp38")
 
@@ -85,6 +89,7 @@ draw_pass_1 = SubResource("QuadMesh_npp38")
 material_override = SubResource("ShaderMaterial_mwagh")
 amount = 20
 lifetime = 1.2
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_apawc")
 draw_pass_1 = SubResource("QuadMesh_ddxwg")
 
@@ -93,5 +98,6 @@ sorting_offset = -1.0
 material_override = SubResource("ShaderMaterial_mwagh")
 amount = 20
 lifetime = 2.5
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_86apa")
 draw_pass_1 = SubResource("QuadMesh_ddxwg")

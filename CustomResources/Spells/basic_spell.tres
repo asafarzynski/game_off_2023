@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dfpqsud3cebry"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dfpqsud3cebry"]
 
 [ext_resource type="Script" path="res://Scripts/Resources/SpellResource.cs" id="1_0qeae"]
 [ext_resource type="Texture2D" uid="uid://c2insbbbkirbh" path="res://Visuals/UI/SPELL_FIREBALL_128px.png" id="1_1sj5l"]
+[ext_resource type="PackedScene" uid="uid://0ibn7hc7hbup" path="res://Scenes/VFX/fireball.tscn" id="2_6gvak"]
 
 [resource]
 script = ExtResource("1_0qeae")
@@ -13,3 +14,4 @@ Target = 1
 Name = "Small Fireball"
 Description = "Pretty basic fire spell"
 Icon = ExtResource("1_1sj5l")
+VFX = ExtResource("2_6gvak")

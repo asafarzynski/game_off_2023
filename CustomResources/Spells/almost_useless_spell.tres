@@ -1,15 +1,17 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://52cye60qqkdk"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://52cye60qqkdk"]
 
 [ext_resource type="Texture2D" uid="uid://c2insbbbkirbh" path="res://Visuals/UI/SPELL_FIREBALL_128px.png" id="1_lg3c7"]
 [ext_resource type="Script" path="res://Scripts/Resources/SpellResource.cs" id="2_3q5ba"]
+[ext_resource type="PackedScene" uid="uid://0ibn7hc7hbup" path="res://Scenes/VFX/fireball.tscn" id="2_osy4b"]
 
 [resource]
 script = ExtResource("2_3q5ba")
 Cooldown = 3
 Count = 1
 Damage = 1.0
-CriticalChance = 0.0
+CriticalChance = null
 Target = 1
 Name = "Puff"
 Description = "Slow and weak"
 Icon = ExtResource("1_lg3c7")
+VFX = ExtResource("2_osy4b")

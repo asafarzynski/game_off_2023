@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cnxk18jqgg08m"]
+
+[ext_resource type="Texture2D" uid="uid://c2insbbbkirbh" path="res://Visuals/UI/SPELL_FIREBALL_128px.png" id="1_tjw1f"]
+[ext_resource type="Script" path="res://Scripts/Resources/SpellResource.cs" id="2_c6u2x"]
+[ext_resource type="PackedScene" uid="uid://0ibn7hc7hbup" path="res://Scenes/VFX/fireball.tscn" id="2_iuhxs"]
+
+[resource]
+script = ExtResource("2_c6u2x")
+Cooldown = 3
+Count = 3
+Damage = 5.0
+CriticalChance = 0.1
+Target = 1
+Name = "Fireball"
+Description = "Fire in the hole!"
+Icon = ExtResource("1_tjw1f")
+VFX = ExtResource("2_iuhxs")
