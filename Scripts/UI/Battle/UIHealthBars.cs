@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime;
 using GameOff2023.Scripts.Characters;
 using GameOff2023.Scripts.GameplayCore.Id;
 using GameOff2023.Scripts.GameplayCore.Levels;
@@ -62,8 +63,12 @@ public partial class UIHealthBars : Control
 
     public void UpdateHealth(FightEvent fightEvent)
     {
-        _healthBars[fightEvent.TargetCharacter.Id]
-            .UpdateValue(Mathf.RoundToInt(fightEvent.TargetCharacterStatsAfter.Health / fightEvent.TargetCharacter.Character.Stats.Health * 100));
+        var targetHealth = Mathf.RoundToInt(fightEvent.TargetCharacterStatsAfter.Health / fightEvent.TargetCharacter.Character.Stats.Health * 100);
+        if(targetHealth <= 0) {
+            _healthBars[fightEvent.TargetCharacter.Id].Hide();
+        } else {
+            _healthBars[fightEvent.TargetCharacter.Id].UpdateValue(targetHealth);
+        }
     }
 
     private void Clear()
