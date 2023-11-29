@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddgd7n0bm2pp7"]
+[gd_scene load_steps=9 format=3 uid="uid://ddgd7n0bm2pp7"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIBattle.cs" id="1_eo03y"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_hhyy5"]
 [ext_resource type="ButtonGroup" uid="uid://b63od6yp81euu" path="res://Scenes/UI/Battle/speed_button_group.tres" id="3_8khp8"]
 [ext_resource type="FontFile" uid="uid://b5wai00rogivy" path="res://Visuals/UIThemes/SparkyStonesRegular-BW6ld.ttf" id="4_cx4fx"]
+[ext_resource type="Script" path="res://Scripts/UI/Battle/UIHealthBars.cs" id="5_07eb3"]
+[ext_resource type="Script" path="res://Scripts/UI/Battle/UIHealthBar.cs" id="6_i5hb3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnu72"]
+bg_color = Color(0.827451, 0.490196, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_em4du"]
+bg_color = Color(0.219608, 0.52549, 0.341176, 1)
 
 [node name="ui_battle" type="Control"]
 layout_mode = 3
@@ -107,6 +115,47 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("4_cx4fx")
 theme_override_font_sizes/normal_font_size = 16
 scroll_following = true
+
+[node name="HealthBars" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_07eb3")
+
+[node name="HealthBar" type="CenterContainer" parent="HealthBars"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+use_top_left = true
+script = ExtResource("6_i5hb3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HealthBars/HealthBar"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HealthBars/HealthBar/VBoxContainer"]
+layout_mode = 2
+text = "Character Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthBars/HealthBar/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_vnu72")
+theme_override_styles/fill = SubResource("StyleBoxFlat_em4du")
+value = 50.0
+rounded = true
 
 [connection signal="toggled" from="HBoxContainer/Pause" to="." method="_on_pause_toggled"]
 [connection signal="toggled" from="HBoxContainer/PanelContainer/MarginContainer/SpeedSelection/1x" to="." method="_on_speed_toggled" binds= [1]]

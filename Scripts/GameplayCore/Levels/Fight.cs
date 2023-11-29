@@ -27,14 +27,13 @@ public class FightEvent
     public FightStatus? FightResult { get; set; }
     public SpellCast SpellCast { get; set; }
     public FightingCharacter TargetCharacter { get; set; }
+    public CharacterFightStatus TargetCharacterStatsAfter { get; set; }
 }
 
-public class CharacterFightStatus
+public struct CharacterFightStatus
 {
     public float Health { get; set; }
     // Other effect properties...
-
-    public CharacterFightStatus() {}
     
     public CharacterFightStatus(CharacterStats stats)
     {

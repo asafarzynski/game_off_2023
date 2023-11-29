@@ -13,6 +13,7 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
     // show combat UI here
     private Button _summaryButton;
     private RichTextLabel _fightLogText;
+    private UIHealthBars _healthBars;
 
     private BattleSubState _subState;
 
@@ -21,9 +22,13 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
         base._Ready();
 
         _subState = ((BattleSubState)State.InnerStateMachine.CurrentState);
+        var visuals = _subState.VisualsGetter();
         
         _summaryButton = (Button)FindChild("SummaryButton");
         _summaryButton.Disabled = true;
+        
+        _healthBars = GetNode<UIHealthBars>("%HealthBars");
+        _healthBars.SetUp(visuals.CharactersManager, GlobalGameData.Instance.Core, visuals.Camera);
 
         _fightLogText = GetNode<RichTextLabel>("FightLog/Text");
         _fightLogText.Text = "";
@@ -65,6 +70,11 @@ public partial class UIBattle : UIGameStateSpecific<GameplayState>
     {
         var logEntry = FightLogger.LogFightEvent(nextEvent);
         _fightLogText.Text += logEntry + "\n";
+
+        if (nextEvent.TargetCharacter != null)
+        {
+            _healthBars.UpdateHealth(nextEvent);
+        }
     }
 
     private void UnlockSummaryButton()

@@ -13,11 +13,13 @@ public class LevelManager
 
     private readonly Character[] _enemies;
     private readonly SimpleIdGenerator<FightingCharacter> _idGenerator;
+    private readonly CharactersDictionary _charactersDictionary;
 
-    public LevelManager(Character[] enemies, SimpleIdGenerator<FightingCharacter> idGenerator)
+    public LevelManager(Character[] enemies, SimpleIdGenerator<FightingCharacter> idGenerator, CharactersDictionary charactersDictionary)
     {
         _enemies = enemies;
         _idGenerator = idGenerator;
+        _charactersDictionary = charactersDictionary;
     }
 
     internal Level GenerateNextLevel()
@@ -33,12 +35,14 @@ public class LevelManager
                 randomGenerator.Randomize();
                 var randomValue = randomGenerator.RandiRange(0, _enemies.Length-1);
 
-                fight.EnemyList[y] = new FightingCharacter()
+                var fightingCharacter = new FightingCharacter()
                 {
                     Id = _idGenerator.GetNextId(),
                     Character = _enemies[randomValue],
                     FightStatus = new CharacterFightStatus(_enemies[randomValue].Stats),
                 };
+                fight.EnemyList[y] = fightingCharacter;
+                _charactersDictionary.RegisterCharacter(fightingCharacter);
             }
             level.FightList[x] = fight;
         }

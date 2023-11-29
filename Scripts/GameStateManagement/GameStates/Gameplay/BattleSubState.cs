@@ -15,15 +15,15 @@ public class BattleSubState : UIManagingSubState<GameplayState>
     private int _eventIndex;
     private int _lastCooldown;
     private float _timeSpeed = 1f;
-    
-    private readonly Func<LevelVisuals.LevelVisuals> _visualsGetter;
+
+    public readonly Func<LevelVisuals.LevelVisuals> VisualsGetter;
 
     private List<FightEvent> FightEvents => GlobalGameData.Instance.Core.LevelManager.CurrentFight.FightEvents;
 
     public BattleSubState(Node uiParent, GameplayState id, Func<LevelVisuals.LevelVisuals> visualsGetter)
         : base(uiParent, id)
     {
-        _visualsGetter = visualsGetter;
+        VisualsGetter = visualsGetter;
     }
 
     protected override string UIFilePath => "res://Scenes/UI/ui_battle.tscn";
@@ -54,7 +54,7 @@ public class BattleSubState : UIManagingSubState<GameplayState>
         _timer.WaitTime = _timer.TimeLeft * timeLeftFactor;
         _timeSpeed = speedValue;
 
-        _visualsGetter().CharactersManager.ChangeAnimationSpeed(_timeSpeed);
+        VisualsGetter().CharactersManager.ChangeAnimationSpeed(_timeSpeed);
     }
 
     public void Pause(bool toggled)
@@ -113,13 +113,13 @@ public class BattleSubState : UIManagingSubState<GameplayState>
     {
         if (!skip && fightEvent.EventType == FightEventType.SpellCast)
         {
-            var visuals = _visualsGetter();
+            var visuals = VisualsGetter();
             visuals.CharactersManager.AnimateAttack(fightEvent.SpellCast.OriginCharacter.Id);
             visuals.CharactersManager.AnimateHurt(fightEvent.TargetCharacter.Id);
         }
         if (fightEvent.EventType == FightEventType.CharacterDeath) // never skip death
         {
-            var visuals = _visualsGetter();
+            var visuals = VisualsGetter();
             visuals.CharactersManager.AnimateDeath(fightEvent.TargetCharacter.Id);
         }
     }

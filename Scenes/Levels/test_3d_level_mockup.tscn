@@ -60,45 +60,50 @@ light_angular_distance = 0.5
 shadow_enabled = true
 directional_shadow_mode = 0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(0.92388, -0.0499502, 0.37941, 0, 0.991445, 0.130526, -0.382683, -0.12059, 0.915976, 1.71854, 5.15719, 2.99487)
 projection = 2
 current = true
 fov = 37.8493
 size = 0.04
 
-[node name="CharactersManager" type="Node3D" parent="." node_paths=PackedStringArray("_playerSpawningPosition", "_playerPositions", "_enemySpawningPosition", "_enemyPositions")]
+[node name="CharactersManager" type="Node3D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("7_l844m")
-_playerSpawningPosition = NodePath("PlayerSpawnPosition")
-_playerPositions = [NodePath("PlayerPosition")]
-_enemySpawningPosition = NodePath("EnemySpawnPosition")
-_enemyPositions = [NodePath("EnemyPosition1"), NodePath("EnemyPosition2"), NodePath("EnemyPosition3"), NodePath("EnemyPosition4")]
 
 [node name="PlayerSpawnPosition" type="Node3D" parent="CharactersManager"]
+unique_name_in_owner = true
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -12.726, 0.538917, 2.49883)
 
-[node name="PlayerPosition" type="Node3D" parent="CharactersManager"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.20698, 0.538917, -6.4632)
-
 [node name="EnemySpawnPosition" type="Node3D" parent="CharactersManager"]
+unique_name_in_owner = true
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7.69309, 0.538917, -10.3218)
 
-[node name="EnemyPosition1" type="Node3D" parent="CharactersManager"]
+[node name="EnemyPositions" type="Node3D" parent="CharactersManager"]
+unique_name_in_owner = true
+
+[node name="EnemyPosition1" type="Node3D" parent="CharactersManager/EnemyPositions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.898, 0.559, -9.381)
 metadata/_edit_group_ = true
 
-[node name="EnemyPosition2" type="Node3D" parent="CharactersManager"]
+[node name="EnemyPosition2" type="Node3D" parent="CharactersManager/EnemyPositions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.056, 0.559, -10.797)
 metadata/_edit_group_ = true
 
-[node name="EnemyPosition3" type="Node3D" parent="CharactersManager"]
+[node name="EnemyPosition3" type="Node3D" parent="CharactersManager/EnemyPositions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.706, 0.559, -11.327)
 metadata/_edit_group_ = true
 
-[node name="EnemyPosition4" type="Node3D" parent="CharactersManager"]
+[node name="EnemyPosition4" type="Node3D" parent="CharactersManager/EnemyPositions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.673, 0.559, -10.6)
 metadata/_edit_group_ = true
+
+[node name="PlayerPositions" type="Node3D" parent="CharactersManager"]
+unique_name_in_owner = true
+
+[node name="PlayerPosition" type="Node3D" parent="CharactersManager/PlayerPositions"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.20698, 0.538917, -6.4632)
 
 [node name="TowerLevelWithLights" parent="." instance=ExtResource("4_vymwo")]
 

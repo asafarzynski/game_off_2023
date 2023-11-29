@@ -90,11 +90,13 @@ public static class FightSimulator
             if (targetCharacter != null)
             {
                 fightingCharacters[targetCharacter.Id].FightStatus.Health = DealDamage(targetCharacter, spellCast.Spell.Damage);
+                var targetCharacterStatsAfter = fightingCharacters[targetCharacter.Id].FightStatus;
                 fightEventQueue.Add(new FightEvent
                 {
                     EventType = FightEventType.SpellCast,
                     SpellCast = spellCast,
                     TargetCharacter = targetCharacter,
+                    TargetCharacterStatsAfter = targetCharacterStatsAfter,
                 });
 
                 if (fightingCharacters[targetCharacter.Id].FightStatus.Health == 0)

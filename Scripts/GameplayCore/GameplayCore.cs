@@ -35,6 +35,8 @@ public class GameplayCore
 	public readonly LevelManager LevelManager;
 
 	public readonly GameplayCoreEvents Events;
+
+	public readonly CharactersDictionary CharactersDictionary;
     
 	private static readonly SimpleIdGenerator<FightingCharacter> FightingCharactersIdGenerator = new();
 
@@ -47,7 +49,9 @@ public class GameplayCore
 		
 		Inventory = new Inventory.Inventory();
 		Events = new GameplayCoreEvents();
-		LevelManager = new LevelManager(Enemies, FightingCharactersIdGenerator);
+		CharactersDictionary = new CharactersDictionary();
+		CharactersDictionary.RegisterCharacter(PlayerCharacter);
+		LevelManager = new LevelManager(Enemies, FightingCharactersIdGenerator, CharactersDictionary);
 		
 		Initialize();
 	}
