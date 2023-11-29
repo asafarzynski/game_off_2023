@@ -1,16 +1,19 @@
 [gd_scene load_steps=6 format=3 uid="uid://dciecbnfsnlhj"]
 
 [ext_resource type="Script" path="res://Scripts/Audio/AudioManager.cs" id="1_uxrh0"]
-[ext_resource type="AudioStream" uid="uid://03iwaa61ksuu" path="res://Sounds/Music/pan-flute-greensleeves-144616.mp3" id="2_sb2vh"]
 [ext_resource type="AudioStream" uid="uid://bwl14jwhn2y3v" path="res://Sounds/UI/unhover.wav" id="3_e2nuo"]
 [ext_resource type="AudioStream" uid="uid://cwgri5ml8ednq" path="res://Sounds/UI/hover.wav" id="3_mo5xu"]
 [ext_resource type="AudioStream" uid="uid://cm3iy725yg4cd" path="res://Sounds/UI/click.wav" id="4_r05eq"]
+[ext_resource type="AudioStream" uid="uid://cp8tmo1n8dohp" path="res://Sounds/Music/main_menu.wav" id="5_1pr15"]
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("musicPlayer")]
+[node name="AudioManager" type="Node"]
 script = ExtResource("1_uxrh0")
-musicPlayer = NodePath("MusicPlayer")
 uiSounds = Array[Resource]([null, ExtResource("3_mo5xu"), ExtResource("3_e2nuo"), ExtResource("4_r05eq")])
+musicPlayer = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":ExtResource("5_1pr15"),"volume_db":-10.217,"pitch_scale":1.0,"autoplay":true,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Music","script":null)
+
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_sb2vh")
+stream = ExtResource("5_1pr15")
+volume_db = -10.217
+autoplay = true
 bus = &"Music"
