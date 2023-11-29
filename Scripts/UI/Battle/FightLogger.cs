@@ -50,6 +50,6 @@ public class FightLogger
 
         return damage < 0
             ? $"{originCharacter.Character.Name} ({originCharacter.Id}) heals {targetCharacter.Character.Name} ({targetCharacter.Id}) for {Math.Abs(damage)} using {spellName}"
-            : $"{originCharacter.Character.Name} ({originCharacter.Id}) deals {damage} to {targetCharacter.Character.Name} ({targetCharacter.Id}) using {spellName}";
+            : $"{originCharacter.Character.Name} ({originCharacter.Id}) deals {damage} damage to {targetCharacter.Character.Name} ({targetCharacter.Id}) using {spellName}";
     }
 }
