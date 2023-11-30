@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bshwxuj2gck5"]
+[gd_scene load_steps=6 format=3 uid="uid://bshwxuj2gck5"]
 
 [ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_ayx1d"]
 [ext_resource type="Script" path="res://Scripts/Characters/CharacterVisuals.cs" id="1_o44ss"]
 [ext_resource type="AnimationLibrary" uid="uid://dtt1rra6kqdqs" path="res://CustomResources/Characters/character_animation_library.tres" id="3_euunq"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cnpl3yerfs6y0" path="res://CustomResources/Characters/character_animation_tree.tres" id="4_orv21"]
 
-[node name="Rachel" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_duigd"]
+radius = 0.9
+height = 3.474
+
+[node name="Rachel" type="StaticBody3D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_o44ss")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -35,3 +41,7 @@ anim_player = NodePath("..")
 parameters/conditions/!walk = false
 parameters/conditions/attack = false
 parameters/conditions/walk = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50126, 0)
+shape = SubResource("CapsuleShape3D_duigd")

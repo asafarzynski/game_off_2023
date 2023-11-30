@@ -5,15 +5,19 @@
 [ext_resource type="AnimationLibrary" uid="uid://dtt1rra6kqdqs" path="res://CustomResources/Characters/character_animation_library.tres" id="3_f08jn"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cnpl3yerfs6y0" path="res://CustomResources/Characters/character_animation_tree.tres" id="4_5life"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_l50wq"]
-radius = 0.25
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qwu43"]
+radius = 1.417
+height = 6.504
 
 [node name="Moth" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0691392, 0.206756, -0.0826283)
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_r04fp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_l50wq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06012, 0)
+shape = SubResource("CapsuleShape3D_qwu43")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 unique_name_in_owner = true

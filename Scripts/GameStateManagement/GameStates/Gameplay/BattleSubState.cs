@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Numerics;
-using GameOff2023.Scripts.Characters;
 using GameOff2023.Scripts.GameplayCore.Levels;
-using GameOff2023.Scripts.GameplayCore.Spells;
+using GameOff2023.Scripts.GameplayCore.Characters;
 using Godot;
 
 namespace GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
@@ -119,7 +117,8 @@ public class BattleSubState : UIManagingSubState<GameplayState>
             var visuals = VisualsGetter();
             var fromPosition = visuals.CharactersManager.SpawnedCharacters[fightEvent.SpellCast.OriginCharacter.Id].Position;
             var toPosition = visuals.CharactersManager.SpawnedCharacters[fightEvent.TargetCharacter.Id].Position;
-            visuals.AnimateSpell(fightEvent.SpellCast.Spell, fromPosition, toPosition);
+            var playerSpell = fightEvent.SpellCast.OriginCharacter.Character.CharacterType == CharacterType.Player;
+            visuals.AnimateSpell(fightEvent.SpellCast.Spell, playerSpell, fromPosition, toPosition);
             visuals.CharactersManager.AnimateAttack(fightEvent.SpellCast.OriginCharacter.Id);
             visuals.CharactersManager.AnimateHurt(fightEvent.TargetCharacter.Id);
         }
