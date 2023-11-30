@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://wtb15jt57j4q"]
+
+[ext_resource type="Shader" uid="uid://8ser78qc0do0" path="res://Scenes/VFX/Shaders/Particles.tres" id="1_ukbrr"]
+[ext_resource type="Texture2D" uid="uid://driru4e272tlm" path="res://Scenes/VFX/Shaders/Textures/Flare00.PNG" id="2_6tuoj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4b67d"]
+render_priority = 0
+shader = ExtResource("1_ukbrr")
+shader_parameter/MainTexture = ExtResource("2_6tuoj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_60tnk"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 1, 0)
+scale_min = 0.1
+scale_max = 0.5
+color = Color(3.55, 4.14, 7.1, 0.6)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xs1rh"]
+
+[node name="bubble_gun" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_4b67d")
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_60tnk")
+draw_pass_1 = SubResource("SphereMesh_xs1rh")

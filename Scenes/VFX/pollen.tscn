@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bajh6glrv2unn"]
+
+[ext_resource type="Shader" uid="uid://8ser78qc0do0" path="res://Scenes/VFX/Shaders/Particles.tres" id="1_7bri6"]
+[ext_resource type="Texture2D" uid="uid://driru4e272tlm" path="res://Scenes/VFX/Shaders/Textures/Flare00.PNG" id="2_f6e85"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1l8y"]
+render_priority = 0
+shader = ExtResource("1_7bri6")
+shader_parameter/MainTexture = ExtResource("2_f6e85")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_30gat"]
+emission_shape = 1
+emission_sphere_radius = 0.4
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.05
+scale_max = 0.4
+color = Color(1.78, 1.18, 0, 0.26)
+turbulence_noise_strength = 6.39
+turbulence_noise_scale = 8.03
+
+[sub_resource type="QuadMesh" id="QuadMesh_ujrx8"]
+
+[node name="pollen" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_s1l8y")
+amount = 1000
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_30gat")
+draw_pass_1 = SubResource("QuadMesh_ujrx8")

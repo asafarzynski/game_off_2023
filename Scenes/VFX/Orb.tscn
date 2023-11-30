@@ -21,7 +21,7 @@ turbulence_noise_scale = 5.0
 turbulence_influence_min = 0.05
 turbulence_influence_max = 0.3
 
-[sub_resource type="QuadMesh" id="QuadMesh_202of"]
+[sub_resource type="QuadMesh" id="QuadMesh_hcu1s"]
 
 [node name="Orb" type="Node3D"]
 
@@ -31,4 +31,4 @@ material_override = SubResource("ShaderMaterial_6d6tc")
 amount = 50
 lifetime = 2.0
 process_material = SubResource("ParticleProcessMaterial_2bmhx")
-draw_pass_1 = SubResource("QuadMesh_202of")
+draw_pass_1 = SubResource("QuadMesh_hcu1s")

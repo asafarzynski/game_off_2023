@@ -42,7 +42,7 @@ curve = SubResource("Curve_pl8t1")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_apawc"]
 emission_shape = 1
 emission_sphere_radius = 0.2
-gravity = Vector3(0, 5, 0)
+gravity = Vector3(-5, 0, 0)
 damping_min = 0.5
 damping_max = 1.0
 angle_min = -360.0
@@ -63,7 +63,7 @@ gradient = SubResource("Gradient_s5smv")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_86apa"]
 emission_shape = 1
 emission_sphere_radius = 0.3
-gravity = Vector3(0, 5, 0)
+gravity = Vector3(-5, 0, 0)
 damping_min = 0.5
 damping_max = 1.0
 angle_min = -360.0

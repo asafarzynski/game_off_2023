@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://buq8x70wxl8c3"]
+
+[ext_resource type="Shader" uid="uid://8ser78qc0do0" path="res://Scenes/VFX/Shaders/Particles.tres" id="1_nup2p"]
+[ext_resource type="Texture2D" uid="uid://dr470mx50jhjn" path="res://Scenes/VFX/Shaders/Textures/note_2.png" id="2_vr1y3"]
+[ext_resource type="Texture2D" uid="uid://ct370gfv000o1" path="res://Scenes/VFX/Shaders/Textures/note_5.png" id="3_xttol"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pumu0"]
+render_priority = 0
+shader = ExtResource("1_nup2p")
+shader_parameter/MainTexture = ExtResource("2_vr1y3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fyxre"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+color = Color(0.454902, 0.219608, 0.239216, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_a1eap"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsd2k"]
+render_priority = 0
+shader = ExtResource("1_nup2p")
+shader_parameter/MainTexture = ExtResource("3_xttol")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qumfw"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+color = Color(0.686275, 0.184314, 0.8, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6noyb"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+color = Color(0.454902, 0.913725, 0.239216, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_so6ge"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+color = Color(2.37, 0.22, 0.95, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k688b"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+color = Color(2.37, 0.54, 0, 1)
+
+[node name="music_notes" type="Node3D"]
+
+[node name="notes_1" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_pumu0")
+amount = 5
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_fyxre")
+draw_pass_1 = SubResource("QuadMesh_a1eap")
+
+[node name="notes_2" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_fsd2k")
+amount = 5
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_qumfw")
+draw_pass_1 = SubResource("QuadMesh_a1eap")
+
+[node name="notes_3" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00351143, 1.19209e-07, -0.0115585)
+material_override = SubResource("ShaderMaterial_fsd2k")
+amount = 5
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_6noyb")
+draw_pass_1 = SubResource("QuadMesh_a1eap")
+
+[node name="notes_4" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_fsd2k")
+amount = 5
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_so6ge")
+draw_pass_1 = SubResource("QuadMesh_a1eap")
+
+[node name="notes_5" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_fsd2k")
+amount = 5
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_k688b")
+draw_pass_1 = SubResource("QuadMesh_a1eap")
