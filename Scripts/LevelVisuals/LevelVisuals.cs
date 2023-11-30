@@ -10,12 +10,12 @@ public partial class LevelVisuals : Node3D
     public Camera3D Camera { get; private set; }
     public CharactersManager CharactersManager { get; private set; }
 
-    public void AnimateSpell(Spell spell, bool playerSpell, Vector3 from, Vector3 to) {
+    public void AnimateSpell(Spell spell, CharacterVisuals targetCharacterVisuals, Vector3 from, Vector3 to) {
         if(spell.VFX is null){
         } else {
             var vfxScene = spell.VFX;
             VFX vfxNode = vfxScene.Instantiate<VFX>();
-            vfxNode.Init(from + new Vector3(0, 2.0f, 0), to, playerSpell);
+            vfxNode.Init(from + new Vector3(0, 2.0f, 0), to, targetCharacterVisuals);
             AddChild(vfxNode);
         }
 

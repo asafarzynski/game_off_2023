@@ -10,7 +10,6 @@ radius = 0.9
 height = 3.474
 
 [node name="Rachel" type="StaticBody3D"]
-collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_o44ss")
 

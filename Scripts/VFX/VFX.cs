@@ -1,3 +1,4 @@
+using GameOff2023.Scripts.Characters;
 using Godot;
 using System;
 
@@ -7,22 +8,17 @@ public partial class VFX : Node3D
   // Called when the node enters the scene tree for the first time.
 
   private Vector3 _targetPosition;
+  private CharacterVisuals targetCharacterVisuals;
 
   public override void _Ready()
   {
     GetNode<Area3D>("Area3D").BodyEntered += _on_Area3D_body_entered;
   }
 
-  public void Init(Vector3 From, Vector3 To, bool playerSpell){
+  public void Init(Vector3 From, Vector3 To, CharacterVisuals targetCharacterVisuals){
     Position = From;
     _targetPosition = To;
-    if(playerSpell) {
-      GetNode<Area3D>("Area3D").SetCollisionLayerValue(2, true);
-      GetNode<Area3D>("Area3D").SetCollisionMaskValue(3, true);
-    } else {
-      GetNode<Area3D>("Area3D").SetCollisionLayerValue(3, true);
-      GetNode<Area3D>("Area3D").SetCollisionMaskValue(2, true);
-    }
+    this.targetCharacterVisuals = targetCharacterVisuals;
   }
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +32,9 @@ public partial class VFX : Node3D
   }
 
   public void _on_Area3D_body_entered(Node _body) {
-    GD.Print("BOOM");
-    QueueFree();
+    if(_body == targetCharacterVisuals){
+      GD.Print("BOOM");
+      QueueFree();
+    }
   }
 }
