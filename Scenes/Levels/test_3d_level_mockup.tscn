@@ -115,6 +115,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="TowerRoom" parent="." instance=ExtResource("5_kkun0")]
 
+[node name="TowerRoom2" parent="." instance=ExtResource("5_kkun0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
 [node name="Orbs" type="Node" parent="."]
 
 [node name="Orb" parent="Orbs" instance=ExtResource("5_na402")]
