@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb1mjlce0ru22"]
+[gd_scene load_steps=5 format=3 uid="uid://blf5vcfxlh5gl"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UIMainMenu.cs" id="1_jbs8c"]
 [ext_resource type="Theme" uid="uid://44m400ybdb4x" path="res://Visuals/UIThemes/base_theme.tres" id="1_upgjt"]
@@ -16,17 +16,10 @@ theme = ExtResource("1_upgjt")
 script = ExtResource("1_jbs8c")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 123.0
-offset_bottom = 962.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.970961, 0.599555)
+offset_right = 2044.0
+offset_bottom = 2042.0
+scale = Vector2(0.94, 0.53)
 texture = ExtResource("3_dhwts")
-stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
