@@ -23,12 +23,13 @@ public class GoToNextBattleCommand : GameplayCoreCommand
         {
             if (_generatedLevel == null)
             {
-                _generatedLevel = Core.LevelManager.GenerateNextLevel();
+                _generatedLevel = Core.LevelManager.GenerateRandomLevel();
             }
             else
             {
                 Core.LevelManager.Levels.Add(_generatedLevel); // in case of execute after unexecute (to not trigger random again, because results would be different)
             }
+            Core.LevelManager.CurrentLevel.CurrentFightIndex = 0;
             Core.Events.OnLevelChanged?.Invoke();
         }
         else
@@ -43,6 +44,7 @@ public class GoToNextBattleCommand : GameplayCoreCommand
         if (Core.LevelManager.CurrentLevel.CurrentFightIndex == 0)
         {
             Core.LevelManager.Levels.RemoveAt(Core.LevelManager.Levels.Count - 1);
+            Core.LevelManager.CurrentLevel.CurrentFightIndex = Core.LevelManager.CurrentLevel.FightList.Length - 1;
         }
         else
         {

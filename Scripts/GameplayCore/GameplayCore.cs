@@ -90,7 +90,7 @@ public class GameplayCore
 
 	private void Initialize()
 	{
-		LevelManager.GenerateNextLevel();
+		LevelManager.GenerateRandomLevel();
 		for (var i = 0; i < PlayerCharacter.Character.Spells.Count; i++)
 		{
 			Inventory.SpellSlots[i].Spell = PlayerCharacter.Character.Spells[i];

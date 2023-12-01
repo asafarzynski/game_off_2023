@@ -62,6 +62,7 @@ public class GameplayState : GameStateManagement.GameState
         GlobalGameData.Instance.Core.Events.OnBattleStarted += MoveToBattle;
         GlobalGameData.Instance.Core.Events.OnBattleEnded += MoveToSummary;
         GlobalGameData.Instance.Core.Events.OnNewBattleAhead += MoveToPreparations;
+        GlobalGameData.Instance.Core.Events.OnLevelChanged += MoveToPreparations;
         GlobalGameData.Instance.Core.Events.OnGameOver += MoveToSummary;
 
         AudioManager.Instance.PlayMusic();
@@ -80,6 +81,7 @@ public class GameplayState : GameStateManagement.GameState
         GlobalGameData.Instance.Core.Events.OnBattleStarted -= MoveToBattle;
         GlobalGameData.Instance.Core.Events.OnBattleEnded -= MoveToSummary;
         GlobalGameData.Instance.Core.Events.OnNewBattleAhead -= MoveToPreparations;
+        GlobalGameData.Instance.Core.Events.OnLevelChanged -= MoveToPreparations;
         GlobalGameData.Instance.Core.Events.OnGameOver -= MoveToSummary;
         
         InnerStateMachine.ExitAllStates();

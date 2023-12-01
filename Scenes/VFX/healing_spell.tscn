@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsbpvaj8n3qxj"]
+
+[ext_resource type="Script" path="res://Scripts/VFX/VFX.cs" id="1_qu5ve"]
+[ext_resource type="Shader" uid="uid://8ser78qc0do0" path="res://Scenes/VFX/Shaders/Particles.tres" id="2_2eom5"]
+[ext_resource type="Texture2D" uid="uid://d1q2kic45pm7l" path="res://Visuals/Spells/Bez tytułu.png" id="3_xasmd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbt50"]
+render_priority = 0
+shader = ExtResource("2_2eom5")
+shader_parameter/MainTexture = ExtResource("3_xasmd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a5noj"]
+gravity = Vector3(0, 1, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_87l7q"]
+
+[node name="HealingSpell" type="Node3D" node_paths=PackedStringArray("allParticles")]
+script = ExtResource("1_qu5ve")
+allParticles = [NodePath("GPUParticles3D")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_qbt50")
+gi_mode = 0
+lifetime = 2.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_a5noj")
+draw_pass_1 = SubResource("QuadMesh_87l7q")

@@ -11,5 +11,6 @@ public class GameplayCoreEvents
 
     public Action OnLevelCleared;
     public Action OnLevelChanged;
+    public Action OnFinalBossesReached;
     public Action OnGameOver;
 }

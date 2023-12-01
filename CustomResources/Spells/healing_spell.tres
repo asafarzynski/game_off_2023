@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bpox8nsks0o7o"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/SpellResource.cs" id="1_2lj0f"]
+[ext_resource type="Texture2D" uid="uid://d1q2kic45pm7l" path="res://Visuals/Spells/Bez tytułu.png" id="1_432l5"]
+[ext_resource type="PackedScene" uid="uid://bsbpvaj8n3qxj" path="res://Scenes/VFX/healing_spell.tscn" id="2_08dek"]
+
+[resource]
+script = ExtResource("1_2lj0f")
+Cooldown = 10
+Count = 1
+Damage = -25.0
+CriticalChance = 0.0
+Target = 0
+Name = "Healing Spell"
+Description = "O, żyćko!"
+Icon = ExtResource("1_432l5")
+VFX = ExtResource("2_08dek")
