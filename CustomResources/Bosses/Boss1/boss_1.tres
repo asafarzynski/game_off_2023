@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bbd564xna63bk"]
+
+[ext_resource type="PackedScene" uid="uid://bshwxuj2gck5" path="res://Scenes/Characters/Rachel.tscn" id="1_8wpwi"]
+[ext_resource type="Texture2D" uid="uid://caqeywji8dg3u" path="res://Visuals/Character/T_Main_Character.png" id="1_ljqfr"]
+[ext_resource type="Script" path="res://Scripts/Resources/CharacterResource.cs" id="1_nujlq"]
+[ext_resource type="Resource" uid="uid://buor28dnlbfwy" path="res://CustomResources/Bosses/Boss1/boss_1_spellbook.tres" id="2_dklpf"]
+
+[resource]
+script = ExtResource("1_nujlq")
+name = "Boss 1"
+characterType = 1
+initialHealth = 100
+spellbook = ExtResource("2_dklpf")
+plainTexture = ExtResource("1_ljqfr")
+VisualsToSpawn = ExtResource("1_8wpwi")

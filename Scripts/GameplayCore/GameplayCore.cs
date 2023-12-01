@@ -30,6 +30,8 @@ public class GameplayCore
 	/// </summary>
 	public readonly Character[] Enemies;
 
+	public readonly FightingCharacter[] FinalBosses;
+
 	public readonly Inventory.Inventory Inventory;
 	
 	public readonly LevelManager LevelManager;
@@ -40,10 +42,15 @@ public class GameplayCore
     
 	private static readonly SimpleIdGenerator<FightingCharacter> FightingCharactersIdGenerator = new();
 
-	public GameplayCore(Character playerCharacter, Spell[] spellsInGame, SpellModifier[] spellModifiers, Character[] enemiesInGame)
+	public GameplayCore(Character playerCharacter,
+		Spell[] spellsInGame,
+		SpellModifier[] spellModifiers,
+		Character[] enemiesInGame,
+		Character[] finalBosses)
 	{
 		PlayerCharacter = PreparePlayerCharacter(playerCharacter);
 		Enemies = enemiesInGame;
+		FinalBosses = PrepareBossCharacters(finalBosses);
 		AllSpellsInGame = spellsInGame;
 		AllSpellModifiersInGame = spellModifiers;
 		
@@ -64,6 +71,21 @@ public class GameplayCore
 			Id = FightingCharactersIdGenerator.GetNextId(),
 			FightStatus = new CharacterFightStatus(character.Stats),
 		};
+	}
+
+	private FightingCharacter[] PrepareBossCharacters(Character[] characters)
+	{
+		var fightingCharacters = new FightingCharacter[characters.Length];
+		for (int i = 0; i < characters.Length; i++)
+		{
+			fightingCharacters[i] = new FightingCharacter()
+			{
+				Character = characters[i],
+				Id = FightingCharactersIdGenerator.GetNextId(),
+				FightStatus = new CharacterFightStatus(characters[i].Stats),
+			};
+		}
+		return fightingCharacters;
 	}
 
 	private void Initialize()

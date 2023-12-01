@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://buor28dnlbfwy"]
+
+[ext_resource type="Resource" uid="uid://brqooqe66tiun" path="res://CustomResources/Spells/super_spell.tres" id="1_3wi5t"]
+[ext_resource type="Script" path="res://Scripts/Resources/SpellsList.cs" id="2_ydcxc"]
+
+[resource]
+script = ExtResource("2_ydcxc")
+baseName = "Boss1Spell"
+resources = Array[Resource]([ExtResource("1_3wi5t")])

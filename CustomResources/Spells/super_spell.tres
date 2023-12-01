@@ -7,7 +7,7 @@
 script = ExtResource("1_lix8l")
 Cooldown = 3
 Count = 3
-Damage = 2.0
+Damage = 10.0
 CriticalChance = 0.2
 Target = 1
 Name = "Ice Blast"

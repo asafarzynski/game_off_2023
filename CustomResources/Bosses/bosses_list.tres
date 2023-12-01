@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cfjrdwfuqlxig"]
+
+[ext_resource type="Resource" uid="uid://bbd564xna63bk" path="res://CustomResources/Bosses/Boss1/boss_1.tres" id="1_2k7xc"]
+[ext_resource type="Script" path="res://Scripts/Resources/CharactersList.cs" id="1_ftp0s"]
+
+[resource]
+script = ExtResource("1_ftp0s")
+baseName = "Boss"
+resources = Array[Resource]([ExtResource("1_2k7xc"), ExtResource("1_2k7xc"), ExtResource("1_2k7xc"), ExtResource("1_2k7xc")])
