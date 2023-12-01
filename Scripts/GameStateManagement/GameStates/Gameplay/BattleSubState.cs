@@ -5,6 +5,7 @@ using GameOff2023.Scripts.Characters;
 using GameOff2023.Scripts.GameplayCore.Levels;
 using GameOff2023.Scripts.GameplayCore.Spells;
 using Godot;
+using Vector3 = Godot.Vector3;
 
 namespace GameOff2023.Scripts.GameStateManagement.GameStates.Gameplay;
 
@@ -117,12 +118,11 @@ public class BattleSubState : UIManagingSubState<GameplayState>
         if (!skip && fightEvent.EventType == FightEventType.SpellCast)
         {
             var visuals = VisualsGetter();
-            var fromPosition = visuals.CharactersManager.SpawnedCharacters[fightEvent.SpellCast.OriginCharacter.Id].Position;
-            var toPosition = visuals.CharactersManager.SpawnedCharacters[fightEvent.TargetCharacter.Id].Position;
+            var fromPosition = visuals.CharactersManager.SpawnedCharacters[fightEvent.SpellCast.OriginCharacter.Id].GlobalPosition;
+            var toPosition = visuals.CharactersManager.SpawnedCharacters[fightEvent.TargetCharacter.Id].GlobalPosition + Vector3.Up;
             var targetCharacterVisuals = visuals.CharactersManager.SpawnedCharacters[fightEvent.TargetCharacter.Id];
             visuals.AnimateSpell(fightEvent.SpellCast.Spell, targetCharacterVisuals, fromPosition, toPosition);
             visuals.CharactersManager.AnimateAttack(fightEvent.SpellCast.OriginCharacter.Id);
-            visuals.CharactersManager.AnimateHurt(fightEvent.TargetCharacter.Id);
         }
         if (fightEvent.EventType == FightEventType.CharacterDeath) // never skip death
         {

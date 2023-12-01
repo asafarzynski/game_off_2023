@@ -9,11 +9,12 @@ namespace GameOff2023.Scripts.Characters;
 
 public partial class CharactersManager : Node3D
 {
-    [Export] private float _charactersSpeed = 2f;
     private Node3D _playerSpawningPosition;
     private Node3D[] _playerPositions;
     private Node3D _enemySpawningPosition;
     private Node3D[] _enemyPositions;
+    
+    private const float CHARACTERS_SPEED = 2f;
 
     public event Action OnEverybodyInPosition;
 
@@ -57,7 +58,7 @@ public partial class CharactersManager : Node3D
                 }
                 else
                 {
-                    spawnedCharacter.GlobalPosition = spawnedCharacter.GlobalPosition.Lerp(keyValuePair.Value, (float)delta * _charactersSpeed);
+                    spawnedCharacter.GlobalPosition = spawnedCharacter.GlobalPosition.Lerp(keyValuePair.Value, (float)delta * CHARACTERS_SPEED);
                 }
             }
             foreach (var id in idsToRemove)

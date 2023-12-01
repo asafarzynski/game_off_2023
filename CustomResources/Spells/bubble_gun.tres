@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bh13g0imiq6gx"]
+
+[ext_resource type="Texture2D" uid="uid://dwmee07w7ovc4" path="res://Visuals/UI/SPELL_FRAME.png" id="1_4shpk"]
+[ext_resource type="Script" path="res://Scripts/Resources/SpellResource.cs" id="1_uw505"]
+[ext_resource type="PackedScene" uid="uid://wtb15jt57j4q" path="res://Scenes/VFX/bubble_gun.tscn" id="2_gwand"]
+
+[resource]
+script = ExtResource("1_uw505")
+Cooldown = 2
+Count = 1
+Damage = 2.0
+CriticalChance = 0.1
+Target = 1
+Name = "Bubble Gun"
+Description = "Hello, how are you? I'm under the water, please help me. Here too much raining, hoauhhou"
+Icon = ExtResource("1_4shpk")
+VFX = ExtResource("2_gwand")

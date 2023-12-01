@@ -41,6 +41,8 @@ public partial class CharacterVisuals : Node3D
 
     public void AnimateHurt()
     {
+        if (_animationTreePlayback.GetCurrentNode() == "Dead")
+            return;
         _animationTreePlayback.Travel("Hurt");
     }
 

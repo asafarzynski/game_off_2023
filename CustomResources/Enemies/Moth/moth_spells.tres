@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://7mgttchdxep7"]
 
-[ext_resource type="Resource" uid="uid://q3m60ojwedjr" path="res://CustomResources/Spells/almost_useless_spell.tres" id="1_6lsdv"]
+[ext_resource type="Resource" uid="uid://buwpqagykexcr" path="res://CustomResources/Spells/pollen_swirl.tres" id="1_ctm5q"]
 [ext_resource type="Script" path="res://Scripts/Resources/SpellsList.cs" id="2_vbj47"]
 
 [resource]
 script = ExtResource("2_vbj47")
 baseName = "MothSpell"
-resources = Array[Resource]([ExtResource("1_6lsdv")])
+resources = Array[Resource]([ExtResource("1_ctm5q")])

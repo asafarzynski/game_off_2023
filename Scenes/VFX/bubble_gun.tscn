@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://wtb15jt57j4q"]
+[gd_scene load_steps=7 format=3 uid="uid://wtb15jt57j4q"]
 
+[ext_resource type="Script" path="res://Scripts/VFX/VFX.cs" id="1_8lffa"]
 [ext_resource type="Shader" uid="uid://8ser78qc0do0" path="res://Scenes/VFX/Shaders/Particles.tres" id="1_ukbrr"]
 [ext_resource type="Texture2D" uid="uid://driru4e272tlm" path="res://Scenes/VFX/Shaders/Textures/Flare00.PNG" id="2_6tuoj"]
 
@@ -19,7 +20,9 @@ color = Color(3.55, 4.14, 7.1, 0.6)
 
 [sub_resource type="SphereMesh" id="SphereMesh_xs1rh"]
 
-[node name="bubble_gun" type="Node3D"]
+[node name="bubble_gun" type="Node3D" node_paths=PackedStringArray("allParticles")]
+script = ExtResource("1_8lffa")
+allParticles = [NodePath("GPUParticles3D")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_4b67d")

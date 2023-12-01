@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bajh6glrv2unn"]
+[gd_scene load_steps=7 format=3 uid="uid://bajh6glrv2unn"]
 
 [ext_resource type="Shader" uid="uid://8ser78qc0do0" path="res://Scenes/VFX/Shaders/Particles.tres" id="1_7bri6"]
+[ext_resource type="Script" path="res://Scripts/VFX/VFX.cs" id="1_atdl7"]
 [ext_resource type="Texture2D" uid="uid://driru4e272tlm" path="res://Scenes/VFX/Shaders/Textures/Flare00.PNG" id="2_f6e85"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1l8y"]
@@ -20,7 +21,9 @@ turbulence_noise_scale = 8.03
 
 [sub_resource type="QuadMesh" id="QuadMesh_ujrx8"]
 
-[node name="pollen" type="Node3D"]
+[node name="pollen" type="Node3D" node_paths=PackedStringArray("allParticles")]
+script = ExtResource("1_atdl7")
+allParticles = [NodePath("GPUParticles3D")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 material_override = SubResource("ShaderMaterial_s1l8y")

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bi64hs0wrq0ku"]
 
-[ext_resource type="Resource" uid="uid://q3m60ojwedjr" path="res://CustomResources/Spells/almost_useless_spell.tres" id="1_21jtp"]
+[ext_resource type="Resource" uid="uid://bh13g0imiq6gx" path="res://CustomResources/Spells/bubble_gun.tres" id="1_mawdf"]
 [ext_resource type="Script" path="res://Scripts/Resources/SpellsList.cs" id="2_syb8v"]
 
 [resource]
 script = ExtResource("2_syb8v")
 baseName = "ToadSpell"
-resources = Array[Resource]([ExtResource("1_21jtp")])
+resources = Array[Resource]([ExtResource("1_mawdf")])
